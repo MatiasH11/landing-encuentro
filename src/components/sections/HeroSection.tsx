@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { EVENT_NAME, EVENT_TAGLINE, STATS } from "@/constants/history-data";
+import { EVENT_TAGLINE, STATS } from "@/constants/history-data";
 import { ArrowDown } from "lucide-react";
 
 export default function HeroSection() {
@@ -16,47 +16,58 @@ export default function HeroSection() {
         quality={85}
       />
 
-      {/* Dark warm overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-tierra-deep/70 via-tierra-deep/50 to-tierra-deep/85" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
-        {/* Title */}
-        <h1 className="max-w-4xl font-heading text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
-          {EVENT_NAME}
-        </h1>
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        {/* Logo */}
+        <div className="mb-6 md:mb-10">
+          <Image
+            src="/images/branding/logo.png"
+            alt="Encuentro Latinoamericano del Canto y las Danzas Folclóricas"
+            width={627}
+            height={320}
+            className="h-auto w-72 drop-shadow-2xl sm:w-96 md:w-[440px] lg:w-[520px] xl:w-[580px]"
+            priority
+          />
+        </div>
 
-        {/* Tagline */}
-        <p className="mt-4 text-lg font-light tracking-wide text-celeste-light md:text-xl">
+        {/* Tagline - Simplified */}
+        <p className="mb-10 text-xl font-light tracking-wide text-white drop-shadow-lg md:mb-14 md:text-3xl lg:text-4xl">
           {EVENT_TAGLINE}
         </p>
 
         {/* Stats */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-8 md:gap-12">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-3xl font-bold text-tierra-light md:text-4xl">{stat.value}</p>
-              <p className="mt-1 text-xs uppercase tracking-widest text-white/60">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+        <div className="mb-10 w-full md:mb-14">
+          <div className="mx-auto grid max-w-md grid-cols-2 gap-x-8 gap-y-8 md:flex md:max-w-none md:flex-wrap md:justify-center md:gap-16">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-white/80 md:mt-3 md:text-sm">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* CTAs */}
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-tierra px-8 text-base font-medium text-white hover:bg-tierra-light"
+            className="rounded-full bg-tierra px-10 py-6 text-base font-semibold text-white shadow-lg hover:bg-tierra-light hover:shadow-xl"
           >
             <a href="#ediciones">Próximas Ediciones 2026</a>
           </Button>
           <Button
             asChild
-            variant="ghost"
+            variant="outline"
             size="lg"
-            className="rounded-full border border-white/20 px-8 text-base font-medium text-white hover:bg-white/10"
+            className="rounded-full border-2 border-white/30 bg-white/10 px-10 py-6 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20"
           >
             <a href="#galeria">Ver Galería</a>
           </Button>
@@ -65,10 +76,10 @@ export default function HeroSection() {
         {/* Scroll indicator */}
         <a
           href="#historia"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/40 transition-colors hover:text-white/80"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50 transition-colors hover:text-white"
           aria-label="Scroll hacia abajo"
         >
-          <ArrowDown className="h-6 w-6" />
+          <ArrowDown className="h-8 w-8" />
         </a>
       </div>
     </section>

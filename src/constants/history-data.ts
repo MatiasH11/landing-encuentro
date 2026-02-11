@@ -3,7 +3,7 @@ import type { HistoricalStat, Organizer } from "@/types";
 export const STATS: HistoricalStat[] = [
   { value: "19", label: "Ediciones realizadas" },
   { value: "600+", label: "Participantes por edición" },
-  { value: "1000+", label: "Artistas y acompañantes en Paso de la Patria" },
+  { value: "1000+", label: "Artistas y acompañantes" },
   { value: "30+", label: "Delegaciones por encuentro" },
 ];
 

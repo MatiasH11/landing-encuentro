@@ -18,24 +18,32 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled
-          ? "bg-white/80 shadow-sm backdrop-blur-xl"
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 shadow-md backdrop-blur-xl"
           : "bg-transparent"
-        }`}
+      }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6">
-        {/* Brand */}
-        <a href="#inicio" className="flex items-center gap-3">
+        {/* Brand - Only visible when scrolled */}
+        <a
+          href="#inicio"
+          className={`flex items-center gap-3 transition-opacity duration-300 ${
+            scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        >
           <Image
             src="/images/branding/logo.png"
             alt="Encuentro Latinoamericano del Canto y las Danzas Folclóricas"
             width={627}
             height={320}
-            className={`h-12 w-auto transition-all duration-300 md:h-14 ${!scrolled ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" : ""
-              }`}
+            className="h-12 w-auto md:h-14"
             priority
           />
         </a>
+
+        {/* Spacer when not scrolled */}
+        {!scrolled && <div className="flex-1" />}
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
@@ -43,10 +51,11 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${scrolled
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                scrolled
                   ? "text-slate hover:bg-tierra/10 hover:text-tierra-dark"
-                  : "text-white/80 hover:bg-white/10 hover:text-white"
-                }`}
+                  : "text-white/90 hover:bg-white/10 hover:text-white"
+              }`}
             >
               {link.label}
             </a>
@@ -57,8 +66,9 @@ export default function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className={`rounded-full lg:hidden ${!scrolled ? "text-white hover:bg-white/10" : ""
-            }`}
+          className={`rounded-full lg:hidden ${
+            !scrolled ? "text-white hover:bg-white/10" : ""
+          }`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
         >
