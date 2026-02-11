@@ -5,25 +5,20 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail, Phone, Facebook, MapPin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-    },
-  }),
-};
-
 export default function ContactSection() {
   return (
     <section id="contacto" className="relative overflow-hidden py-24 md:py-32">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-bg to-cream" />
+      {/* Background with pattern */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-warm-bg to-cream" />
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
+          backgroundSize: '32px 32px',
+          color: '#5B9BD5'
+        }} />
+      </div>
 
-      <div className="relative mx-auto max-w-5xl px-4 md:px-6">
+      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
         {/* Section header */}
         <motion.div
           className="mx-auto max-w-2xl text-center"
@@ -36,65 +31,79 @@ export default function ContactSection() {
             Hablemos
           </p>
           <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
-            Contacto
+            ¿Tenés dudas?
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Escribinos para consultas, inscripciones o más información
+            Estamos para ayudarte con cualquier consulta sobre el encuentro
           </p>
         </motion.div>
 
-        {/* Contact cards */}
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
-          {CONTACTS.map((contact, i) => (
-            <motion.div
-              key={contact.name}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group relative overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-border/30 transition-shadow hover:shadow-2xl"
-            >
-              {/* Gradient header */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-tierra to-tierra-light p-6">
-                <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/20 blur-xl" />
-                <div className="absolute -bottom-3 -left-3 h-20 w-20 rounded-full bg-white/20 blur-lg" />
-                <div className="relative">
-                  <h3 className="font-heading text-xl font-bold text-white">
+        {/* Main contact container */}
+        <motion.div
+          className="mt-16 overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-border/30"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="grid md:grid-cols-2">
+            {/* Contact persons */}
+            {CONTACTS.map((contact, i) => (
+              <motion.div
+                key={contact.name}
+                className="group relative p-8 transition-colors hover:bg-tierra/5"
+                initial={{ opacity: 0, x: i === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+              >
+                {/* Divider between cards on desktop */}
+                {i === 0 && (
+                  <div className="absolute right-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-border to-transparent hidden md:block" />
+                )}
+
+                {/* Name and role */}
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-foreground">
                     {contact.name}
                   </h3>
-                  <p className="mt-1 text-sm text-white/80">Organizador</p>
+                  <p className="mt-1 text-sm font-medium text-tierra">Organizador del Encuentro</p>
                 </div>
-              </div>
 
-              {/* Contact info */}
-              <div className="p-6">
-                <div className="space-y-3">
+                {/* Contact methods */}
+                <div className="space-y-4">
                   <a
                     href={`tel:${contact.phone}`}
-                    className="group/item flex items-center gap-3 rounded-lg p-2 text-sm text-muted-foreground transition-all hover:bg-tierra/5"
+                    className="group/link flex items-center gap-4 rounded-xl p-3 transition-all hover:bg-white hover:shadow-md"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-tierra/10 transition-colors group-hover/item:bg-tierra/20">
-                      <Phone className="h-4 w-4 text-tierra" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tierra text-white transition-transform group-hover/link:scale-110">
+                      <Phone className="h-5 w-5" />
                     </div>
-                    <span className="transition-colors group-hover/item:text-tierra">{contact.phone}</span>
+                    <div>
+                      <p className="text-xs font-medium text-muted-foreground">Teléfono</p>
+                      <p className="text-sm font-semibold text-foreground">{contact.phone}</p>
+                    </div>
                   </a>
+
                   <a
                     href={`mailto:${contact.email}`}
-                    className="group/item flex items-center gap-3 rounded-lg p-2 text-sm text-muted-foreground transition-all hover:bg-tierra/5"
+                    className="group/link flex items-center gap-4 rounded-xl p-3 transition-all hover:bg-white hover:shadow-md"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-tierra/10 transition-colors group-hover/item:bg-tierra/20">
-                      <Mail className="h-4 w-4 text-tierra" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tierra text-white transition-transform group-hover/link:scale-110">
+                      <Mail className="h-5 w-5" />
                     </div>
-                    <span className="transition-colors group-hover/item:text-tierra">{contact.email}</span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-medium text-muted-foreground">Email</p>
+                      <p className="truncate text-sm font-semibold text-foreground">{contact.email}</p>
+                    </div>
                   </a>
                 </div>
 
                 {/* WhatsApp CTA */}
                 <Button
                   asChild
-                  className="mt-6 w-full rounded-full bg-green-600 text-base shadow-md transition-all hover:bg-green-700 hover:shadow-lg"
+                  size="lg"
+                  className="mt-6 w-full rounded-full bg-green-600 text-base font-semibold shadow-lg transition-all hover:scale-105 hover:bg-green-700 hover:shadow-xl"
                 >
                   <a
                     href={contact.whatsappUrl}
@@ -106,45 +115,71 @@ export default function ContactSection() {
                     Escribir por WhatsApp
                   </a>
                 </Button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Social + location */}
-        <motion.div
-          className="mt-16 flex flex-col items-center gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://www.facebook.com/groups/599225440173246"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 rounded-full border border-border/50 bg-white px-6 py-3 text-sm font-medium text-slate shadow-md transition-all hover:scale-105 hover:border-[#1877F2]/30 hover:shadow-lg"
-            >
-              <Facebook className="h-5 w-5 text-[#1877F2] transition-transform group-hover:scale-110" />
-              Grupo de Facebook
-            </a>
-            <a
-              href="https://www.instagram.com/encuentrolatinoamericano"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 rounded-full border border-border/50 bg-white px-6 py-3 text-sm font-medium text-slate shadow-md transition-all hover:scale-105 hover:border-pink-500/30 hover:shadow-lg"
-            >
-              <Instagram className="h-5 w-5 text-pink-500 transition-transform group-hover:scale-110" />
-              Instagram
-            </a>
+              </motion.div>
+            ))}
           </div>
 
-          <p className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin className="h-4 w-4 text-tierra" />
-            Mar del Plata, Argentina
-          </p>
+          {/* Footer section with social and location */}
+          <div className="border-t border-border/50 bg-gradient-to-r from-warm-bg to-cream p-8">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+              {/* Location */}
+              <motion.div
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-tierra/10">
+                  <MapPin className="h-5 w-5 text-tierra" />
+                </div>
+                <div>
+                  <p className="text-xs font-medium text-muted-foreground">Ubicaciones</p>
+                  <p className="text-sm font-semibold text-foreground">Paso de la Patria & Mar del Plata</p>
+                </div>
+              </motion.div>
+
+              {/* Social links */}
+              <motion.div
+                className="flex gap-3"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
+                <a
+                  href="https://www.facebook.com/groups/599225440173246"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:scale-110 hover:shadow-lg"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5 text-[#1877F2] transition-transform group-hover:scale-110" />
+                </a>
+                <a
+                  href="https://www.instagram.com/encuentrolatinoamericano"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:scale-110 hover:shadow-lg"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5 text-pink-500 transition-transform group-hover:scale-110" />
+                </a>
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
+
+        {/* Help text */}
+        <motion.p
+          className="mt-8 text-center text-sm text-muted-foreground"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+        >
+          Respondemos todas las consultas a la brevedad
+        </motion.p>
       </div>
     </section>
   );
