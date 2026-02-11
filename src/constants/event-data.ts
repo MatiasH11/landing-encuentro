@@ -133,6 +133,67 @@ export const SCHEDULE_PASO_2026: ScheduleDay[] = [
   },
 ];
 
+export const SCHEDULE_MDP_2026: ScheduleDay[] = [
+  {
+    day: "Jueves",
+    date: "19 de noviembre",
+    activities: [
+      { time: "14:00 hs", description: "Recepción de las delegaciones en hoteles" },
+      { time: "Tarde libre", description: "Tiempo libre para recorrer la ciudad" },
+      {
+        time: "20:00 hs",
+        description: "Primera noche de festival folclórico en el Teatro Enrique Carreras — Entradas libres y gratuitas",
+        highlight: true,
+      },
+      { time: "00:00 hs", description: "Cierre del festival seguido de Peña folclórica" },
+    ],
+  },
+  {
+    day: "Viernes",
+    date: "20 de noviembre",
+    activities: [
+      { time: "Mañana libre", description: "Tiempo libre para disfrutar de la ciudad y la playa" },
+      {
+        time: "20:30 hs",
+        description: "Segunda noche de festival folclórico — Entradas libres y gratuitas",
+        highlight: true,
+      },
+      { time: "00:00 hs", description: "Cierre del festival seguido de Peña folclórica" },
+    ],
+  },
+  {
+    day: "Sábado",
+    date: "21 de noviembre",
+    activities: [
+      { time: "Mañana libre", description: "Tiempo libre para paseos por la ciudad" },
+      {
+        time: "18:00 hs",
+        description: "Concentración para sesión de fotos y desfile hasta el Teatro",
+      },
+      { time: "19:30 hs", description: "Acto inaugural", highlight: true },
+      {
+        time: "20:00 hs",
+        description: "Tercera noche de festival folclórico",
+        highlight: true,
+      },
+      { time: "00:30 hs", description: "Cierre musical y Peña folclórica" },
+    ],
+  },
+  {
+    day: "Domingo",
+    date: "22 de noviembre",
+    activities: [
+      { time: "Mañana libre", description: "Tiempo libre para disfrutar de Mar del Plata" },
+      {
+        time: "19:00 hs",
+        description: "Cuarta y última noche de festival folclórico",
+        highlight: true,
+      },
+      { time: "00:00 hs", description: "Cierre del festival folclórico" },
+    ],
+  },
+];
+
 export const CONTACTS: ContactPerson[] = [
   {
     name: "Ángeles Bernachea",

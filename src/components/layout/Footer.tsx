@@ -7,9 +7,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-tierra-deep text-white">
+    <footer className="relative overflow-hidden bg-tierra-dark text-white">
       {/* Decorative gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-tierra-dark/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-tierra/30 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
         <div className="grid gap-12 md:grid-cols-3">

@@ -247,7 +247,7 @@ export default function HistorySection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <div className="rounded-xl bg-gradient-to-br from-tierra-dark to-tierra-deep p-6 text-center text-white shadow-lg md:rounded-2xl md:p-8">
+          <div className="rounded-xl bg-gradient-to-br from-tierra to-tierra-light p-6 text-center text-white shadow-lg md:rounded-2xl md:p-8">
             {/* Header with icon and title */}
             <div className="flex items-center justify-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 md:h-12 md:w-12">
