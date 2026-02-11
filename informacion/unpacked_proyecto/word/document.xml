@@ -1,0 +1,2509 @@
+<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:sl="http://schemas.openxmlformats.org/schemaLibrary/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture" xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:lc="http://schemas.openxmlformats.org/drawingml/2006/lockedCanvas" xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns="http://schemas.microsoft.com/office/tasks/2019/documenttasks" xmlns:cr="http://schemas.microsoft.com/office/comments/2020/reactions">
+  <w:body>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000001">
+      <w:pPr>
+        <w:spacing w:after="200" w:line="276" w:lineRule="auto"/>
+        <w:jc w:val="right"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Paso</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+        <w:drawing>
+          <wp:anchor allowOverlap="1" behindDoc="0" distB="0" distT="0" distL="114300" distR="114300" hidden="0" layoutInCell="1" locked="0" relativeHeight="0" simplePos="0">
+            <wp:simplePos x="0" y="0"/>
+            <wp:positionH relativeFrom="page">
+              <wp:posOffset>5257800</wp:posOffset>
+            </wp:positionH>
+            <wp:positionV relativeFrom="page">
+              <wp:posOffset>438150</wp:posOffset>
+            </wp:positionV>
+            <wp:extent cx="1236980" cy="1233805"/>
+            <wp:effectExtent b="0" l="0" r="0" t="0"/>
+            <wp:wrapTopAndBottom distB="0" distT="0"/>
+            <wp:docPr id="3" name="image4.jpg"/>
+            <a:graphic>
+              <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                <pic:pic>
+                  <pic:nvPicPr>
+                    <pic:cNvPr id="0" name="image4.jpg"/>
+                    <pic:cNvPicPr preferRelativeResize="0"/>
+                  </pic:nvPicPr>
+                  <pic:blipFill>
+                    <a:blip r:embed="rId6"/>
+                    <a:srcRect b="0" l="0" r="0" t="0"/>
+                    <a:stretch>
+                      <a:fillRect/>
+                    </a:stretch>
+                  </pic:blipFill>
+                  <pic:spPr>
+                    <a:xfrm>
+                      <a:off x="0" y="0"/>
+                      <a:ext cx="1236980" cy="1233805"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect"/>
+                    <a:ln/>
+                  </pic:spPr>
+                </pic:pic>
+              </a:graphicData>
+            </a:graphic>
+          </wp:anchor>
+        </w:drawing>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> de la Patria, 26 de diciembre de 2025</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000002">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Al</w:t>
+        <w:br w:type="textWrapping"/>
+        <w:t xml:space="preserve">Secretario de Turismo</w:t>
+        <w:br w:type="textWrapping"/>
+        <w:t xml:space="preserve">Sr. Alfredo Blanco</w:t>
+        <w:br w:type="textWrapping"/>
+        <w:t xml:space="preserve">Municipalidad de Paso de la Patria</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">S                     /                      D</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000003">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">De nuestra mayor consideración:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000004">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Por medio de la presente nos dirigimos a usted con el fin de hacerle llegar el </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">proyecto del Encuentro Latinoamericano del Canto y las Danzas Folclóricas</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">, evento cultural que reúne a delegaciones artísticas de distintas provincias y países, promoviendo el intercambio cultural y el fortalecimiento de nuestras tradiciones.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000005">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">El objetivo de este envío es </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">establecer formalmente la fecha del encuentro dentro del calendario turístico de la localidad</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">, a fin de facilitar su correspondiente promoción y difusión. Cabe destacar que para dicho evento se realiza </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">una extensa campaña de promoción en todo el territorio argentino</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">, lo cual resulta fundamental para la correcta planificación y difusión del mismo.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000006">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">La inclusión de este encuentro en el calendario oficial permitirá potenciar su alcance promocional, contribuyendo al desarrollo cultural y turístico de Paso de la Patria, y generando un impacto positivo tanto en la comunidad local como en los visitantes.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000007">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Sin otro particular, y quedando a disposición para ampliar la información que considere necesaria, saludamos a usted muy atentamente.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000008">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Atentamente,</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000009">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">CONTACTOS:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000000A">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Móvil: +54 9 379 4771606 / +54 9 379 4676554</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000000B">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Email: aangelesber</w:t>
+      </w:r>
+      <w:hyperlink r:id="rId7">
+        <w:r>
+          <w:rPr>
+            <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+            <w:sz w:val="24"/>
+            <w:szCs w:val="24"/>
+            <w:rtl w:val="0"/>
+          </w:rPr>
+          <w:t xml:space="preserve">@hotmail.com</w:t>
+        </w:r>
+      </w:hyperlink>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000000C">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Facebook: Encuentro latinoamerciano del canto y las danzas folclóricas.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000000D">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Organizadores del Encuentro Latinoamericano:</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000000E">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+      <w:r>
+        <w:drawing>
+          <wp:anchor allowOverlap="1" behindDoc="1" distB="0" distT="0" distL="0" distR="0" hidden="0" layoutInCell="1" locked="0" relativeHeight="0" simplePos="0">
+            <wp:simplePos x="0" y="0"/>
+            <wp:positionH relativeFrom="column">
+              <wp:posOffset>3552825</wp:posOffset>
+            </wp:positionH>
+            <wp:positionV relativeFrom="paragraph">
+              <wp:posOffset>8558</wp:posOffset>
+            </wp:positionV>
+            <wp:extent cx="2941586" cy="2043970"/>
+            <wp:effectExtent b="0" l="0" r="0" t="0"/>
+            <wp:wrapNone/>
+            <wp:docPr id="5" name="image2.jpg"/>
+            <a:graphic>
+              <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                <pic:pic>
+                  <pic:nvPicPr>
+                    <pic:cNvPr id="0" name="image2.jpg"/>
+                    <pic:cNvPicPr preferRelativeResize="0"/>
+                  </pic:nvPicPr>
+                  <pic:blipFill>
+                    <a:blip r:embed="rId8"/>
+                    <a:srcRect b="0" l="0" r="0" t="0"/>
+                    <a:stretch>
+                      <a:fillRect/>
+                    </a:stretch>
+                  </pic:blipFill>
+                  <pic:spPr>
+                    <a:xfrm>
+                      <a:off x="0" y="0"/>
+                      <a:ext cx="2941586" cy="2043970"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect"/>
+                    <a:ln/>
+                  </pic:spPr>
+                </pic:pic>
+              </a:graphicData>
+            </a:graphic>
+          </wp:anchor>
+        </w:drawing>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000000F">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:line="240" w:lineRule="auto"/>
+        <w:jc w:val="both"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:drawing>
+          <wp:anchor allowOverlap="1" behindDoc="1" distB="0" distT="0" distL="0" distR="0" hidden="0" layoutInCell="1" locked="0" relativeHeight="0" simplePos="0">
+            <wp:simplePos x="0" y="0"/>
+            <wp:positionH relativeFrom="column">
+              <wp:posOffset>-380999</wp:posOffset>
+            </wp:positionH>
+            <wp:positionV relativeFrom="paragraph">
+              <wp:posOffset>47625</wp:posOffset>
+            </wp:positionV>
+            <wp:extent cx="2498055" cy="1735375"/>
+            <wp:effectExtent b="0" l="0" r="0" t="0"/>
+            <wp:wrapNone/>
+            <wp:docPr id="1" name="image3.jpg"/>
+            <a:graphic>
+              <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                <pic:pic>
+                  <pic:nvPicPr>
+                    <pic:cNvPr id="0" name="image3.jpg"/>
+                    <pic:cNvPicPr preferRelativeResize="0"/>
+                  </pic:nvPicPr>
+                  <pic:blipFill>
+                    <a:blip r:embed="rId9"/>
+                    <a:srcRect b="0" l="0" r="0" t="0"/>
+                    <a:stretch>
+                      <a:fillRect/>
+                    </a:stretch>
+                  </pic:blipFill>
+                  <pic:spPr>
+                    <a:xfrm>
+                      <a:off x="0" y="0"/>
+                      <a:ext cx="2498055" cy="1735375"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect"/>
+                    <a:ln/>
+                  </pic:spPr>
+                </pic:pic>
+              </a:graphicData>
+            </a:graphic>
+          </wp:anchor>
+        </w:drawing>
+      <w:drawing>
+          <wp:anchor allowOverlap="1" behindDoc="1" distB="0" distT="0" distL="0" distR="0" hidden="0" layoutInCell="1" locked="0" relativeHeight="0" simplePos="0">
+            <wp:simplePos x="0" y="0"/>
+            <wp:positionH relativeFrom="column">
+              <wp:posOffset>1762125</wp:posOffset>
+            </wp:positionH>
+            <wp:positionV relativeFrom="paragraph">
+              <wp:posOffset>47625</wp:posOffset>
+            </wp:positionV>
+            <wp:extent cx="2315821" cy="1621075"/>
+            <wp:effectExtent b="0" l="0" r="0" t="0"/>
+            <wp:wrapNone/>
+            <wp:docPr id="2" name="image1.jpg"/>
+            <a:graphic>
+              <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                <pic:pic>
+                  <pic:nvPicPr>
+                    <pic:cNvPr id="0" name="image1.jpg"/>
+                    <pic:cNvPicPr preferRelativeResize="0"/>
+                  </pic:nvPicPr>
+                  <pic:blipFill>
+                    <a:blip r:embed="rId10"/>
+                    <a:srcRect b="0" l="0" r="0" t="0"/>
+                    <a:stretch>
+                      <a:fillRect/>
+                    </a:stretch>
+                  </pic:blipFill>
+                  <pic:spPr>
+                    <a:xfrm>
+                      <a:off x="0" y="0"/>
+                      <a:ext cx="2315821" cy="1621075"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect"/>
+                    <a:ln/>
+                  </pic:spPr>
+                </pic:pic>
+              </a:graphicData>
+            </a:graphic>
+          </wp:anchor>
+        </w:drawing></w:r>
+      
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000010">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000011">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000012">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">  </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000013">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Tec. Pedro Oscar Bernachea            Prof. Mirtha Torres           Lic. Angeles Bernachea Torres                    </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000014">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000015">
+      <w:pPr>
+        <w:shd w:fill="ffffff" w:val="clear"/>
+        <w:spacing w:after="240" w:before="240" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:cs="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000016">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Nombre del Evento:</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">19º Encuentro Latinoamericano del Canto y las Danzas Folclóricas</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000017">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Lema:</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">"Argentina le canta y baila a Latinoamérica"</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000018">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Organizadores:</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> Ballet Folclórico </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Embajada Folklórica Argentina</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> y </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:i w:val="1"/>
+          <w:iCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Las 3 Marías Eventos</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000019">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Dirección General:</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> Prof. Mirtha Torres</w:t>
+        <w:br w:type="textWrapping"/>
+        <w:t xml:space="preserve"> Tec. Pedro Oscar Bernachea</w:t>
+        <w:br w:type="textWrapping"/>
+        <w:t xml:space="preserve"> Lic. María de los Ángeles Bernachea</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000001A">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Fecha y lugar de realización:</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> 9, 10, 11, 12 de octubre de 2026</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000001B">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Anfiteatro Pinin Palma</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> – Paso de la Patria, Buenos Aires, Argentina</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000001C">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Participantes (estimados: 600 personas):</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Delegaciones artísticas y ballets folclóricos de distintas provincias argentinas y paises latinoamericanos.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000001D">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000001E">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000001F">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000020">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000021">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000022">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000023">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000024">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000025">
+      <w:pPr>
+        <w:pStyle w:val="Heading3"/>
+        <w:keepNext w:val="0"/>
+        <w:keepLines w:val="0"/>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:hanging="360"/>
+        <w:jc w:val="center"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:color w:val="000000"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:bookmarkStart w:colFirst="0" w:colLast="0" w:name="_duisd4au0rjb" w:id="0"/>
+      <w:bookmarkEnd w:id="0"/>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:color w:val="000000"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Programa de Actividades – 19º Encuentro Latinoamericano del Canto y las Danzas Folclóricas</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000026">
+      <w:pPr>
+        <w:rPr/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000027">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Jueves 9 de octubre. </w:t>
+      </w:r>
+      
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000028">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">10:00hs: recepción de las delegaciones.  </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000029">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Jornada libre para disfrutar de las playas.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000002A">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">19:30hs inicio de la primera noche de festival folclórico en el Anfiteatro Pinin Palma con entradas libres y gratuitas. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000002B">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Expo- Encuentro Latino Americano: paseos de artesanos y gastronomía. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000002C">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">00:30hs Cierre del festival seguido de Peña folclórica en el mismo lugar.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000002D">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000002E">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Viernes 10 de octubre. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000002F">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">* 11:00hs Talleres de danzas en el polideportivo municipal. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000030">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">* 13:00hs Almuerzo de todas las delegaciones en el polideportivo municipal. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000031">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">20:00hs inicio de la primera noche de festival folclórico en el Anfiteatro Pinin Palma con entradas libres y gratuitas. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000032">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Expo- Encuentro Latino Americano: paseos de artesanos y gastronomía. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000033">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">00:30hs Cierre del festival seguido de Peña folclórica en el mismo lugar.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000034">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000035">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Sábado 11 de octubre: </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000036">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Mañana libres para paseos y disfrutar de las playas. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000037">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">18:00hs Concentración de todas las delegaciones en la Plaza Federico Leloir para sesiones de fotos y luego desfile hasta el anfiteatro Pinin Palma. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000038">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">19:30hs Acto inaugural. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000039">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">20:00hs Inicio de la segunda noche de festival. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000003A">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">01:00hs Cierre musical y peña en el mismo lugar. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000003B">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000003C">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Domingo 12 de octubre: </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000003D">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">* Mañana libres para paseos y disfrutar de las playas. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000003E">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">* 19:00hs: Inicio de la tercera y última noche de festival folclórico. </w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000003F">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="20"/>
+          <w:szCs w:val="20"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">* 00:30hs Cierre del festival folclórico.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000040">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000041">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000042">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000043">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Formato de Participación:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000044">
+      <w:pPr>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Cada delegación podrá actuar en 2 de las 4 noches del festival, representando a través de la danza y la música la identidad de su región, provincia o país</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000045">
+      <w:pPr>
+        <w:spacing w:after="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000046">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Inicio del Evento:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000047">
+      <w:pPr>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Delegaciones latinoamericanas arribarán a la ciudad 1 o 2 días antes del inicio del festival con alojamiento y comidas provistos</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000048">
+      <w:pPr>
+        <w:spacing w:after="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Delegaciones del interior de Argentina llegarán el día del inicio del festival con alojamiento asegurado</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000049">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Reconocimientos:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000004A">
+      <w:pPr>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Certificados de participación para todas las delegaciones y cantantes</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000004B">
+      <w:pPr>
+        <w:spacing w:after="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Reconocimientos especiales para gobiernos, municipios, empresas y personas que han apoyado el evento</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000004C">
+      <w:pPr>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="0" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000004D">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Confirmación de Participación:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000004E">
+      <w:pPr>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Notificación a los organizadores con 60 días de antelación</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000004F">
+      <w:pPr>
+        <w:spacing w:after="280" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:firstLine="0"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Cupos limitados, priorizando 2 espacios para danza y 1 para canto por provincia</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000050">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000051">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000052">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000053">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000054">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000055">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000056">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000057">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000058">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:jc w:val="center"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:u w:val="single"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Fundamentos del Proyecto</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000059">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">La Villa Turística de Paso de la Patria, en la provincia de Corrientes, se distingue por su riqueza natural, su identidad cultural y su adecuada infraestructura turística, lo que la convierte en un escenario propicio para la realización de eventos de relevancia regional, nacional e internacional. En este contexto, el </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">19° Encuentro Latinoamericano del Canto y las Danzas Folclóricas</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve"> se proyecta como una propuesta cultural integral que continúa consolidando una trayectoria de encuentros exitosos desarrollados tanto en Paso de la Patria como en otras ciudades del país.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000005A">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Este proyecto nace con la finalidad de fortalecer y preservar las expresiones del canto y las danzas folclóricas, promoviendo un espacio de encuentro, aprendizaje e intercambio cultural entre delegaciones provenientes de distintas provincias argentinas y países de Latinoamérica. La iniciativa busca no solo revalorizar nuestras tradiciones artísticas, sino también contribuir a la difusión de la historia, la identidad y el patrimonio cultural que nos une como pueblos hermanos.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000005B">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">El Encuentro se concibe como una experiencia educativa, artística y turística, donde se fomenta la participación activa de bailarines, cantantes, docentes y referentes culturales, brindándoles un ámbito de proyección y reconocimiento. A su vez, se destaca el valor de Paso de la Patria como destino turístico, permitiendo a los visitantes conocer y disfrutar de sus paisajes naturales, su hospitalidad y su oferta de servicios, fortaleciendo así el desarrollo económico y social de la comunidad local.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000005C">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">La organización del evento contempla una atención integral y personalizada para cada delegación participante, desde su arribo hasta su despedida, a través de un equipo de coordinadores especialmente designado. Asimismo, se prevé la articulación con organismos oficiales, instituciones locales, comerciantes y prestadores de servicios, cuyo acompañamiento resulta fundamental para garantizar el alojamiento y el correcto desarrollo de las actividades programadas.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000005D">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">El 19° Encuentro Latinoamericano del Canto y las Danzas Folclóricas tiene como objetivo convocar a un importante número de participantes y acompañantes, generando un impacto positivo en el sector turístico, especialmente fuera de los picos de temporada alta, y beneficiando de manera directa e indirecta a toda la localidad.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000005E">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">La experiencia acumulada en ediciones anteriores respalda la relevancia de este evento, destacándose especialmente la convocatoria lograda en Paso de la Patria, donde se registró la participación de más de mil personas entre artistas y acompañantes, consolidando al Encuentro como un referente cultural de alcance latinoamericano.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="0000005F">
+      <w:pPr>
+        <w:pStyle w:val="Heading3"/>
+        <w:keepNext w:val="0"/>
+        <w:keepLines w:val="0"/>
+        <w:spacing w:before="280" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:color w:val="000000"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:bookmarkStart w:colFirst="0" w:colLast="0" w:name="_6rsxj7dcc5yb" w:id="1"/>
+      <w:bookmarkEnd w:id="1"/>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:color w:val="000000"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Objetivos del Encuentro:</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000060">
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1"/>
+        </w:numPr>
+        <w:spacing w:after="0" w:afterAutospacing="0" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:hanging="360"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Crear y sostener un espacio de expresión artística para el canto y las danzas folclóricas, bajo el lema </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">&#x201C;Argentina le canta y baila a Latinoamérica&#x201D;</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">.</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000061">
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1"/>
+        </w:numPr>
+        <w:spacing w:after="0" w:afterAutospacing="0" w:before="0" w:beforeAutospacing="0" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:hanging="360"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Impulsar el turismo cultural como herramienta de desarrollo local y regional.</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000062">
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1"/>
+        </w:numPr>
+        <w:spacing w:after="0" w:afterAutospacing="0" w:before="0" w:beforeAutospacing="0" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:hanging="360"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Favorecer la integración y el intercambio cultural entre los pueblos de Argentina y Latinoamérica.</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000063">
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="1"/>
+        </w:numPr>
+        <w:spacing w:after="240" w:before="0" w:beforeAutospacing="0" w:line="259" w:lineRule="auto"/>
+        <w:ind w:left="720" w:hanging="360"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Promover la inclusión del Encuentro Latinoamericano del Canto y las Danzas Folclóricas en los calendarios culturales y turísticos a nivel local, provincial y nacional.</w:t>
+        <w:br w:type="textWrapping"/>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000064">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Resulta especialmente significativo observar cómo numerosas delegaciones que participan por primera vez eligen regresar en ediciones posteriores, fortaleciendo los lazos construidos y reafirmando el valor cultural y humano de este Encuentro. En este sentido, el evento se consolida como uno de los más importantes del continente en su género, compartiendo protagonismo con destacados festivales folclóricos de Latinoamérica.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000065">
+      <w:pPr>
+        <w:spacing w:after="240" w:before="240" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Finalmente, expresamos nuestro sincero agradecimiento a todas las instituciones, organismos y personas que, año tras año, acompañan y apoyan este proyecto cultural, en nombre de la familia Bernachea Torres, el Encuentro Latinoamericano del Canto y las Danzas Folclóricas, el Centro Cultural y el Ballet </w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:b w:val="1"/>
+          <w:bCs w:val="1"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">Embajada Folklórica Argentina</w:t>
+      </w:r>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+        <w:t xml:space="preserve">, cuyo compromiso y vocación hacen posible la continuidad y el crecimiento de este valioso espacio de encuentro cultural.</w:t>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000066">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000067">
+      <w:pPr>
+        <w:spacing w:after="160" w:line="259" w:lineRule="auto"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman"/>
+          <w:sz w:val="26"/>
+          <w:szCs w:val="26"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:p w:rsidR="00000000" w:rsidDel="00000000" w:rsidP="00000000" w:rsidRDefault="00000000" w:rsidRPr="00000000" w14:paraId="00000068">
+      <w:pPr>
+        <w:rPr/>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rtl w:val="0"/>
+        </w:rPr>
+      </w:r>
+    </w:p>
+    <w:sectPr>
+      <w:headerReference r:id="rId11" w:type="default"/>
+      <w:pgSz w:h="16834" w:w="11909" w:orient="portrait"/>
+      <w:pgMar w:bottom="1440" w:top="1440" w:left="1440" w:right="1440" w:header="720" w:footer="720"/>
+      <w:pgNumType w:start="1"/>
+    </w:sectPr>
+  </w:body>
+</w:document>

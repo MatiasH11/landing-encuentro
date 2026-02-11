@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:addyosmani.com)",
+      "Bash(del \"c:\\\\Users\\\\matia\\\\OneDrive\\\\Documentos\\\\personal\\\\landing-encuentro\\\\SPEC-INSTRUCTIONS.md\")",
+      "WebFetch(domain:www.anthropic.com)",
+      "Bash(ls:*)",
+      "WebFetch(domain:skills.sh)",
+      "Bash(npx skillsadd:*)",
+      "Bash(npx skills:*)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(claude mcp add:*)",
+      "WebFetch(domain:context7.com)",
+      "Bash(claude mcp remove:*)",
+      "Bash(claude mcp list:*)",
+      "mcp__context7__resolve-library-id",
+      "Bash(pandoc:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(test:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(move \"temp-next\\\\node_modules\" \"node_modules\")",
+      "Bash(move:*)",
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)"
+    ]
+  }
+}
