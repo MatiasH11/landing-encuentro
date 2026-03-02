@@ -63,6 +63,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "video-001",
     type: "video",
+    src: "",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     caption: "Video destacado del Encuentro Latinoamericano 2024",
     alt: "Video del festival folclórico",
@@ -71,6 +72,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "video-002",
     type: "video",
+    src: "",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     caption: "Actuación Ballet Folclórico — Edición 2024",
     alt: "Video de ballet folclórico en el escenario",
@@ -79,6 +81,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "video-003",
     type: "video",
+    src: "",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     caption: "Resumen Encuentro Latinoamericano 2023",
     alt: "Resumen del encuentro 2023",
@@ -87,6 +90,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "video-004",
     type: "video",
+    src: "",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     caption: "Danzas tradicionales — Paso de la Patria 2024",
     alt: "Video de danzas tradicionales",
