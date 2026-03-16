@@ -36,7 +36,7 @@ export default function GallerySection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Galería
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             Momentos inolvidables
           </h2>
           <p className="mt-12 text-muted-foreground">
@@ -64,7 +64,7 @@ export default function GallerySection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Galería
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             Momentos inolvidables
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -82,7 +82,8 @@ export default function GallerySection() {
                 className="group relative overflow-hidden rounded-2xl shadow-md focus:outline-none focus:ring-2 focus:ring-tierra focus:ring-offset-2"
                 aria-label={`Ver ${item.caption}`}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: index * 0.05, duration: 0.4 }}
                 whileHover={{ y: -4, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
               >
@@ -113,7 +114,8 @@ export default function GallerySection() {
                 key={item.id}
                 className="group overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-border/30"
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
                 whileHover={{ y: -6, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
               >

@@ -4,6 +4,15 @@ import type { GalleryItem } from "@/types";
 // To add new photos/videos: add entries here and place files in public/images/gallery/
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
+    id: "video-001",
+    type: "video",
+    videoUrl: "https://www.youtube.com/embed/3Fgfw5Bnl_Y",
+    caption: "Video destacado del Encuentro Latinoamericano",
+    alt: "Video del festival folclórico",
+    year: 2024,
+    src: "", // Required by GalleryItem type based on src/types/index.ts
+  },
+  {
     id: "photo-001",
     type: "photo",
     src: "/images/gallery/imagen-1.jpeg",
@@ -59,37 +68,5 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: "Los más pequeños también bailan — Encuentro Latinoamericano",
     year: 2024,
   },
-  // Videos - Replace these YouTube URLs with your own event videos
-  {
-    id: "video-001",
-    type: "video",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    caption: "Video destacado del Encuentro Latinoamericano 2024",
-    alt: "Video del festival folclórico",
-    year: 2024,
-  },
-  {
-    id: "video-002",
-    type: "video",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    caption: "Actuación Ballet Folclórico — Edición 2024",
-    alt: "Video de ballet folclórico en el escenario",
-    year: 2024,
-  },
-  {
-    id: "video-003",
-    type: "video",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    caption: "Resumen Encuentro Latinoamericano 2023",
-    alt: "Resumen del encuentro 2023",
-    year: 2023,
-  },
-  {
-    id: "video-004",
-    type: "video",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    caption: "Danzas tradicionales — Paso de la Patria 2024",
-    alt: "Video de danzas tradicionales",
-    year: 2024,
-  },
 ];
+

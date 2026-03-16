@@ -45,9 +45,9 @@ export const EDITIONS_2026: EventEdition[] = [
     province: "Buenos Aires",
     country: "Argentina",
     venue: "Teatro Enrique Carreras",
-    dateRange: "19 al 22 de noviembre de 2026",
-    startDate: "2026-11-19",
-    endDate: "2026-11-22",
+    dateRange: "20 al 23 de noviembre de 2026",
+    startDate: "2026-11-20",
+    endDate: "2026-11-23",
     year: 2026,
     costPerPerson: 280000,
     depositPerPerson: 60000,
@@ -71,61 +71,60 @@ export const EDITIONS_2026: EventEdition[] = [
 
 export const SCHEDULE_PASO_2026: ScheduleDay[] = [
   {
-    day: "Jueves",
+    day: "Viernes",
     date: "9 de octubre",
     activities: [
-      { time: "10:00 hs", description: "Recepción de las delegaciones" },
-      { time: "Jornada libre", description: "Tiempo libre para disfrutar de las playas" },
+      { time: "12:00 hs", description: "Recepción de las delegaciones nacionales y extranjeras" },
+      { time: "Tarde libre", description: "Tiempo libre para disfrutar de las playas" },
       {
         time: "19:30 hs",
-        description: "Primera noche de festival folclórico en el Anfiteatro Pinin Palma — Entradas libres y gratuitas",
+        description: "Inicio de la primera noche de festival folclórico en el Anfiteatro Pinin Palma — Entradas libres y gratuitas",
         highlight: true,
       },
       { time: "19:30 hs", description: "Expo-Encuentro Latinoamericano: paseo de artesanos y gastronomía" },
-      { time: "00:30 hs", description: "Cierre del festival seguido de Peña folclórica" },
-    ],
-  },
-  {
-    day: "Viernes",
-    date: "10 de octubre",
-    activities: [
-      { time: "11:00 hs", description: "Talleres de danzas en el Polideportivo Municipal" },
-      { time: "13:00 hs", description: "Almuerzo de todas las delegaciones en el Polideportivo Municipal" },
-      {
-        time: "20:00 hs",
-        description: "Segunda noche de festival folclórico — Entradas libres y gratuitas",
-        highlight: true,
-      },
-      { time: "20:00 hs", description: "Expo-Encuentro Latinoamericano: paseo de artesanos y gastronomía" },
-      { time: "00:30 hs", description: "Cierre del festival seguido de Peña folclórica" },
+      { time: "00:30 hs", description: "Cierre del festival seguido de Peña folclórica en el mismo lugar" },
     ],
   },
   {
     day: "Sábado",
-    date: "11 de octubre",
+    date: "10 de octubre",
     activities: [
-      { time: "Mañana libre", description: "Tiempo libre para paseos y disfrutar de las playas" },
+      { time: "11:00 hs", description: "Talleres de danzas en el polideportivo municipal" },
+      { time: "13:00 hs", description: "Almuerzo de todas las delegaciones en el polideportivo municipal" },
       {
-        time: "18:00 hs",
-        description: "Concentración en la Plaza Federico Leloir para sesión de fotos y desfile hasta el Anfiteatro Pinin Palma",
+        time: "19:00 hs",
+        description: "Concentración de todas las delegaciones frente a la Municipalidad de Paso de la Patria para sesiones de fotos y luego desfile hasta el anfiteatro Pinin Palma",
       },
-      { time: "19:30 hs", description: "Acto inaugural", highlight: true },
       {
         time: "20:00 hs",
-        description: "Tercera noche de festival folclórico",
+        description: "Acto inaugural. - Inicio de la segunda noche de festival folclórico en el Anfiteatro Pinin Palma con entradas libres y gratuitas",
         highlight: true,
       },
-      { time: "01:00 hs", description: "Cierre musical y Peña folclórica" },
+      { time: "20:00 hs", description: "Expo-Encuentro Latinoamericano: paseo de artesanos y gastronomía" },
+      { time: "00:30 hs", description: "Cierre del festival seguido de Peña folclórica en el mismo lugar" },
     ],
   },
   {
     day: "Domingo",
+    date: "11 de octubre",
+    activities: [
+      { time: "Mañanas libres", description: "Tiempo libre para paseos y disfrutar de las playas" },
+      {
+        time: "20:00 hs",
+        description: "Inicio de la tercer noche de festival en el Anfiteatro Pinin Palma",
+        highlight: true,
+      },
+      { time: "01:00 hs", description: "Cierre musical y peña en el mismo lugar" },
+    ],
+  },
+  {
+    day: "Lunes",
     date: "12 de octubre",
     activities: [
-      { time: "Mañana libre", description: "Tiempo libre para paseos y disfrutar de las playas" },
+      { time: "Mañana libres", description: "Tiempo libre para paseos y disfrutar de las playas" },
       {
         time: "19:00 hs",
-        description: "Cuarta y última noche de festival folclórico",
+        description: "Inicio de la cuarta y última noche de festival folclórico",
         highlight: true,
       },
       { time: "00:30 hs", description: "Cierre del festival folclórico" },
@@ -135,61 +134,63 @@ export const SCHEDULE_PASO_2026: ScheduleDay[] = [
 
 export const SCHEDULE_MDP_2026: ScheduleDay[] = [
   {
-    day: "Jueves",
-    date: "19 de noviembre",
-    activities: [
-      { time: "14:00 hs", description: "Recepción de las delegaciones en hoteles" },
-      { time: "Tarde libre", description: "Tiempo libre para recorrer la ciudad" },
-      {
-        time: "20:00 hs",
-        description: "Primera noche de festival folclórico en el Teatro Enrique Carreras — Entradas libres y gratuitas",
-        highlight: true,
-      },
-      { time: "00:00 hs", description: "Cierre del festival seguido de Peña folclórica" },
-    ],
-  },
-  {
     day: "Viernes",
     date: "20 de noviembre",
     activities: [
-      { time: "Mañana libre", description: "Tiempo libre para disfrutar de la ciudad y la playa" },
+      { time: "12:00 hs", description: "Recepción de las delegaciones nacionales e internacionales. Alojamiento y acreditaciones." },
       {
-        time: "20:30 hs",
-        description: "Segunda noche de festival folclórico — Entradas libres y gratuitas",
+        time: "18:00 a 22:00 hs",
+        description: "Apertura oficial del festival: Primera función artística en el Teatro Enrique Carreras",
         highlight: true,
       },
-      { time: "00:00 hs", description: "Cierre del festival seguido de Peña folclórica" },
     ],
   },
   {
     day: "Sábado",
     date: "21 de noviembre",
     activities: [
-      { time: "Mañana libre", description: "Tiempo libre para paseos por la ciudad" },
       {
-        time: "18:00 hs",
-        description: "Concentración para sesión de fotos y desfile hasta el Teatro",
-      },
-      { time: "19:30 hs", description: "Acto inaugural", highlight: true },
-      {
-        time: "20:00 hs",
-        description: "Tercera noche de festival folclórico",
+        time: "10:00 a 13:00 hs",
+        description: "Función matutina en el Teatro Enrique Carreras",
         highlight: true,
       },
-      { time: "00:30 hs", description: "Cierre musical y Peña folclórica" },
+      {
+        time: "18:00 a 22:00 hs",
+        description: "Función vespertina en el Teatro Enrique Carreras",
+        highlight: true,
+      },
     ],
   },
   {
     day: "Domingo",
     date: "22 de noviembre",
     activities: [
-      { time: "Mañana libre", description: "Tiempo libre para disfrutar de Mar del Plata" },
       {
-        time: "19:00 hs",
-        description: "Cuarta y última noche de festival folclórico",
+        time: "10:00 a 13:00 hs",
+        description: "Función matutina en el Teatro Enrique Carreras",
         highlight: true,
       },
-      { time: "00:00 hs", description: "Cierre del festival folclórico" },
+      {
+        time: "8:00 a 22:00 hs",
+        description: "Función vespertina en el Teatro Enrique Carreras",
+        highlight: true,
+      },
+    ],
+  },
+  {
+    day: "Lunes",
+    date: "23 de noviembre",
+    activities: [
+      {
+        time: "10:00 a 13:00 hs",
+        description: "Función matutina en el Teatro Enrique Carreras",
+        highlight: true,
+      },
+      {
+        time: "18:00 a 22:00 hs",
+        description: "Función vespertina en el Teatro Enrique Carreras",
+        highlight: true,
+      },
     ],
   },
 ];

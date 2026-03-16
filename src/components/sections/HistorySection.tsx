@@ -13,14 +13,14 @@ import { motion } from "framer-motion";
 
 export default function HistorySection() {
   return (
-    <section id="historia" className="relative overflow-hidden bg-white py-16 md:py-24 lg:py-32">
+    <section id="historia" className="relative overflow-hidden bg-background py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-tierra md:text-sm">
+          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             {HISTORY_TEXT.intro}
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-foreground md:mt-4 md:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             {HISTORY_TEXT.headline}
           </h2>
         </div>
@@ -30,7 +30,7 @@ export default function HistorySection() {
           {STATS.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-xl bg-gradient-to-br from-tierra/5 to-celeste/5 p-4 text-center ring-1 ring-border/50 md:rounded-2xl md:p-8"
+              className="rounded-xl bg-gradient-to-br from-tierra-light/15 to-tierra/5 p-4 text-center ring-1 ring-border/50 md:rounded-2xl md:p-8"
             >
               <p className="font-heading text-3xl font-bold text-tierra md:text-5xl lg:text-6xl">
                 {stat.value}
@@ -80,9 +80,8 @@ export default function HistorySection() {
 
         {/* Trust factors */}
         <div className="mt-16 md:mt-24">
-          <div className="mx-auto max-w-7xl">
-            <motion.div
-              className="grid gap-4 md:grid-cols-2 md:gap-6"
+          <motion.div
+            className="grid gap-4 md:grid-cols-2 md:gap-6"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -166,13 +165,12 @@ export default function HistorySection() {
                 </div>
               </motion.div>
             </motion.div>
-          </div>
         </div>
 
         {/* Objetivos */}
         <div className="mt-16 md:mt-24">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-wider text-tierra md:text-sm">
+            <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
               Nuestros Objetivos
             </p>
             <h3 className="mt-3 font-heading text-2xl font-bold text-foreground md:text-3xl lg:text-4xl">
@@ -214,9 +212,9 @@ export default function HistorySection() {
                 }
               }}
             >
-              {OBJECTIVES.map((objective, i) => (
+              {OBJECTIVES.map((objective) => (
                 <motion.div
-                  key={i}
+                  key={objective.slice(0, 40)}
                   className="group flex gap-3 rounded-xl bg-white p-4 ring-1 ring-border/30 transition-all hover:ring-tierra/30 hover:shadow-md md:gap-4 md:p-5"
                   variants={{
                     hidden: { opacity: 0, x: 30 },
@@ -247,7 +245,7 @@ export default function HistorySection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
-          <div className="rounded-xl bg-gradient-to-br from-tierra to-tierra-light p-6 text-center text-white shadow-lg md:rounded-2xl md:p-8">
+          <div className="rounded-xl bg-gradient-to-br from-navy to-tierra p-6 text-center text-white shadow-lg md:rounded-2xl md:p-8">
             {/* Header with icon and title */}
             <div className="flex items-center justify-center gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 md:h-12 md:w-12">

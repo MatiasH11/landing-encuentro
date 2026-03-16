@@ -32,7 +32,7 @@ export default function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">
               Navegación
             </h4>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
@@ -70,7 +70,7 @@ export default function Footer() {
               href="https://www.facebook.com/profile.php?id=100063657592907"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white/50 transition-colors hover:border-white/20 hover:text-white/80"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-3 text-sm text-white/50 transition-colors hover:border-white/20 hover:text-white/80"
             >
               <Facebook className="h-4 w-4" />
               Facebook

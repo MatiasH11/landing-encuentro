@@ -42,7 +42,7 @@ export default function RegistrationSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Inscripción
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             ¿Qué incluye tu participación?
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -63,14 +63,14 @@ export default function RegistrationSection() {
               key={edition.id}
               variants={cardVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-border/50 transition-shadow hover:shadow-2xl"
+              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-border/50 transition-shadow hover:shadow-xl"
             >
               {/* Card header with gradient */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-tierra to-tierra-light p-8">
+              <div className="relative overflow-hidden bg-gradient-to-br from-navy to-tierra p-8">
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
                 <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-white/20 blur-xl" />
                 <div className="relative">
-                  <h3 className="text-2xl font-bold text-white">
+                  <h3 className="font-heading text-2xl font-bold text-white">
                     {edition.location}
                   </h3>
                   <p className="mt-2 text-sm font-medium text-white">
@@ -83,17 +83,13 @@ export default function RegistrationSection() {
               {/* Card content */}
               <div className="flex flex-1 flex-col p-8">
                 <div className="flex-1 space-y-4">
-                  <p className="text-sm font-semibold uppercase tracking-wider text-tierra">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
                     Incluye
                   </p>
                   {edition.inclusions.map((inclusion, idx) => (
-                    <motion.div
+                    <div
                       key={idx}
                       className="flex items-start gap-3"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.05, duration: 0.4 }}
                     >
                       <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-tierra/10">
                         <Check className="h-3.5 w-3.5 text-tierra" />
@@ -101,7 +97,7 @@ export default function RegistrationSection() {
                       <p className="text-sm leading-relaxed text-muted-foreground">
                         {inclusion.label}
                       </p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 

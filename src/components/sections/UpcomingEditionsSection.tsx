@@ -27,7 +27,7 @@ export default function UpcomingEditionsSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Próximamente
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             Ediciones 2026
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -52,7 +52,7 @@ export default function UpcomingEditionsSection() {
           {EDITIONS_2026.map((edition, i) => (
             <motion.div
               key={edition.id}
-              className="group relative overflow-hidden rounded-3xl border border-border/30 bg-white shadow-lg transition-all"
+              className="group relative overflow-hidden rounded-2xl border border-border/30 bg-white shadow-lg transition-all"
               variants={{
                 hidden: { opacity: 0, y: 40 },
                 visible: { opacity: 1, y: 0 }
@@ -115,11 +115,11 @@ export default function UpcomingEditionsSection() {
                     </div>
                     <span>Hasta {edition.maxBallets} delegaciones</span>
                   </div>
-                  <div className="flex items-center gap-4 rounded-lg bg-amber-50 p-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-100">
-                      <AlertCircle className="h-5 w-5 text-amber-700" />
+                  <div className="flex items-center gap-4 rounded-lg bg-warning-bg p-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-warning-muted">
+                      <AlertCircle className="h-5 w-5 text-warning" />
                     </div>
-                    <span className="font-semibold text-amber-900">Cupos limitados</span>
+                    <span className="font-semibold text-warning-text">Cupos limitados</span>
                   </div>
                 </div>
 

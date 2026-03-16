@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 const merriweather = Merriweather({
-  variable: "--font-playfair",
+  variable: "--font-merriweather",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "700", "900"],

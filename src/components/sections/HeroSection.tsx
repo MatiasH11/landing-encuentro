@@ -76,7 +76,7 @@ export default function HeroSection() {
         {/* Scroll indicator */}
         <a
           href="#historia"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50 transition-colors hover:text-white"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float text-white/70 transition-colors hover:text-white"
           aria-label="Scroll hacia abajo"
         >
           <ArrowDown className="h-8 w-8" />

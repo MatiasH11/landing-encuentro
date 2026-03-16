@@ -14,7 +14,7 @@ export default function ContactSection() {
         <div className="absolute inset-0" style={{
           backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
           backgroundSize: '32px 32px',
-          color: '#5B9BD5'
+          color: 'var(--color-tierra)'
         }} />
       </div>
 
@@ -30,7 +30,7 @@ export default function ContactSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Hablemos
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             ¿Tenés dudas?
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
@@ -40,7 +40,7 @@ export default function ContactSection() {
 
         {/* Main contact container */}
         <motion.div
-          className="mt-16 overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-border/30"
+          className="mt-16 overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-border/30"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -103,7 +103,7 @@ export default function ContactSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="mt-6 w-full rounded-full bg-green-600 text-base font-semibold shadow-lg transition-all hover:scale-105 hover:bg-green-700 hover:shadow-xl"
+                  className="mt-6 w-full rounded-full bg-whatsapp text-base font-semibold shadow-lg transition-all hover:scale-105 hover:bg-whatsapp-dark hover:shadow-xl"
                 >
                   <a
                     href={contact.whatsappUrl}
@@ -154,7 +154,7 @@ export default function ContactSection() {
                   className="group flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:scale-110 hover:shadow-lg"
                   aria-label="Facebook"
                 >
-                  <Facebook className="h-5 w-5 text-[#1877F2] transition-transform group-hover:scale-110" />
+                  <Facebook className="h-5 w-5 text-tierra transition-transform group-hover:scale-110" />
                 </a>
                 <a
                   href="https://www.instagram.com/encuentrolatinoamericano"
@@ -163,7 +163,7 @@ export default function ContactSection() {
                   className="group flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:scale-110 hover:shadow-lg"
                   aria-label="Instagram"
                 >
-                  <Instagram className="h-5 w-5 text-pink-500 transition-transform group-hover:scale-110" />
+                  <Instagram className="h-5 w-5 text-tierra transition-transform group-hover:scale-110" />
                 </a>
               </motion.div>
             </div>

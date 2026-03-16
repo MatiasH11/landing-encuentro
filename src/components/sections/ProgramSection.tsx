@@ -18,7 +18,7 @@ export default function ProgramSection() {
   const currentSchedule = selectedEdition === "paso" ? SCHEDULE_PASO_2026 : SCHEDULE_MDP_2026;
   const editionInfo = selectedEdition === "paso"
     ? { city: "Paso de la Patria", dates: "9 al 12 de octubre", venue: "Anfiteatro Pinin Palma" }
-    : { city: "Mar del Plata", dates: "19 al 22 de noviembre", venue: "Teatro Enrique Carreras" };
+    : { city: "Mar del Plata", dates: "20 al 23 de noviembre", venue: "Teatro Enrique Carreras" };
 
   return (
     <section id="programa" className="relative overflow-hidden py-24 md:py-32">
@@ -30,7 +30,7 @@ export default function ProgramSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Cronograma
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-foreground md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
             Programa 2026
           </h2>
 
@@ -39,7 +39,7 @@ export default function ProgramSection() {
             <div className="inline-flex rounded-full bg-white p-1.5 shadow-lg ring-1 ring-border/50">
               <button
                 onClick={() => setSelectedEdition("paso")}
-                className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all ${
+                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${
                   selectedEdition === "paso"
                     ? "bg-tierra text-white shadow-md"
                     : "text-muted-foreground hover:text-foreground"
@@ -49,7 +49,7 @@ export default function ProgramSection() {
               </button>
               <button
                 onClick={() => setSelectedEdition("mdp")}
-                className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all ${
+                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${
                   selectedEdition === "mdp"
                     ? "bg-tierra text-white shadow-md"
                     : "text-muted-foreground hover:text-foreground"
