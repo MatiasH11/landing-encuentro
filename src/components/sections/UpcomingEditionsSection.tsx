@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { EDITIONS_2026 } from "@/constants/event-data";
+import { trackEvent } from "@/lib/pixel";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, MapPin, Theater, Users, AlertCircle } from "lucide-react";
@@ -127,7 +128,7 @@ export default function UpcomingEditionsSection() {
                     <a href="#programa">Ver Programa</a>
                   </Button>
                   <Button asChild variant="outline" className="flex-1 rounded-full border-2 border-tierra/30 text-tierra hover:bg-tierra/5 hover:border-tierra">
-                    <a href="#inscripcion">Inscribirse</a>
+                    <a href="#inscripcion" onClick={() => trackEvent('ViewContent', { content_name: 'Inscripcion', edition: edition.location })}>Inscribirse</a>
                   </Button>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { CONTACTS } from "@/constants/event-data";
+import { trackEvent } from "@/lib/pixel";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Mail, Phone, Facebook, MapPin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
@@ -75,6 +76,7 @@ export default function ContactSection() {
                   <a
                     href={`tel:${contact.phone}`}
                     className="group/link flex items-center gap-4 rounded-xl p-3 transition-all hover:bg-white hover:shadow-md"
+                    onClick={() => trackEvent('Contact', { content_name: 'Telefono' })}
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tierra text-white transition-transform group-hover/link:scale-110">
                       <Phone className="h-5 w-5" />
@@ -88,6 +90,7 @@ export default function ContactSection() {
                   <a
                     href={`mailto:${contact.email}`}
                     className="group/link flex items-center gap-4 rounded-xl p-3 transition-all hover:bg-white hover:shadow-md"
+                    onClick={() => trackEvent('Contact', { content_name: 'Email' })}
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tierra text-white transition-transform group-hover/link:scale-110">
                       <Mail className="h-5 w-5" />
@@ -110,6 +113,7 @@ export default function ContactSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"
+                    onClick={() => trackEvent('Contact', { content_name: 'WhatsApp' })}
                   >
                     <MessageCircle className="h-5 w-5" />
                     Escribir por WhatsApp

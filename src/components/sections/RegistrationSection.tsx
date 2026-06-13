@@ -1,6 +1,7 @@
 "use client";
 
 import { EDITIONS_2026, CONTACTS } from "@/constants/event-data";
+import { trackEvent } from "@/lib/pixel";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
@@ -115,6 +116,7 @@ export default function RegistrationSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"
+                      onClick={() => trackEvent('Lead', { content_name: 'WhatsApp Inscripcion', edition: edition.location })}
                     >
                       <FaWhatsapp className="h-4 w-4" />
                       Consultar por WhatsApp
