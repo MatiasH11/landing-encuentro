@@ -151,7 +151,7 @@ export default function GallerySection() {
               onClick={() => setShowAll(!showAll)}
               variant="outline"
               size="lg"
-              className="rounded-full border-2 border-white/20 px-8 text-white hover:bg-white/10 hover:border-white/40"
+              className="rounded-full border-2 border-white/60 bg-white/10 px-8 text-white hover:bg-white/20 hover:border-white"
             >
               {showAll ? "Ver menos" : "Ver más contenido"}
               {showAll ? (
