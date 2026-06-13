@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { EVENT_TAGLINE, STATS } from "@/constants/history-data";
+import { EVENT_TAGLINE } from "@/constants/history-data";
 import { ArrowDown } from "lucide-react";
 
 export default function HeroSection() {
@@ -37,22 +37,6 @@ export default function HeroSection() {
         <p className="mb-10 text-xl font-light tracking-wide text-white drop-shadow-lg md:mb-14 md:text-3xl lg:text-4xl">
           {EVENT_TAGLINE}
         </p>
-
-        {/* Stats */}
-        <div className="mb-10 w-full md:mb-14">
-          <div className="mx-auto grid max-w-md grid-cols-2 gap-x-8 gap-y-8 md:flex md:max-w-none md:flex-wrap md:justify-center md:gap-16">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-                  {stat.value}
-                </p>
-                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-white/80 md:mt-3 md:text-sm">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* CTAs */}
         <div className="flex flex-col gap-4 sm:flex-row">

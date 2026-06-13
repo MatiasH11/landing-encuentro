@@ -14,7 +14,8 @@ const EDITION_IMAGES = [
 
 export default function UpcomingEditionsSection() {
   return (
-    <section id="ediciones" className="relative py-24 md:py-32">
+    <section id="ediciones" className="relative overflow-hidden bg-cream py-24 md:py-32">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-tierra/40 to-transparent" />
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         {/* Section header */}
         <motion.div

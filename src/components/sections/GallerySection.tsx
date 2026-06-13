@@ -38,10 +38,10 @@ export default function GallerySection() {
             <span className="text-lg text-oro">✦</span>
             <span className="h-px w-6 bg-oro/60" />
           </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold italic text-navy md:text-5xl">
+          <h2 className="mt-4 font-heading text-3xl font-bold italic text-white md:text-5xl">
             Momentos inolvidables
           </h2>
-          <p className="mt-12 text-muted-foreground">
+          <p className="mt-12 text-white/60">
             Próximamente fotos y videos de nuestras ediciones anteriores.
           </p>
         </div>
@@ -50,9 +50,8 @@ export default function GallerySection() {
   }
 
   return (
-    <section id="galeria" className="relative overflow-hidden py-24 md:py-32">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-warm-bg to-white" />
+    <section id="galeria" className="relative overflow-hidden bg-navy py-24 md:py-32">
+      <div className="absolute inset-0 bg-gradient-to-b from-navy via-tierra-deep/95 to-navy" />
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-6">
         {/* Section header */}
@@ -68,10 +67,10 @@ export default function GallerySection() {
             <span className="text-lg text-oro">✦</span>
             <span className="h-px w-6 bg-oro/60" />
           </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold italic text-navy md:text-5xl">
+          <h2 className="mt-4 font-heading text-3xl font-bold italic text-white md:text-5xl">
             Momentos inolvidables
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-lg leading-relaxed text-white/60">
             Imágenes y videos de nuestras ediciones anteriores
           </p>
         </motion.div>
@@ -152,7 +151,7 @@ export default function GallerySection() {
               onClick={() => setShowAll(!showAll)}
               variant="outline"
               size="lg"
-              className="rounded-full border-2 border-tierra/30 px-8 text-tierra hover:bg-tierra/5 hover:border-tierra"
+              className="rounded-full border-2 border-white/20 px-8 text-white hover:bg-white/10 hover:border-white/40"
             >
               {showAll ? "Ver menos" : "Ver más contenido"}
               {showAll ? (

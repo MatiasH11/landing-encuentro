@@ -2,7 +2,8 @@
 
 import { EDITIONS_2026, CONTACTS } from "@/constants/event-data";
 import { Button } from "@/components/ui/button";
-import { Check, MessageCircle } from "lucide-react";
+import { Check } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -115,7 +116,7 @@ export default function RegistrationSection() {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"
                     >
-                      <MessageCircle className="h-4 w-4" />
+                      <FaWhatsapp className="h-4 w-4" />
                       Consultar por WhatsApp
                     </a>
                   </Button>
