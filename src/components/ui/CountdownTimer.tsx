@@ -1,6 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Bebas_Neue } from "next/font/google";
+
+const bebas = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 interface TimeLeft {
   days: number;
@@ -34,31 +41,38 @@ export default function CountdownTimer() {
 
   const units = [
     { value: time.days, label: "días" },
-    { value: time.hours, label: "hs" },
+    { value: time.hours, label: "horas" },
     { value: time.minutes, label: "min" },
     { value: time.seconds, label: "seg" },
   ];
 
   return (
     <div className="mb-10 flex flex-col items-center gap-3 md:mb-14">
-      <p className="text-xs font-semibold uppercase tracking-widest text-white/50">
-        Paso de la Patria · 9 de octubre 2026
-      </p>
-      <div className="flex items-center gap-3 sm:gap-5">
+      {/* Eyebrow */}
+      <div className="flex items-center gap-3">
+        <span className="h-px w-8 bg-white/20" />
+        <p className="text-[11px] font-semibold uppercase tracking-widest text-white/40">
+          Paso de la Patria · 9 de octubre 2026
+        </p>
+        <span className="h-px w-8 bg-white/20" />
+      </div>
+
+      {/* Countdown */}
+      <div className="flex items-start gap-2 sm:gap-4">
         {units.map(({ value, label }, i) => (
-          <div key={label} className="flex items-center gap-3 sm:gap-5">
+          <div key={label} className="flex items-start gap-2 sm:gap-4">
             <div className="flex flex-col items-center">
-              <div className="glass-dark rounded-xl px-4 py-3 sm:px-5 sm:py-4">
-                <span className="font-heading text-3xl font-bold tabular-nums text-white sm:text-4xl">
-                  {String(value).padStart(2, "0")}
-                </span>
-              </div>
-              <span className="mt-1.5 text-xs font-medium uppercase tracking-widest text-white/40">
+              <span
+                className={`${bebas.className} text-[72px] leading-none text-white sm:text-[96px] md:text-[120px]`}
+              >
+                {String(value).padStart(2, "0")}
+              </span>
+              <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-widest text-white/35">
                 {label}
               </span>
             </div>
             {i < units.length - 1 && (
-              <span className="mb-5 text-2xl font-light text-white/30">:</span>
+              <span className="mt-3 text-lg text-oro/80 sm:mt-4 sm:text-xl">✦</span>
             )}
           </div>
         ))}
