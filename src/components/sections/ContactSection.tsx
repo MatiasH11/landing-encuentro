@@ -30,7 +30,7 @@ export default function ContactSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
             Hablemos
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold italic text-navy md:text-5xl">
             ¿Tenés dudas?
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">

@@ -27,10 +27,12 @@ export default function ProgramSection() {
       <div className="relative mx-auto max-w-3xl px-4 md:px-6">
         {/* Section header */}
         <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            Cronograma
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+          <div className="flex items-center justify-center gap-3">
+            <span className="h-px w-6 bg-oro/60" />
+            <span className="text-lg text-oro">✦</span>
+            <span className="h-px w-6 bg-oro/60" />
+          </div>
+          <h2 className="mt-4 font-heading text-3xl font-bold text-navy md:text-5xl">
             Programa 2026
           </h2>
 

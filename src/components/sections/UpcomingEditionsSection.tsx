@@ -24,10 +24,8 @@ export default function UpcomingEditionsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            Próximamente
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+          <p className="font-heading text-xl italic text-tierra">Próximamente</p>
+          <h2 className="mt-1 font-heading text-3xl font-bold text-navy md:text-5xl">
             Ediciones 2026
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">

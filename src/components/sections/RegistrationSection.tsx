@@ -39,12 +39,14 @@ export default function RegistrationSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            Inscripción
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+          <h2 className="font-heading text-3xl font-bold text-navy md:text-5xl">
             ¿Qué incluye tu participación?
           </h2>
+          <div className="mt-5 flex items-center justify-center gap-4">
+            <span className="h-px w-12 bg-tierra/30" />
+            <p className="text-sm font-semibold uppercase tracking-widest text-tierra">Inscripción</p>
+            <span className="h-px w-12 bg-tierra/30" />
+          </div>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Beneficios y experiencias incluidas en las ediciones 2026
           </p>

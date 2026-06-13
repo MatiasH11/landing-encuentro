@@ -33,10 +33,12 @@ export default function GallerySection() {
     return (
       <section id="galeria" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            Galería
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+          <div className="flex items-center justify-center gap-3">
+            <span className="h-px w-6 bg-oro/60" />
+            <span className="text-lg text-oro">✦</span>
+            <span className="h-px w-6 bg-oro/60" />
+          </div>
+          <h2 className="mt-4 font-heading text-3xl font-bold italic text-navy md:text-5xl">
             Momentos inolvidables
           </h2>
           <p className="mt-12 text-muted-foreground">
@@ -61,10 +63,12 @@ export default function GallerySection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            Galería
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+          <div className="flex items-center justify-center gap-3">
+            <span className="h-px w-6 bg-oro/60" />
+            <span className="text-lg text-oro">✦</span>
+            <span className="h-px w-6 bg-oro/60" />
+          </div>
+          <h2 className="mt-4 font-heading text-3xl font-bold italic text-navy md:text-5xl">
             Momentos inolvidables
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">

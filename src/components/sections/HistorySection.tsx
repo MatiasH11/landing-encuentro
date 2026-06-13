@@ -15,14 +15,17 @@ export default function HistorySection() {
   return (
     <section id="historia" className="relative overflow-hidden bg-background py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            {HISTORY_TEXT.intro}
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-navy md:text-5xl">
+        {/* Header — izquierda, editorial */}
+        <div className="max-w-2xl">
+          <h2 className="font-heading text-4xl font-bold italic text-navy md:text-6xl">
             {HISTORY_TEXT.headline}
           </h2>
+          <div className="mt-5 flex items-center gap-4">
+            <span className="h-px w-10 bg-tierra/40" />
+            <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
+              {HISTORY_TEXT.intro}
+            </p>
+          </div>
         </div>
 
         {/* Stats - Destacados */}
