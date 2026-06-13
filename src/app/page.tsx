@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 import HeroSection from "@/components/sections/HeroSection";
 import HistorySection from "@/components/sections/HistorySection";
 import UpcomingEditionsSection from "@/components/sections/UpcomingEditionsSection";
@@ -22,6 +23,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <WhatsAppFAB />
     </>
   );
 }
