@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import CountdownTimer from "@/components/ui/CountdownTimer";
 import { EVENT_TAGLINE } from "@/constants/history-data";
 import { ArrowDown } from "lucide-react";
 
@@ -37,6 +38,9 @@ export default function HeroSection() {
         <p className="mb-10 text-xl font-light tracking-wide text-white drop-shadow-lg md:mb-14 md:text-3xl lg:text-4xl">
           {EVENT_TAGLINE}
         </p>
+
+        {/* Countdown */}
+        <CountdownTimer />
 
         {/* CTAs */}
         <div className="flex flex-col gap-4 sm:flex-row">
