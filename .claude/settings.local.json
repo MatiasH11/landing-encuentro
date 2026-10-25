@@ -28,5 +28,8 @@
       "Bash(npx next:*)",
       "Bash(find:*)"
     ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": false
   }
 }

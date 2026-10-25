@@ -41,3 +41,18 @@ Tailwind CSS v4. Brand palette is defined in `src/app/globals.css` under `@theme
 - Semantic tokens: `whatsapp`, `warning`
 - Utility classes: `.glass`, `.glass-dark` (frosted glass), `.animate-float` (scroll indicator bounce)
 - Fonts: `font-sans` → Inter (`--font-inter`), `font-heading` → Merriweather (`--font-merriweather`)
+
+## Design skills
+
+One skill sets the visual direction; the others work inside it. Never let two of them pick an aesthetic.
+
+- **Direction: `design-taste-frontend` (taste-skill).** Use it for any design, redesign or restyle of a section or the
+  whole page. Run its scripts from the repo root; its working files land in `.taste-skill/` (gitignored).
+- **Finishing passes (impeccable): `animate`, `polish`, `audit`, `optimize`.** Run them only on a direction taste already
+  set, never to choose a new one. They load impeccable's `frontend-design` first: read it as a list of anti-patterns,
+  not as a direction. If it contradicts taste's house rules, taste wins.
+- **Do not use** impeccable's `colorize`, `normalize`, `distill`, `clarify` or `adapt`: they restyle and would fight
+  taste. `critique` is fine as a read-only review.
+- **`anatomy`** (user-level) only for an isometric explanatory illustration, if a section needs one.
+- The `frontend-design@claude-plugins-official` plugin is disabled for this project (`.claude/settings.local.json`).
+- Motion must respect `prefers-reduced-motion`. Never read or edit `.env*` files.
