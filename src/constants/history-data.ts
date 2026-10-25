@@ -16,11 +16,11 @@ export const ORGANIZERS: Organizer[] = [
 export const HISTORY_TEXT = {
   intro:
     "Desde 2010",
-  headline: "Una trayectoria de 19 años preservando nuestras raíces",
+  headline: "Diecinueve ediciones, desde 2010",
   body: "El Encuentro Latinoamericano del Canto y las Danzas Folclóricas nació en el año 2010 en la hermosa Villa Turística de Paso de la Patria, Corrientes. Durante casi dos décadas, hemos mantenido vivo el compromiso de reunir a las mejores delegaciones de ballet folclórico de Argentina y Latinoamérica.",
   mission:
     "Año tras año, recibimos con los brazos abiertos a más de 30 grupos de danzas tradicionales que viajan desde distintas provincias y países vecinos. Son cuatro días de presentaciones, donde cada delegación comparte en el escenario sus trajes típicos, sus coreografías tradicionales y el orgullo de representar a su tierra.",
-  impact: "En cada edición se congregan más de 1000 personas entre bailarines, músicos, directores y familiares. Paso de la Patria y Mar del Plata se trasforman durante ese fin de semana en un verdadero centro de celebración folclórica, con actuaciones en vivo, desfiles de apertura y el calor humano que nos caracteriza.",
+  impact: "En cada edición se congregan más de 1000 personas entre bailarines, músicos, directores y familiares. Paso de la Patria y Mar del Plata se transforman durante esos días en un verdadero centro de celebración folclórica, con actuaciones en vivo, desfiles de apertura y el calor humano que nos caracteriza.",
   trust: "Este evento se realiza gracias al trabajo conjunto del Ballet Folclórico Embajada Folklórica Argentina y Las 3 Marías Eventos, con el aval de las autoridades locales y el apoyo de instituciones culturales de toda la región.",
   credibility: "Contamos con el respaldo de 19 ediciones exitosas. Miles de familias nos han acompañado a lo largo de los años, y muchas delegaciones regresan edición tras edición porque saben que aquí encontrarán organización profesional, respeto por las tradiciones y una comunidad que valora el folclore.",
 };

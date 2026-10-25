@@ -171,7 +171,7 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
         highlight: true,
       },
       {
-        time: "8:00 a 22:00 hs",
+        time: "18:00 a 22:00 hs",
         description: "Función vespertina en el Teatro Enrique Carreras",
         highlight: true,
       },
