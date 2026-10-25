@@ -7,12 +7,20 @@ import { trackEvent } from "@/lib/pixel";
 import { whatsappLink } from "@/lib/editions";
 import type { EventEdition } from "@/types";
 
-function buildMessage(edition: EventEdition, ballet: string, city: string, members: string) {
+function buildMessage(
+  edition: EventEdition,
+  past: boolean,
+  ballet: string,
+  city: string,
+  members: string
+) {
   const parts = [`Hola! Soy director/a${ballet ? ` del ballet ${ballet}` : " de un ballet"}`];
   if (city) parts[0] += ` de ${city}`;
   parts[0] += ".";
   parts.push(
-    `Queremos participar en el ${edition.editionNumber}º Encuentro Latinoamericano en ${edition.location} (${edition.dateRange})`
+    past
+      ? "Queremos participar en la próxima edición del Encuentro Latinoamericano"
+      : `Queremos participar en el ${edition.editionNumber}º Encuentro Latinoamericano en ${edition.location} (${edition.dateRange})`
   );
   if (members) parts[1] += ` con ${members} integrantes`;
   parts[1] += ".";
@@ -20,7 +28,13 @@ function buildMessage(edition: EventEdition, ballet: string, city: string, membe
   return parts.join(" ");
 }
 
-export default function RegistrationSection({ edition }: { edition: EventEdition }) {
+interface RegistrationSectionProps {
+  edition: EventEdition;
+  /** La edición destacada ya pasó y todavía no se cargó la siguiente */
+  isPast: boolean;
+}
+
+export default function RegistrationSection({ edition, isPast }: RegistrationSectionProps) {
   const id = useId();
   const [ballet, setBallet] = useState("");
   const [city, setCity] = useState("");
@@ -28,7 +42,7 @@ export default function RegistrationSection({ edition }: { edition: EventEdition
   const [contactIndex, setContactIndex] = useState(0);
 
   const contact = CONTACTS[contactIndex];
-  const message = buildMessage(edition, ballet.trim(), city.trim(), members.trim());
+  const message = buildMessage(edition, isPast, ballet.trim(), city.trim(), members.trim());
   const tooFew = members !== "" && Number(members) < edition.minMembersPerBallet;
 
   const field =
@@ -39,14 +53,14 @@ export default function RegistrationSection({ edition }: { edition: EventEdition
       <h2 className="display text-head">
         <span className="block">Tu ballet, en escena</span>
         <span className="mt-[0.08em] inline-block rounded-[10px] bg-night px-[0.15em] pb-[0.06em] text-night-ink">
-          {edition.dateRange.replace(/ de \d{4}$/, "")}
+          {isPast ? "en la próxima edición" : edition.dateRange.replace(/ de \d{4}$/, "")}
         </span>
       </h2>
 
       <div className="mt-16 grid grid-cols-[minmax(0,1fr)] gap-16 lg:grid-cols-12 lg:gap-x-6">
         <div className="lg:col-span-5" data-reveal>
           <h3 className="text-lead font-semibold">
-            Qué incluye en {edition.location}
+            {isPast ? `Qué incluyó en ${edition.location}` : `Qué incluye en ${edition.location}`}
           </h3>
           <ul className="mt-6 space-y-3">
             {edition.inclusions.map((inclusion) => (
@@ -58,8 +72,8 @@ export default function RegistrationSection({ edition }: { edition: EventEdition
           <p className="mt-8 max-w-[44ch]">
             Pueden participar hasta {edition.maxBallets} ballets, con un mínimo de{" "}
             {edition.minMembersPerBallet} integrantes cada uno, y {edition.maxMusicGroups} grupos
-            musicales. Costos y formas de pago se consultan por WhatsApp; la fecha límite de pago es
-            el {edition.paymentDeadline}.
+            musicales. Costos y formas de pago se consultan por WhatsApp
+            {isPast ? "." : `; la fecha límite de pago es el ${edition.paymentDeadline}.`}
           </p>
         </div>
 

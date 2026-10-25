@@ -50,6 +50,10 @@ export function whatsappLink(contact: ContactPerson, text: string) {
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }
 
-export function inscriptionMessage(edition: EventEdition) {
+/** Si la edición ya pasó (todavía no se cargó la siguiente), la consulta es por la próxima. */
+export function inscriptionMessage(edition: EventEdition, past = false) {
+  if (past) {
+    return "Hola! Me interesa inscribir a mi ballet en la próxima edición del Encuentro Latinoamericano. Quisiera más información.";
+  }
   return `Hola! Me interesa inscribir a mi ballet en el ${edition.editionNumber}º Encuentro Latinoamericano en ${edition.location} (${edition.dateRange}). Quisiera más información.`;
 }

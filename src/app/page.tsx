@@ -26,7 +26,8 @@ export default function Home() {
   const now = new Date();
   const edition = featuredEdition(now);
   const { upcoming, past } = sortedEditions(now);
-  const message = inscriptionMessage(edition);
+  const featuredIsPast = isPast(edition, now);
+  const message = inscriptionMessage(edition, featuredIsPast);
   const inscriptionHref = whatsappLink(CONTACTS[0], message);
   const programEntries = [...upcoming, ...past].map((e) => ({
     edition: e,
@@ -37,19 +38,19 @@ export default function Home() {
   return (
     <>
       <a
-        href="#historia"
+        href="#contenido"
         className="button sr-only z-[60] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
         Saltar al contenido
       </a>
       <Header inscriptionHref={inscriptionHref} edition={edition.location} />
-      <main>
-        <HeroSection edition={edition} isPast={isPast(edition, now)} inscriptionHref={inscriptionHref} />
+      <main id="contenido">
+        <HeroSection edition={edition} isPast={featuredIsPast} inscriptionHref={inscriptionHref} />
         <HistorySection />
         <UpcomingEditionsSection upcoming={upcoming} past={past} />
         <ProgramSection entries={programEntries} />
         <GallerySection />
-        <RegistrationSection edition={edition} />
+        <RegistrationSection edition={edition} isPast={featuredIsPast} />
         <ContactSection />
       </main>
       <Footer />
