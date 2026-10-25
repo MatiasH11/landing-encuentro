@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Schibsted_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const schibsted = Schibsted_Grotesk({
+  variable: "--font-schibsted",
   subsets: ["latin"],
   display: "swap",
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "600", "800"],
 });
 
 export const metadata: Metadata = {
@@ -47,8 +40,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+    <html lang="es" suppressHydrationWarning>
+      <head>
+        {/* Marca que hay JS: las animaciones de entrada solo ocultan contenido bajo html.js */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className={`${schibsted.variable} font-sans antialiased`}>
         {children}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`

@@ -1,74 +1,85 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import CountdownTimer from "@/components/ui/CountdownTimer";
-import { EVENT_TAGLINE } from "@/constants/history-data";
-import { ArrowDown } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import type { EventEdition } from "@/types";
+import TrackedLink from "@/components/ui/TrackedLink";
+import DaysLeft from "@/components/ui/DaysLeft";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  edition: EventEdition;
+  isPast: boolean;
+  inscriptionHref: string;
+}
+
+/**
+ * El lema es el título: "Argentina le canta y [baila] a Latinoamérica".
+ * En lugar de la palabra "baila" va la foto de una delegación bailando.
+ */
+export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSectionProps) {
   return (
-    <section id="inicio" className="relative h-screen overflow-hidden">
-      {/* Background image */}
-      <Image
-        src="/images/gallery/imagen-1.jpeg"
-        alt=""
-        fill
-        className="object-cover"
-        priority
-        quality={85}
-      />
+    <section
+      id="inicio"
+      className="grid min-h-svh grid-rows-[1fr_auto] gap-10 px-4 pb-24 pt-28 sm:px-7 sm:pb-10 sm:pt-32"
+    >
+      <h1 className="display lines self-center text-[9.4vw] leading-[0.92] sm:text-display">
+        <span className="line">
+          <span data-line style={{ "--i": 0 } as React.CSSProperties}>
+            Argentina le canta<span className="sm:hidden"> y</span>
+          </span>
+        </span>
+        <span className="line">
+          <span data-line style={{ "--i": 1 } as React.CSSProperties}>
+          <span className="flex flex-wrap items-baseline gap-x-[0.22em] sm:flex-nowrap">
+            <span className="max-sm:hidden">y</span>
+            <span className="shutter relative my-[0.12em] block aspect-[2/1] w-full shrink-0 overflow-clip rounded-[14px] bg-night sm:my-0 sm:aspect-auto sm:h-[0.74em] sm:w-auto sm:flex-1 sm:translate-y-[0.02em]">
+              <Image
+                src="/images/gallery/imagen-1.jpeg"
+                alt="baila"
+                fill
+                priority
+                fetchPriority="high"
+                sizes="(max-width: 640px) 92vw, 40vw"
+                className="object-cover object-[50%_58%]"
+              />
+            </span>
+            <span className="whitespace-nowrap">a Latinoamérica</span>
+          </span>
+          </span>
+        </span>
+      </h1>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        {/* Logo */}
-        <div className="mb-6 md:mb-10">
-          <Image
-            src="/images/branding/logo.png"
-            alt="Encuentro Latinoamericano del Canto y las Danzas Folclóricas"
-            width={627}
-            height={320}
-            className="h-auto w-72 drop-shadow-2xl sm:w-96 md:w-[440px] lg:w-[520px] xl:w-[580px]"
-            priority
-          />
-        </div>
-
-        {/* Tagline - Simplified */}
-        <p className="mb-10 text-xl font-light tracking-wide text-white drop-shadow-lg md:mb-14 md:text-3xl lg:text-4xl">
-          {EVENT_TAGLINE}
-        </p>
-
-        {/* Countdown */}
-        <CountdownTimer />
-
-        {/* CTAs */}
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-tierra px-10 py-6 text-base font-semibold text-white shadow-lg hover:bg-tierra-light hover:shadow-xl"
-          >
-            <a href="#ediciones">Próximas Ediciones 2026</a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="rounded-full border-2 border-white/30 bg-white/10 px-10 py-6 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20"
-          >
-            <a href="#galeria">Ver Galería</a>
-          </Button>
-        </div>
-
-        {/* Scroll indicator */}
-        <a
-          href="#historia"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float text-white/70 transition-colors hover:text-white"
-          aria-label="Scroll hacia abajo"
+      <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-10">
+        <p
+          className="max-w-[40ch] text-lead"
+          data-load
+          style={{ "--d": "420ms" } as React.CSSProperties}
         >
-          <ArrowDown className="h-8 w-8" />
-        </a>
+          <strong className="font-semibold">
+            {edition.editionNumber}º Encuentro Latinoamericano del Canto y las Danzas Folclóricas.
+          </strong>{" "}
+          {isPast ? "Se realizó en " : ""}
+          {edition.location}, {edition.dateRange}, en el {edition.venue}.
+          {!isPast && <DaysLeft startDate={edition.startDate} endDate={edition.endDate} />}
+        </p>
+        <div
+          className="flex flex-wrap items-center gap-x-6 gap-y-3"
+          data-load
+          style={{ "--d": "520ms" } as React.CSSProperties}
+        >
+          <a href="#programa" className="link font-semibold">
+            Ver el programa
+          </a>
+          <TrackedLink
+            href={inscriptionHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            event="Lead"
+            params={{ content_name: "WhatsApp Inscripcion", edition: edition.location, placement: "hero" }}
+            className="button min-h-14 text-body"
+          >
+            <FaWhatsapp className="h-5 w-5" aria-hidden />
+            Inscribí a tu ballet
+          </TrackedLink>
+        </div>
       </div>
     </section>
   );

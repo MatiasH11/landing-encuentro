@@ -1,177 +1,135 @@
 "use client";
 
 import { useState } from "react";
-import { GALLERY_ITEMS } from "@/constants/gallery-data";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Lightbox from "@/components/gallery/Lightbox";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { FaPlay } from "react-icons/fa";
+import { GALLERY_ITEMS } from "@/constants/gallery-data";
+import dynamic from "next/dynamic";
 
-const INITIAL_ITEMS_COUNT = 6;
+// El visor se descarga recién cuando alguien abre una foto
+const Lightbox = dynamic(() => import("@/components/gallery/Lightbox"), { ssr: false });
+
+const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
+const video = GALLERY_ITEMS.find((item) => item.type === "video");
+const videoId = video?.videoUrl?.split("/embed/")[1];
+
+// Dos copias sueltas a los costados del título
+const PRINTS = [
+  { id: "photo-006", className: "-rotate-[6deg] sm:left-[4%] sm:top-[20%] sm:-rotate-[8deg]" },
+  { id: "photo-004", className: "rotate-[5deg] -ml-[12vw] mt-[10vw] sm:right-[4%] sm:bottom-[12%] sm:m-0 sm:rotate-[6deg]" },
+];
 
 export default function GallerySection() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [showAll, setShowAll] = useState(false);
+  const [index, setIndex] = useState(-1);
+  const [playing, setPlaying] = useState(false);
 
-  const hasContent = GALLERY_ITEMS.length > 0;
-  const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
-
-  const displayedItems = showAll ? GALLERY_ITEMS : GALLERY_ITEMS.slice(0, INITIAL_ITEMS_COUNT);
-  const hasMore = GALLERY_ITEMS.length > INITIAL_ITEMS_COUNT;
-
-  const openLightbox = (clickedItem: typeof GALLERY_ITEMS[0]) => {
-    if (clickedItem.type === "photo") {
-      const photoIndex = photos.findIndex(p => p.id === clickedItem.id);
-      setLightboxIndex(photoIndex);
-      setLightboxOpen(true);
-    }
-  };
-
-  if (!hasContent) {
-    return (
-      <section id="galeria" className="py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-6 bg-oro/60" />
-            <span className="text-lg text-oro">✦</span>
-            <span className="h-px w-6 bg-oro/60" />
-          </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold italic text-white md:text-5xl">
-            Momentos inolvidables
-          </h2>
-          <p className="mt-12 text-white/60">
-            Próximamente fotos y videos de nuestras ediciones anteriores.
-          </p>
-        </div>
-      </section>
-    );
-  }
+  const open = (id: string) => setIndex(photos.findIndex((p) => p.id === id));
 
   return (
-    <section id="galeria" className="relative overflow-hidden bg-navy py-24 md:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-tierra-deep/95 to-navy" />
+    <section id="galeria" className="bg-night text-night-ink">
+      {/* Fotos sueltas sobre el título */}
+      <div className="relative overflow-clip px-4 pb-20 pt-20 sm:grid sm:min-h-svh sm:place-items-center sm:px-7">
+        <h2 className="display text-[24vw] leading-[0.85] sm:text-center sm:text-display" data-reveal>
+          <span className="block">Bailan</span>
+          <span className="block">todos</span>
+        </h2>
 
-      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section header */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-6 bg-oro/60" />
-            <span className="text-lg text-oro">✦</span>
-            <span className="h-px w-6 bg-oro/60" />
-          </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold italic text-white md:text-5xl">
-            Momentos inolvidables
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-white/60">
-            Imágenes y videos de nuestras ediciones anteriores
-          </p>
-        </motion.div>
-
-        {/* Mixed gallery grid */}
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedItems.map((item, index) => {
-            return item.type === "photo" ? (
-              <motion.button
-                key={item.id}
-                onClick={() => openLightbox(item)}
-                className="group relative overflow-hidden rounded-2xl shadow-md focus:outline-none focus:ring-2 focus:ring-tierra focus:ring-offset-2"
-                aria-label={`Ver ${item.caption}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
-                whileHover={{ y: -4, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-              >
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
-                  {/* Overlay */}
-                  <motion.div
-                    className="absolute inset-0 flex items-end bg-gradient-to-t from-tierra-dark/90 via-tierra/20 to-transparent"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="p-5">
-                      <p className="text-sm font-semibold text-white drop-shadow-lg">{item.caption}</p>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.button>
-            ) : (
-              <motion.div
-                key={item.id}
-                className="group overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-border/30"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                whileHover={{ y: -6, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-              >
-                <div className="relative aspect-video">
-                  <iframe
-                    src={item.videoUrl}
-                    title={item.caption}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full"
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-medium text-slate">{item.caption}</p>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="mt-10 flex justify-center sm:contents">
+        {PRINTS.map((print, i) => {
+          const photo = photos.find((p) => p.id === print.id);
+          if (!photo) return null;
+          return (
+            <button
+              key={print.id}
+              type="button"
+              onClick={() => open(print.id)}
+              aria-label={`Ampliar: ${photo.caption}`}
+              className={`group relative aspect-[3/4] w-[44vw] shrink-0 transition-[rotate] duration-200 ease-out hover:z-20 hover:rotate-0 focus-visible:z-20 focus-visible:rotate-0 sm:absolute sm:w-[22vw] ${print.className}`}
+              data-reveal
+              style={{ "--i": i + 1 } as React.CSSProperties}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 640px) 52vw, 24vw"
+                className="object-cover"
+              />
+            </button>
+          );
+        })}
         </div>
 
-        {hasMore && (
-          <motion.div
-            className="mt-8 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Button
-              onClick={() => setShowAll(!showAll)}
-              variant="outline"
-              size="lg"
-              className="rounded-full border-2 border-white/60 bg-white/10 px-8 text-white hover:bg-white/20 hover:border-white"
-            >
-              {showAll ? "Ver menos" : "Ver más contenido"}
-              {showAll ? (
-                <ChevronUp className="ml-2 h-5 w-5" />
-              ) : (
-                <ChevronDown className="ml-2 h-5 w-5" />
-              )}
-            </Button>
-          </motion.div>
-        )}
+        <p className="mt-10 max-w-[36ch] text-small text-night-muted sm:absolute sm:bottom-6 sm:left-7 sm:mt-0">
+          Chicos, parejas, abuelos y ballets enteros, en el mismo escenario.
+        </p>
       </div>
 
-      {photos.length > 0 && (
-        <Lightbox
-          photos={photos}
-          open={lightboxOpen}
-          index={lightboxIndex}
-          onClose={() => setLightboxOpen(false)}
-        />
-      )}
+      {/* Todas las fotos y el video, en una fila que se desliza */}
+      <div className="pb-20 sm:pb-36">
+        <h3 className="px-4 text-lead font-semibold sm:px-7">
+          Fotos y video de ediciones anteriores
+          <span className="font-normal text-night-muted"> · {photos.length + (video ? 1 : 0)}</span>
+        </h3>
+        <ul className="mt-8 grid grid-cols-2 gap-3 px-4 sm:gap-4 sm:px-7 lg:grid-cols-4">
+          {video && videoId && (
+            <li className="relative col-span-2 aspect-[3/2] overflow-clip bg-ink lg:row-span-2 lg:aspect-auto">
+              {playing ? (
+                <iframe
+                  src={`${video.videoUrl}?autoplay=1`}
+                  title={video.caption}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 h-full w-full"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  className="group absolute inset-0"
+                  aria-label={`Ver el video: ${video.caption}`}
+                >
+                  <Image
+                    src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 1024px) 92vw, 48vw"
+                    className="object-cover opacity-80"
+                  />
+                  <span className="button absolute bottom-4 left-4 min-h-11 text-small">
+                    <FaPlay className="h-3 w-3" aria-hidden />
+                    Ver el video
+                  </span>
+                </button>
+              )}
+            </li>
+          )}
+          {photos.map((photo, i) => {
+            // La última foto ocupa dos columnas para cerrar la grilla sin huecos
+            const last = i === photos.length - 1 && photos.length % 2 === 1;
+            return (
+              <li key={photo.id} className={last ? "col-span-2" : undefined}>
+                <button
+                  type="button"
+                  onClick={() => open(photo.id)}
+                  className={`group relative block w-full overflow-clip ${last ? "aspect-[3/1]" : "aspect-[3/2]"}`}
+                  aria-label={`Ampliar: ${photo.caption}`}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes={last ? "(max-width: 1024px) 92vw, 48vw" : "(max-width: 1024px) 46vw, 24vw"}
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      {index >= 0 && <Lightbox photos={photos} open index={index} onClose={() => setIndex(-1)} />}
     </section>
   );
 }

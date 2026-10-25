@@ -1,135 +1,155 @@
 "use client";
 
-import { EDITIONS_2026, CONTACTS } from "@/constants/event-data";
-import { trackEvent } from "@/lib/pixel";
-import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { useId, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { CONTACTS } from "@/constants/event-data";
+import { trackEvent } from "@/lib/pixel";
+import { whatsappLink } from "@/lib/editions";
+import type { EventEdition } from "@/types";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+function buildMessage(edition: EventEdition, ballet: string, city: string, members: string) {
+  const parts = [`Hola! Soy director/a${ballet ? ` del ballet ${ballet}` : " de un ballet"}`];
+  if (city) parts[0] += ` de ${city}`;
+  parts[0] += ".";
+  parts.push(
+    `Queremos participar en el ${edition.editionNumber}º Encuentro Latinoamericano en ${edition.location} (${edition.dateRange})`
+  );
+  if (members) parts[1] += ` con ${members} integrantes`;
+  parts[1] += ".";
+  parts.push("¿Me pasan costos y formas de pago?");
+  return parts.join(" ");
+}
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
+export default function RegistrationSection({ edition }: { edition: EventEdition }) {
+  const id = useId();
+  const [ballet, setBallet] = useState("");
+  const [city, setCity] = useState("");
+  const [members, setMembers] = useState("");
+  const [contactIndex, setContactIndex] = useState(0);
 
-export default function RegistrationSection() {
+  const contact = CONTACTS[contactIndex];
+  const message = buildMessage(edition, ballet.trim(), city.trim(), members.trim());
+  const tooFew = members !== "" && Number(members) < edition.minMembersPerBallet;
+
+  const field =
+    "mt-2 block min-h-12 w-full rounded-[10px] bg-bg px-4 text-body text-ink transition-shadow duration-150 shadow-[inset_0_0_0_1px_var(--color-field-line)] focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_var(--color-accent)]";
+
   return (
-    <section id="inscripcion" className="relative overflow-hidden py-24 md:py-32">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-warm-bg to-white" />
+    <section id="inscripcion" className="bg-celeste px-4 py-24 text-celeste-ink sm:px-7 sm:pb-28 sm:pt-36">
+      <h2 className="display text-head">
+        <span className="block">Tu ballet, en escena</span>
+        <span className="mt-[0.08em] inline-block rounded-[10px] bg-night px-[0.15em] pb-[0.06em] text-night-ink">
+          {edition.dateRange.replace(/ de \d{4}$/, "")}
+        </span>
+      </h2>
 
-      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section header */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="font-heading text-3xl font-bold text-navy md:text-5xl">
-            ¿Qué incluye tu participación?
-          </h2>
-          <div className="mt-5 flex items-center justify-center gap-4">
-            <span className="h-px w-12 bg-tierra/30" />
-            <p className="text-sm font-semibold uppercase tracking-widest text-tierra">Inscripción</p>
-            <span className="h-px w-12 bg-tierra/30" />
-          </div>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Beneficios y experiencias incluidas en las ediciones 2026
+      <div className="mt-16 grid grid-cols-[minmax(0,1fr)] gap-16 lg:grid-cols-12 lg:gap-x-6">
+        <div className="lg:col-span-5" data-reveal>
+          <h3 className="text-lead font-semibold">
+            Qué incluye en {edition.location}
+          </h3>
+          <ul className="mt-6 space-y-3">
+            {edition.inclusions.map((inclusion) => (
+              <li key={inclusion.label} className="text-body sm:text-lead">
+                {inclusion.label}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 max-w-[44ch]">
+            Pueden participar hasta {edition.maxBallets} ballets, con un mínimo de{" "}
+            {edition.minMembersPerBallet} integrantes cada uno, y {edition.maxMusicGroups} grupos
+            musicales. Costos y formas de pago se consultan por WhatsApp; la fecha límite de pago es
+            el {edition.paymentDeadline}.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Edition cards */}
-        <motion.div
-          className="mt-12 grid gap-8 md:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        {/* Lo vivo de la página: la consulta se arma mientras escribís y sale por WhatsApp */}
+        <form
+          className="rounded-[18px] bg-bg p-6 text-ink sm:p-8 lg:col-span-6 lg:col-start-7"
+          onSubmit={(e) => {
+            e.preventDefault();
+            trackEvent("Lead", {
+              content_name: "WhatsApp Inscripcion",
+              edition: edition.location,
+              placement: "consulta",
+            });
+            window.open(whatsappLink(contact, message), "_blank", "noopener,noreferrer");
+          }}
+          data-reveal
+          style={{ "--i": 1 } as React.CSSProperties}
         >
-          {EDITIONS_2026.map((edition) => (
-            <motion.div
-              key={edition.id}
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-border/50 transition-shadow hover:shadow-xl"
-            >
-              {/* Card header with gradient */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-navy to-tierra p-8">
-                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
-                <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-white/20 blur-xl" />
-                <div className="relative">
-                  <h3 className="font-heading text-2xl font-bold text-white">
-                    {edition.location}
-                  </h3>
-                  <p className="mt-2 text-sm font-medium text-white">
-                    {edition.dateRange}
-                  </p>
-                  <p className="mt-1 text-xs text-white/90">{edition.venue}</p>
-                </div>
-              </div>
-
-              {/* Card content */}
-              <div className="flex flex-1 flex-col p-8">
-                <div className="flex-1 space-y-4">
-                  <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-                    Incluye
-                  </p>
-                  {edition.inclusions.map((inclusion, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-3"
-                    >
-                      <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-tierra/10">
-                        <Check className="h-3.5 w-3.5 text-tierra" />
-                      </div>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {inclusion.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* WhatsApp button */}
-                <div className="mt-6">
-                  <Button
-                    asChild
-                    className="w-full rounded-full bg-tierra text-white shadow-md transition-all hover:bg-tierra-dark hover:shadow-lg"
+          <h3 className="text-lead font-semibold">Armá tu consulta</h3>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <label className="block font-semibold">
+              Nombre del ballet
+              <input
+                className={field}
+                value={ballet}
+                onChange={(e) => setBallet(e.target.value)}
+                autoComplete="organization"
+              />
+            </label>
+            <label className="block font-semibold">
+              Ciudad o país
+              <input
+                className={field}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                autoComplete="address-level2"
+              />
+            </label>
+            <label className="block font-semibold">
+              Integrantes
+              <input
+                className={field}
+                type="number"
+                inputMode="numeric"
+                min={1}
+                value={members}
+                onChange={(e) => setMembers(e.target.value)}
+                aria-describedby={`${id}-min`}
+                aria-invalid={tooFew || undefined}
+              />
+              <span
+                id={`${id}-min`}
+                className={`mt-2 block text-small font-normal ${tooFew ? "text-danger" : "text-muted"}`}
+              >
+                Mínimo {edition.minMembersPerBallet} por ballet.
+              </span>
+            </label>
+            <fieldset>
+              <legend className="font-semibold">Escribirle a</legend>
+              <div className="mt-2 flex gap-2">
+                {CONTACTS.map((c, i) => (
+                  <label
+                    key={c.name}
+                    className={`flex min-h-12 flex-1 cursor-pointer items-center justify-center rounded-[10px] px-3 text-small font-semibold transition-colors has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-accent ${
+                      i === contactIndex ? "bg-night text-night-ink" : "bg-surface text-ink"
+                    }`}
                   >
-                    <a
-                      href={CONTACTS[0].whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2"
-                      onClick={() => trackEvent('Lead', { content_name: 'WhatsApp Inscripcion', edition: edition.location })}
-                    >
-                      <FaWhatsapp className="h-4 w-4" />
-                      Consultar por WhatsApp
-                    </a>
-                  </Button>
-                  <p className="mt-3 text-center text-xs text-muted-foreground">
-                    Consultá costos y formas de pago
-                  </p>
-                </div>
+                    <input
+                      type="radio"
+                      name={`${id}-contact`}
+                      className="sr-only"
+                      checked={i === contactIndex}
+                      onChange={() => setContactIndex(i)}
+                    />
+                    {c.name.split(" ")[0]}
+                  </label>
+                ))}
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            </fieldset>
+          </div>
+
+          <p className="mt-6 rounded-[10px] bg-surface p-4 text-muted">
+            {message}
+          </p>
+
+          <button type="submit" className="button mt-6 min-h-14 w-full whitespace-normal py-3 text-center text-body">
+            <FaWhatsapp className="h-5 w-5" aria-hidden />
+            Enviar por WhatsApp a {contact.name.split(" ")[0]}
+          </button>
+        </form>
       </div>
     </section>
   );

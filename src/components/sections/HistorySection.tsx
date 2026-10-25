@@ -1,280 +1,112 @@
-"use client";
-
 import Image from "next/image";
 import {
   HISTORY_TEXT,
   OBJECTIVES,
-  ORGANIZERS,
   ORGANIZED_BY,
   STATS,
 } from "@/constants/history-data";
-import { Award, CheckCircle, Heart, Shield } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function HistorySection() {
   return (
-    <section id="historia" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-4 md:px-6">
-        {/* Header — izquierda, editorial */}
-        <div className="max-w-2xl">
-          <h2 className="font-heading text-4xl font-bold text-navy md:text-6xl">
-            {HISTORY_TEXT.headline}
-          </h2>
-          <div className="mt-5 flex items-center gap-4">
-            <span className="h-px w-10 bg-tierra/40" />
-            <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-              {HISTORY_TEXT.intro}
-            </p>
+    <section id="historia" className="px-4 sm:px-7">
+      {/* La foto de la tira del lema, abierta a todo el ancho */}
+      <figure className="relative -mx-4 h-[56svh] overflow-clip bg-night sm:-mx-7 sm:h-[86svh]">
+        <Image
+          src="/images/gallery/imagen-1.jpeg"
+          alt="Delegación con trajes bordó girando las polleras en el escenario del Encuentro"
+          fill
+          sizes="100vw"
+          className="drift object-cover object-[50%_60%]"
+        />
+      </figure>
+
+      {/* Historia: un párrafo grande con la foto como letra capital */}
+      <div className="mt-20 grid gap-y-10 sm:mt-40 lg:grid-cols-12 lg:gap-x-6">
+        <h2 className="display text-head lg:col-span-12" data-reveal>
+          {HISTORY_TEXT.headline}
+        </h2>
+
+        <dl className="grid grid-cols-3 gap-4 text-small max-lg:order-last lg:col-span-2 lg:grid-cols-1 lg:content-start lg:gap-6" data-reveal>
+          <div>
+            <dt className="text-muted">Nació en</dt>
+            <dd className="font-semibold">Paso de la Patria, Corrientes</dd>
           </div>
+          <div>
+            <dt className="text-muted">Desde</dt>
+            <dd className="font-semibold">2010</dd>
+          </div>
+          <div>
+            <dt className="text-muted">Organizan</dt>
+            <dd className="font-semibold">{ORGANIZED_BY.join(" y ")}</dd>
+          </div>
+        </dl>
+
+        <div className="text-lead lg:col-span-10" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
+          <p className="max-w-[46ch]">
+            <span className="relative float-left mr-[0.5em] mt-[0.15em] block size-[4.8em] overflow-clip sm:size-[3.7em]">
+              <Image
+                src="/images/gallery/imagen-7.jpeg"
+                alt="Niños de una delegación bailando con vestimenta tradicional"
+                fill
+                sizes="(max-width: 640px) 110px, 140px"
+                className="object-cover object-[35%_50%]"
+              />
+            </span>
+            {HISTORY_TEXT.body}
+          </p>
+          <p className="mt-[1.2em] max-w-[46ch] text-muted">{HISTORY_TEXT.mission}</p>
+        </div>
+      </div>
+
+      {/* Cifras alineadas como un libro de cuentas */}
+      <div className="mt-20 grid gap-12 sm:mt-40 lg:grid-cols-12 lg:gap-x-6">
+        <div className="lg:col-span-5 lg:self-center" data-reveal>
+          <h3 className="display text-head">
+            <span className="block text-muted">Lo que reúne</span>
+            <span className="block">cada Encuentro</span>
+          </h3>
+          <p className="mt-8 max-w-[44ch]">{HISTORY_TEXT.impact}</p>
+          <p className="mt-4 max-w-[44ch]">{HISTORY_TEXT.credibility}</p>
         </div>
 
-        {/* Stats - Destacados */}
-        <div className="mt-12 grid grid-cols-2 gap-3 md:mt-16 md:gap-6 lg:grid-cols-4">
-          {STATS.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-xl bg-gradient-to-br from-tierra-light/15 to-tierra/5 p-4 text-center ring-1 ring-border/50 md:rounded-2xl md:p-8"
-            >
-              <p className="font-heading text-3xl font-bold text-tierra md:text-5xl lg:text-6xl">
-                {stat.value}
-              </p>
-              <p className="mt-2 text-xs font-medium leading-snug text-slate md:mt-3 md:text-sm">
+        {/* Una sola grilla: todas las cifras comparten el borde derecho y las leyendas el izquierdo */}
+        <dl className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-6 gap-y-5 lg:col-span-6 lg:col-start-7">
+          {STATS.map((stat, i) => (
+            <div key={stat.label} className="contents">
+              <dt
+                className="col-start-2 max-w-[22ch]"
+                style={{ gridRow: i + 1 }}
+                data-reveal
+              >
                 {stat.label}
-              </p>
+              </dt>
+              <dd
+                className="display tabular col-start-1 text-right text-[15vw] leading-none sm:text-display"
+                style={{ gridRow: i + 1, "--i": i } as React.CSSProperties}
+                data-reveal
+              >
+                {stat.value}
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
+      </div>
 
-        {/* Story con imagen */}
-        <div className="mt-16 grid gap-8 md:mt-24 md:gap-16 lg:grid-cols-2 lg:items-center">
-          {/* Imagen */}
-          <div className="order-2 lg:order-1">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-xl md:rounded-2xl md:shadow-2xl">
-              <Image
-                src="/images/gallery/imagen-2.jpeg"
-                alt="Delegaciones en el Encuentro Latinoamericano"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-
-          {/* Texto principal */}
-          <div className="order-1 space-y-6 md:space-y-8 lg:order-2">
-            <div>
-              <h3 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
-                Nuestra Historia
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-slate md:mt-4 md:text-lg">
-                {HISTORY_TEXT.body}
-              </p>
-            </div>
-
-            <p className="text-base leading-relaxed text-slate md:text-lg">
-              {HISTORY_TEXT.mission}
-            </p>
-
-            <p className="text-base leading-relaxed text-slate md:text-lg">
-              {HISTORY_TEXT.impact}
-            </p>
-          </div>
-        </div>
-
-        {/* Trust factors */}
-        <div className="mt-16 md:mt-24">
-          <motion.div
-            className="grid gap-4 md:grid-cols-2 md:gap-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.2
-                  }
-                }
-              }}
-            >
-              <motion.div
-                className="group relative flex items-start gap-4 overflow-hidden rounded-xl border border-border/30 bg-white p-6 md:gap-6 md:p-8"
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  borderColor: "rgba(91, 155, 213, 0.4)",
-                  boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="absolute inset-0 -z-0 bg-gradient-to-br from-tierra/5 to-celeste/10"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                />
-
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Shield className="relative z-10 h-6 w-6 shrink-0 text-tierra md:h-7 md:w-7" />
-                </motion.div>
-                <div className="relative z-10">
-                  <h3 className="text-lg font-semibold text-foreground md:text-xl">
-                    Un evento con respaldo institucional
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate/80 md:text-base">
-                    {HISTORY_TEXT.trust}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="group relative flex items-start gap-4 overflow-hidden rounded-xl border border-border/30 bg-white p-6 md:gap-6 md:p-8"
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                whileHover={{
-                  scale: 1.02,
-                  borderColor: "rgba(91, 155, 213, 0.4)",
-                  boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="absolute inset-0 -z-0 bg-gradient-to-br from-tierra/5 to-celeste/10"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                />
-
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Award className="relative z-10 h-6 w-6 shrink-0 text-tierra md:h-7 md:w-7" />
-                </motion.div>
-                <div className="relative z-10">
-                  <h3 className="text-lg font-semibold text-foreground md:text-xl">
-                    Experiencia comprobada
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate/80 md:text-base">
-                    {HISTORY_TEXT.credibility}
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-        </div>
-
-        {/* Objetivos */}
-        <div className="mt-16 md:mt-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-              Nuestros Objetivos
-            </p>
-            <h3 className="mt-3 font-heading text-2xl font-bold text-foreground md:text-3xl lg:text-4xl">
-              Lo que buscamos lograr
-            </h3>
-          </div>
-
-          <div className="mt-12 grid gap-8 md:mt-16 lg:grid-cols-2 lg:items-center lg:gap-12">
-            {/* Image */}
-            <motion.div
-              className="order-2 lg:order-1"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-xl md:rounded-2xl">
-                <Image
-                  src="/images/gallery/familia.jpeg"
-                  alt="Familias y delegaciones en el Encuentro"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </motion.div>
-
-            {/* Objectives List */}
-            <motion.div
-              className="order-1 space-y-4 lg:order-2"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
-            >
-              {OBJECTIVES.map((objective) => (
-                <motion.div
-                  key={objective.slice(0, 40)}
-                  className="group flex gap-3 rounded-xl bg-white p-4 ring-1 ring-border/30 transition-all hover:ring-tierra/30 hover:shadow-md md:gap-4 md:p-5"
-                  variants={{
-                    hidden: { opacity: 0, x: 30 },
-                    visible: { opacity: 1, x: 0 }
-                  }}
-                >
-                  <motion.div
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-tierra/10 transition-colors group-hover:bg-tierra/20 md:h-10 md:w-10"
-                    whileHover={{ scale: 1.1, rotate: 10 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <CheckCircle className="h-4 w-4 text-tierra md:h-5 md:w-5" />
-                  </motion.div>
-                  <p className="text-sm leading-relaxed text-slate md:text-base">
-                    {objective}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Organizers */}
-        <motion.div
-          className="mt-12 md:mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="rounded-xl bg-gradient-to-br from-navy to-tierra p-6 text-center text-white shadow-lg md:rounded-2xl md:p-8">
-            {/* Header with icon and title */}
-            <div className="flex items-center justify-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 md:h-12 md:w-12">
-                <Heart className="h-5 w-5 text-white md:h-6 md:w-6" />
-              </div>
-              <h3 className="text-lg font-bold md:text-xl">
-                Organizado con dedicación
-              </h3>
-            </div>
-
-            {/* Organized by */}
-            <p className="mt-4 text-sm leading-relaxed text-white/80 md:text-base">
-              {ORGANIZED_BY.join(" y ")}
-            </p>
-
-            {/* Directors */}
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {ORGANIZERS.map((org) => (
-                <div key={org.name}>
-                  <p className="text-sm font-semibold leading-tight md:text-base">{org.name}</p>
-                  <p className="mt-1 text-xs text-white/60">{org.title}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+      {/* Para qué existe */}
+      <div className="mt-20 grid gap-10 sm:mt-40 lg:grid-cols-12 lg:gap-x-6">
+        <h3 className="display text-head lg:col-span-5" data-reveal>
+          Para qué existe el Encuentro
+        </h3>
+        <ul className="grid gap-x-10 gap-y-4 text-body sm:grid-cols-2 sm:gap-y-6 sm:text-lead lg:col-span-7">
+          {OBJECTIVES.map((objective, i) => (
+            <li key={objective.slice(0, 30)} data-reveal style={{ "--i": i } as React.CSSProperties}>
+              {objective}
+            </li>
+          ))}
+        </ul>
+        <p className="max-w-[60ch] lg:col-span-7 lg:col-start-6" data-reveal>
+          {HISTORY_TEXT.trust}
+        </p>
       </div>
     </section>
   );

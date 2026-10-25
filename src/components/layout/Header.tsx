@@ -1,29 +1,29 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/event-data";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { EVENT_NAME } from "@/constants/history-data";
+import TrackedLink from "@/components/ui/TrackedLink";
 
-export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const mobileNavRef = useRef<HTMLElement>(null);
+const LINKS = NAV_LINKS.filter((l) => l.href !== "#inicio" && l.href !== "#inscripcion");
+
+interface HeaderProps {
+  inscriptionHref: string;
+  edition: string;
+}
+
+export default function Header({ inscriptionHref, edition }: HeaderProps) {
+  const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
+  // Escape cierra el menú y el foco queda atrapado adentro mientras está abierto
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Focus trap + Escape-to-close for mobile menu
-  useEffect(() => {
-    if (!mobileOpen) return;
-    const nav = mobileNavRef.current;
+    if (!open) return;
+    const nav = navRef.current;
     if (!nav) return;
-
     const focusable = nav.querySelectorAll<HTMLElement>("a, button");
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -31,109 +31,91 @@ export default function Header() {
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setMobileOpen(false);
+        setOpen(false);
         toggleRef.current?.focus();
         return;
       }
       if (e.key !== "Tab") return;
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last?.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first?.focus();
-        }
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
       }
     };
-
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [mobileOpen]);
+  }, [open]);
 
   return (
-    <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 shadow-md backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20 md:px-6">
-        {/* Brand - Only visible when scrolled */}
-        <a
-          href="#inicio"
-          className={`flex items-center gap-3 transition-opacity duration-300 ${
-            scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        >
+    <header className="fixed inset-x-0 top-0 z-50 bg-bg">
+      <div className="flex h-16 items-center justify-between gap-6 px-4 sm:h-[72px] sm:px-7">
+        <a href="#inicio" className="shrink-0" aria-label={`${EVENT_NAME}, inicio`}>
           <Image
             src="/images/branding/logo.png"
-            alt="Encuentro Latinoamericano del Canto y las Danzas Folclóricas"
+            alt=""
             width={627}
             height={320}
-            className="h-12 w-auto md:h-14"
+            className="h-11 w-auto sm:h-12"
             priority
           />
         </a>
 
-        {/* Spacer when not scrolled */}
-        {!scrolled && <div className="flex-1" />}
-
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                scrolled
-                  ? "text-slate hover:bg-tierra/10 hover:text-tierra-dark"
-                  : "text-white/90 hover:bg-white/10 hover:text-white"
-              }`}
-            >
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegación principal">
+          {LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="link text-small font-semibold">
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* Mobile menu button */}
-        <Button
-          ref={toggleRef}
-          variant="ghost"
-          size="icon"
-          className={`rounded-full lg:hidden ${
-            !scrolled ? "text-white hover:bg-white/10" : ""
-          }`}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-nav"
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
+        <div className="flex items-center gap-3">
+          <TrackedLink
+            href={inscriptionHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            event="Lead"
+            params={{ content_name: "WhatsApp Inscripcion", edition, placement: "header" }}
+            className="button hidden min-h-11 text-small sm:inline-flex"
+          >
+            <FaWhatsapp className="h-4 w-4" aria-hidden />
+            Inscribí tu ballet
+          </TrackedLink>
+          <button
+            ref={toggleRef}
+            type="button"
+            className="min-h-11 px-2 text-small font-semibold lg:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="menu-movil"
+          >
+            {open ? "Cerrar" : "Menú"}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile nav */}
-      {mobileOpen && (
+      {open && (
         <nav
-          ref={mobileNavRef}
-          id="mobile-nav"
-          className="border-t border-border/10 bg-white/95 px-4 pb-4 backdrop-blur-xl lg:hidden"
+          ref={navRef}
+          id="menu-movil"
+          data-menu
+          className="bg-bg px-4 pb-6 shadow-[0_24px_32px_-24px_rgb(20_33_46/0.35)] sm:px-7 lg:hidden"
           aria-label="Navegación móvil"
         >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="block rounded-2xl px-4 py-3 text-sm font-medium text-slate transition-colors hover:bg-tierra/10 hover:text-tierra-dark"
-            >
-              {link.label}
-            </a>
-          ))}
+          <ul>
+            {NAV_LINKS.filter((l) => l.href !== "#inicio").map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="display block py-2 text-head"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
       )}
     </header>

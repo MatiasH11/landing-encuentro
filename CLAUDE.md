@@ -16,7 +16,7 @@ npm start        # Start production server
 Single-page Next.js 16 (App Router) landing site for the *Encuentro Latinoamericano del Canto y las Danzas Folclóricas* — a recurring folk dance/singing festival in Argentina.
 
 **Page structure** (`src/app/page.tsx`): one vertical page composed of section components in this order:
-`Header → Hero → History → UpcomingEditions → Program → Gallery → Registration → Contact → Footer`
+`Header → Hero → History → UpcomingEditions → Program → Gallery → Registration → Contact → Footer`, plus `MobileActionBar` (fixed WhatsApp CTAs on phones)
 
 Each section has a matching `id` attribute used for smooth-scroll navigation (`#inicio`, `#historia`, `#ediciones`, `#programa`, `#galeria`, `#inscripcion`, `#contacto`).
 
@@ -29,18 +29,27 @@ Each section has a matching `id` attribute used for smooth-scroll navigation (`#
 
 **Components**:
 - `src/components/sections/` — one file per page section
-- `src/components/layout/` — `Header.tsx`, `Footer.tsx`
-- `src/components/gallery/` — `PhotoGrid.tsx`, `VideoGrid.tsx`, `Lightbox.tsx` (uses `yet-another-react-lightbox`)
+- `src/components/layout/` — `Header.tsx`, `Footer.tsx`, `MobileActionBar.tsx`
+- `src/components/gallery/` — `Lightbox.tsx` (uses `yet-another-react-lightbox`, loaded on demand from `GallerySection`)
 - `src/components/ui/` — shadcn components (Button, Card, Badge, Dialog, Tabs, Accordion, Separator)
 
 ## Styling
 
-Tailwind CSS v4. Brand palette is defined in `src/app/globals.css` under `@theme inline`:
-- Primary color token: `tierra` / `tierra-light` / `tierra-dark` (blue `#5B9BD5`, not earthy — name is legacy)
-- Also available: `celeste`, `celeste-light`, `celeste-dark`, `navy`, `cream`, `slate`
-- Semantic tokens: `whatsapp`, `warning`
-- Utility classes: `.glass`, `.glass-dark` (frosted glass), `.animate-float` (scroll indicator bounce)
-- Fonts: `font-sans` → Inter (`--font-inter`), `font-heading` → Merriweather (`--font-merriweather`)
+Tailwind CSS v4. Direction dealt by taste-skill: *sentence-as-layout* ("el lema es la página": the hero headline is the
+motto, with a photo strip in place of the word "baila"). Tokens live in `src/app/globals.css` under `@theme inline`:
+- Colors: `bg`, `surface`, `ink`, `muted`, `accent` (only on the action), `accent-strong`, and two fields: `celeste`
+  (+ `celeste-ink`) and `night` (+ `night-ink`, `night-muted`). Form tokens: `field-line`, `danger`.
+- Five type sizes: `text-small`, `text-body`, `text-lead`, `text-head`, `text-display`. One family: Schibsted Grotesk
+  (`--font-schibsted`, weights 400/600/800); `.display` sets the 800 weight and tight tracking.
+- Components (in `@layer components`): `.button`, `.button-quiet`, `.link`, `.tabular`, `.lines`.
+- Motion: entrances use `data-reveal` (observed by `RevealObserver`), `data-load`, `data-line`, `.shutter`, `.drift`; all
+  hidden states live under `html.js` and `prefers-reduced-motion: no-preference`.
+
+**Editions by date** (`src/lib/editions.ts`): the hero, inscription and program feature the next edition automatically;
+past ones show as "realizado". `page.tsx` revalidates every hour.
+
+**Meta Pixel**: `TrackedLink` (and the inscription form) fire `Lead` (WhatsApp inscription), `ViewContent`
+(link to #inscripcion) and `Contact` (WhatsApp, Telefono, Email).
 
 ## Design skills
 

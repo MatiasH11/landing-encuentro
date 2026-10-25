@@ -4,32 +4,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Dirección "El lema es la página" (taste-skill, sentence-as-layout).
+ * Celeste y blanco del logo y del faldón del escenario; una sola tipografía (Schibsted Grotesk).
+ * Un fondo, una tinta, un acento (solo en la acción) y dos campos de color: celeste y noche.
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-playfair);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: var(--font-schibsted);
+  --font-heading: var(--font-schibsted);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
@@ -42,60 +32,64 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
 
-  /* Brand palette — Celeste, black & white (matching logo) */
-  --color-tierra: #5B9BD5;
-  --color-tierra-light: #89BDE3;
-  --color-tierra-dark: #2B5A83;
-  --color-tierra-deep: #0F1A24;
-  --color-celeste: #5B9BD5;
-  --color-celeste-light: #A3CCE9;
-  --color-celeste-dark: #3A7BB8;
-  --color-cream: #F2F6FA;
-  --color-cream-dark: #E1EAF2;
-  --color-warm-bg: #F7F9FC;
-  --color-slate: #3A3A3A;
-  --color-slate-light: #7A7A7A;
-  --color-navy: #1B3A57;
-  --color-oro: #C08B2A;
+  /* Paleta */
+  --color-bg: #f2f5f8;
+  --color-surface: #e2eaf1;
+  --color-ink: #14212e;
+  --color-muted: #4c5a67;
+  --color-accent: #1f5f99;
+  --color-accent-strong: #174a78;
+  --color-accent-ink: #ffffff;
+  --color-celeste: #5b9bd5;
+  --color-celeste-ink: #14212e;
+  --color-night: #14212e;
+  --color-night-ink: #f2f5f8;
+  --color-night-muted: #aebccb;
+  --color-field-line: #9fb3c6;
+  --color-danger: #a3271b;
 
-  /* Third-party & semantic tokens */
-  --color-whatsapp: #25D366;
-  --color-whatsapp-dark: #128C7E;
-  --color-warning: #B45309;
-  --color-warning-bg: #FFFBEB;
-  --color-warning-muted: #FEF3C7;
-  --color-warning-text: #78350F;
+  /* Cinco tamaños: chico, texto, entrada, título y display */
+  --text-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --text-small--line-height: 1.45;
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-body--line-height: 1.5;
+  --text-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --text-lead--line-height: 1.3;
+  --text-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --text-head--line-height: 0.98;
+  --text-display: clamp(2.5rem, 8.6vw, 9rem);
+  --text-display--line-height: 0.92;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: #F7F9FC;
-  --foreground: #111111;
-  --card: #FFFFFF;
-  --card-foreground: #111111;
-  --popover: #FFFFFF;
-  --popover-foreground: #111111;
-  --primary: #5B9BD5;
-  --primary-foreground: #FFFFFF;
-  --secondary: #E1EAF2;
-  --secondary-foreground: #2B5A83;
-  --muted: #E1EAF2;
-  --muted-foreground: #5A5A5A;
-  --accent: #5B9BD5;
-  --accent-foreground: #111111;
-  --destructive: #DC2626;
-  --border: #D8E2EC;
-  --input: #D8E2EC;
-  --ring: #5B9BD5;
-  --chart-1: #5B9BD5;
-  --chart-2: #3A7BB8;
-  --chart-3: #89BDE3;
-  --chart-4: #2B5A83;
-  --chart-5: #E1EAF2;
+  --radius: 0.875rem;
+  --background: #f2f5f8;
+  --foreground: #14212e;
+  --card: #e2eaf1;
+  --card-foreground: #14212e;
+  --popover: #ffffff;
+  --popover-foreground: #14212e;
+  --primary: #1f5f99;
+  --primary-foreground: #ffffff;
+  --secondary: #e2eaf1;
+  --secondary-foreground: #14212e;
+  --muted: #e2eaf1;
+  --muted-foreground: #4c5a67;
+  --accent: #e2eaf1;
+  --accent-foreground: #14212e;
+  --destructive: #b42318;
+  --border: #c9d6e2;
+  --input: #c9d6e2;
+  --ring: #1f5f99;
+
+  --t-press: 140ms;
+  --t-hover: 180ms;
 }
 
 @layer base {
@@ -103,44 +97,196 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-bg text-ink;
+    font-size: var(--text-body);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-celeste);
+    color: var(--color-ink);
   }
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
-
-/* Gentle float — replaces bounce for scroll indicators */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-.animate-float {
-  animation: float 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-/* Respect user motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+/* En el teléfono la barra fija de abajo no tapa lo que se ancla */
+@media (max-width: 639px) {
+  html {
+    scroll-padding-bottom: 5rem;
   }
+}
+
+/* En la capa components, así las utilidades de Tailwind (hidden, min-h-*, etc.) pueden pisarlas */
+@layer components {
+/* Títulos: peso 800, letras casi tocándose */
+.display {
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Botón: plano, un solo color, píldora */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0 1.6em;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    transform var(--t-press) var(--ease-out),
+    background-color var(--t-hover) ease;
+}
+.button:active {
+  transform: scale(0.97);
+}
+.button-quiet {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: text-decoration-color var(--t-hover) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--color-accent-strong);
+  }
+  .button-quiet:hover {
+    background: color-mix(in srgb, currentColor 10%, transparent);
+  }
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+}
+}
+
+/* ---------- Movimiento (todo bajo no-preference; sin JS el contenido queda visible) ---------- */
+
+.lines .line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.lines [data-line] {
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .lines [data-line] {
+    transform: translateY(105%);
+    animation: line-up 900ms var(--ease-expo) forwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+  }
+  .js [data-load] {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: load-rise 600ms var(--ease-out) forwards;
+    animation-delay: var(--d, 400ms);
+  }
+  /* La foto del lema se abre como un obturador */
+  .js .shutter {
+    clip-path: inset(0 100% 0 0 round 14px);
+    animation: shutter-open 1100ms var(--ease-in-out) 200ms forwards;
+  }
+  .js .shutter img {
+    transform: scale(1.12);
+    animation: settle 1500ms var(--ease-soft) 150ms forwards;
+  }
+
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--ease-out) calc(var(--i, 0) * 80ms),
+      transform 900ms var(--ease-expo) calc(var(--i, 0) * 80ms),
+      rotate 200ms var(--ease-out);
+  }
+
+  /* Al cambiar de edición en el programa, los días entran de nuevo */
+  [data-swap] > * {
+    animation: load-rise 450ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  /* El menú móvil baja en lugar de aparecer de golpe */
+  [data-menu] {
+    animation: menu-in 240ms var(--ease-out) both;
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Deriva lenta en las fotos grandes */
+  .drift {
+    animation: drift 18s var(--ease-soft) infinite alternate;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 }
 
-.glass {
-  background: rgba(247, 249, 252, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+@keyframes line-up {
+  to {
+    transform: none;
+  }
 }
-
-.glass-dark {
-  background: rgba(15, 26, 36, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+@keyframes load-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes shutter-open {
+  to {
+    clip-path: inset(0 0 0 0 round 14px);
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes settle {
+  to {
+    transform: none;
+  }
+}
+@keyframes drift {
+  from {
+    transform: scale(1.04) translate3d(-1%, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(1%, -1%, 0);
+  }
 }

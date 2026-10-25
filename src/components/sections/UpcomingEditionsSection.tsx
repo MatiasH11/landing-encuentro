@@ -1,140 +1,107 @@
-"use client";
-
 import Image from "next/image";
-import { EDITIONS_2026 } from "@/constants/event-data";
-import { trackEvent } from "@/lib/pixel";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { CalendarDays, MapPin, Theater, Users, AlertCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import type { EventEdition } from "@/types";
+import TrackedLink from "@/components/ui/TrackedLink";
 
-const EDITION_IMAGES = [
-  "/images/gallery/imagen-3.jpeg",
-  "/images/gallery/imagen-6.jpeg",
-];
+interface UpcomingEditionsSectionProps {
+  upcoming: EventEdition[];
+  past: EventEdition[];
+}
 
-export default function UpcomingEditionsSection() {
+function Row({ kind, value }: { kind: string; value: string }) {
   return (
-    <section id="ediciones" className="relative overflow-hidden bg-cream py-24 md:py-32">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-tierra/40 to-transparent" />
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section header */}
-        <motion.div
-          className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+    <tr className="align-baseline">
+      <th scope="row" className="w-[34%] py-[13px] pr-4 text-left font-normal text-muted">
+        {kind}
+      </th>
+      <td className="py-[13px] font-semibold">{value}</td>
+    </tr>
+  );
+}
+
+function UpcomingTable({ edition }: { edition: EventEdition }) {
+  return (
+    <div data-reveal>
+      <table className="w-full border-collapse">
+        <caption className="display mb-4 text-left text-lead">
+          {edition.editionNumber}º Encuentro · {edition.location}
+        </caption>
+        <tbody>
+          <Row kind="Fechas" value={edition.dateRange} />
+          <Row kind="Sala" value={edition.venue} />
+          <Row kind="Ciudad" value={`${edition.location}, ${edition.province}`} />
+        </tbody>
+        <tbody className="before:block before:h-4">
+          <Row
+            kind="Delegaciones"
+            value={`Hasta ${edition.maxBallets} ballets y ${edition.maxMusicGroups} grupos musicales`}
+          />
+          <Row kind="Integrantes" value={`Mínimo ${edition.minMembersPerBallet} por ballet`} />
+          <Row kind="Actuación" value={`Hasta ${edition.maxPerformanceMinutes} minutos por ballet`} />
+          <Row kind="Noches" value={`${edition.guaranteedNights} noches garantizadas por grupo`} />
+        </tbody>
+        <tbody className="before:block before:h-4">
+          {edition.freeAdmission && <Row kind="Público" value="Entrada libre y gratuita" />}
+          <Row kind="Pagos" value={`Hasta el ${edition.paymentDeadline}`} />
+        </tbody>
+      </table>
+      <p className="mt-8 flex flex-wrap gap-x-8 gap-y-3 font-semibold">
+        <TrackedLink
+          href="#inscripcion"
+          event="ViewContent"
+          params={{ content_name: "Inscripcion", edition: edition.location }}
+          className="link"
         >
-          <p className="font-heading text-xl italic text-tierra">Próximamente</p>
-          <h2 className="mt-1 font-heading text-3xl font-bold text-navy md:text-5xl">
-            Ediciones 2026
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Dos encuentros, dos ciudades, una misma pasión por el folclore
-          </p>
-        </motion.div>
+          Qué incluye la inscripción →
+        </TrackedLink>
+        <a href="#programa" className="link">
+          Programa día por día →
+        </a>
+      </p>
+    </div>
+  );
+}
 
-        {/* Edition cards */}
-        <motion.div
-          className="mt-16 grid gap-8 lg:grid-cols-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.15
-              }
-            }
-          }}
-        >
-          {EDITIONS_2026.map((edition, i) => (
-            <motion.div
-              key={edition.id}
-              className="group relative overflow-hidden rounded-2xl border border-border/30 bg-white shadow-lg transition-all"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.15)"
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Image header */}
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={EDITION_IMAGES[i]}
-                  alt={`${edition.title} en ${edition.location}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-tierra-dark/90 via-tierra/40 to-transparent"
-                  initial={{ opacity: 0.8 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="absolute bottom-5 left-6 right-6">
-                  <Badge className="mb-3 rounded-full bg-tierra/95 px-4 py-1.5 text-sm font-semibold text-white shadow-lg">
-                    {edition.editionNumber}º Edición
-                  </Badge>
-                  <h3 className="font-heading text-3xl font-bold text-white drop-shadow-lg">
-                    {edition.location}
-                  </h3>
-                </div>
-              </div>
+function PastTable({ edition }: { edition: EventEdition }) {
+  return (
+    <table className="w-full border-collapse" data-reveal>
+      <caption className="mb-2 text-left font-semibold">
+        {edition.editionNumber}º Encuentro · {edition.location} · realizado
+      </caption>
+      <tbody>
+        <Row kind="Fechas" value={edition.dateRange} />
+        <Row kind="Lugar" value={`${edition.venue}, ${edition.province}`} />
+      </tbody>
+    </table>
+  );
+}
 
-              {/* Details */}
-              <div className="p-7">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 rounded-lg bg-tierra/5 p-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tierra/10">
-                      <CalendarDays className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span className="font-semibold text-foreground">{edition.dateRange}</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-base text-muted-foreground">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <Theater className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span>{edition.venue}</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-base text-muted-foreground">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <MapPin className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span>{edition.location}, {edition.province}</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-base text-muted-foreground">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <Users className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span>Hasta {edition.maxBallets} delegaciones</span>
-                  </div>
-                  <div className="flex items-center gap-4 rounded-lg bg-warning-bg p-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-warning-muted">
-                      <AlertCircle className="h-5 w-5 text-warning" />
-                    </div>
-                    <span className="font-semibold text-warning-text">Cupos limitados</span>
-                  </div>
-                </div>
+export default function UpcomingEditionsSection({ upcoming, past }: UpcomingEditionsSectionProps) {
+  return (
+    <section id="ediciones" className="px-4 pt-20 sm:px-7 sm:pt-48">
+      <h2 className="display text-head" data-reveal>
+        <span className="block lg:pl-[3vw]">Dos escenarios,</span>
+        <span className="block">cuatro días cada uno</span>
+      </h2>
 
-                <div className="mt-6 flex gap-3">
-                  <Button asChild className="flex-1 rounded-full bg-tierra hover:bg-tierra-dark">
-                    <a href="#programa">Ver Programa</a>
-                  </Button>
-                  <Button asChild variant="outline" className="flex-1 rounded-full border-2 border-tierra/30 text-tierra hover:bg-tierra/5 hover:border-tierra">
-                    <a href="#inscripcion" onClick={() => trackEvent('ViewContent', { content_name: 'Inscripcion', edition: edition.location })}>Inscribirse</a>
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
+      <div className="mt-14 grid gap-12 sm:mt-24 lg:grid-cols-12 lg:gap-x-6">
+        <figure className="relative aspect-[4/5] w-[60%] justify-self-end overflow-clip lg:col-span-4 lg:w-full lg:self-end max-lg:order-last" data-reveal>
+          <Image
+            src="/images/gallery/imagen-3.jpeg"
+            alt="Ballet de adultos mayores con polleras celestes y blancas, frente al público"
+            fill
+            sizes="(max-width: 1024px) 60vw, 30vw"
+            className="object-cover object-[46%_50%]"
+          />
+        </figure>
+
+        <div className="grid content-start gap-14 lg:col-span-5 lg:col-start-8">
+          {upcoming.map((edition) => (
+            <UpcomingTable key={edition.id} edition={edition} />
           ))}
-        </motion.div>
+          {past.map((edition) => (
+            <PastTable key={edition.id} edition={edition} />
+          ))}
+        </div>
       </div>
     </section>
   );
