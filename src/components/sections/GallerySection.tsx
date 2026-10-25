@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
+import dynamic from "next/dynamic";
 import { FaPlay } from "react-icons/fa";
 import { GALLERY_ITEMS } from "@/constants/gallery-data";
-import dynamic from "next/dynamic";
 
 // El visor se descarga recién cuando alguien abre una foto
 const Lightbox = dynamic(() => import("@/components/gallery/Lightbox"), { ssr: false });
@@ -13,121 +13,117 @@ const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
 const video = GALLERY_ITEMS.find((item) => item.type === "video");
 const videoId = video?.videoUrl?.split("/embed/")[1];
 
-// Dos copias sueltas a los costados del título
-const PRINTS = [
-  { id: "photo-006", className: "-rotate-[6deg] sm:left-[4%] sm:top-[20%] sm:-rotate-[8deg]" },
-  { id: "photo-004", className: "rotate-[5deg] -ml-[12vw] mt-[10vw] sm:right-[4%] sm:bottom-[12%] sm:m-0 sm:rotate-[6deg]" },
+// La foto que se ve adentro de las letras de BAILA, optimizada por next/image
+const letrasSrc = getImageProps({
+  src: "/images/gallery/imagen-1.jpeg",
+  alt: "",
+  width: 960,
+  height: 640,
+  quality: 70,
+}).props.src;
+
+// Lugar de cada foto en el collage (desktop) y su color de sombra
+const LAYOUT = [
+  { span: "col-span-2 row-span-2 lg:col-span-5", rot: "-rotate-1", sombra: "var(--color-turquesa)" },
+  { span: "lg:col-span-4", rot: "rotate-[1.5deg]", sombra: "var(--color-amarillo)" },
+  { span: "lg:col-span-3 lg:row-span-2", rot: "rotate-2", sombra: "var(--color-magenta)" },
+  { span: "lg:col-span-4", rot: "-rotate-[1.5deg]", sombra: "var(--color-rojo)" },
+  { span: "lg:col-span-4 lg:row-span-2", rot: "rotate-1", sombra: "var(--color-amarillo)" },
+  { span: "lg:col-span-4 lg:row-span-2", rot: "-rotate-2", sombra: "var(--color-turquesa)" },
+  { span: "lg:col-span-4 lg:row-span-2", rot: "rotate-[1.5deg]", sombra: "var(--color-magenta)" },
 ];
+
+// Etiqueta corta para el sticker: la leyenda sin el "— Encuentro Latinoamericano"
+const short = (caption: string) => caption.split(" — ")[0];
 
 export default function GallerySection() {
   const [index, setIndex] = useState(-1);
   const [playing, setPlaying] = useState(false);
 
-  const open = (id: string) => setIndex(photos.findIndex((p) => p.id === id));
-
   return (
-    <section id="galeria" className="bg-night text-night-ink">
-      {/* Fotos sueltas sobre el título */}
-      <div className="relative overflow-clip px-4 pb-20 pt-20 sm:grid sm:min-h-svh sm:place-items-center sm:px-7">
-        <h2 className="display text-[24vw] leading-[0.85] sm:text-center sm:text-display" data-reveal>
-          <span className="block">Bailan</span>
-          <span className="block">todos</span>
-        </h2>
+    <section id="galeria" className="grano overflow-hidden bg-tinta px-4 py-24 text-crema sm:px-7 sm:py-32">
+      <h2 className="display" data-reveal>
+        <span className="block text-[clamp(2.5rem,5vw,4.5rem)] text-amarillo">Así se</span>
+        <span
+          className="paneo -my-[0.04em] block bg-clip-text text-[clamp(7rem,27vw,26rem)] leading-[0.85] text-transparent [-webkit-background-clip:text]"
+          style={{
+            backgroundImage: `url(${letrasSrc})`,
+            backgroundPosition: "50% 55%",
+            backgroundSize: "120% auto",
+          }}
+        >
+          baila
+        </span>
+        <span className="block text-right text-[clamp(2.5rem,5vw,4.5rem)] text-turquesa">en el Encuentro</span>
+      </h2>
 
-        <div className="mt-10 flex justify-center sm:contents">
-        {PRINTS.map((print, i) => {
-          const photo = photos.find((p) => p.id === print.id);
-          if (!photo) return null;
+      {/* Collage de todas las fotos */}
+      <ul className="mt-16 grid auto-rows-[150px] grid-cols-2 gap-4 sm:auto-rows-[200px] sm:gap-6 lg:grid-cols-12">
+        {photos.map((photo, i) => {
+          const l = LAYOUT[i % LAYOUT.length];
           return (
-            <button
-              key={print.id}
-              type="button"
-              onClick={() => open(print.id)}
-              aria-label={`Ampliar: ${photo.caption}`}
-              className={`group relative aspect-[3/4] w-[44vw] shrink-0 transition-[rotate] duration-200 ease-out hover:z-20 hover:rotate-0 focus-visible:z-20 focus-visible:rotate-0 sm:absolute sm:w-[22vw] ${print.className}`}
-              data-reveal
-              style={{ "--i": i + 1 } as React.CSSProperties}
-            >
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                sizes="(max-width: 640px) 52vw, 24vw"
-                className="object-cover"
-              />
-            </button>
+            <li key={photo.id} className={`${l.span} ${l.rot}`} data-reveal style={{ "--i": i % 4 } as React.CSSProperties}>
+              <button
+                type="button"
+                onClick={() => setIndex(i)}
+                className="copia group block h-full w-full transition-[rotate] duration-200 hover:rotate-0"
+                style={{ "--sombra": l.sombra } as React.CSSProperties}
+                aria-label={`Ampliar: ${photo.caption}`}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 40vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                />
+                <span className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)] truncate rounded-full bg-crema px-3 py-1 text-left text-[0.8125rem] font-extrabold text-tinta sm:text-[0.875rem]">
+                  {short(photo.caption)}
+                </span>
+              </button>
+            </li>
           );
         })}
-        </div>
+      </ul>
 
-        <p className="mt-10 max-w-[36ch] text-small text-night-muted sm:absolute sm:bottom-6 sm:left-7 sm:mt-0">
-          Chicos, parejas, abuelos y ballets enteros, en el mismo escenario.
-        </p>
-      </div>
-
-      {/* Todas las fotos y el video, en una fila que se desliza */}
-      <div className="pb-20 sm:pb-36">
-        <h3 className="px-4 text-lead font-semibold sm:px-7">
-          Fotos y video de ediciones anteriores
-          <span className="font-normal text-night-muted"> · {photos.length + (video ? 1 : 0)}</span>
-        </h3>
-        <ul className="mt-8 grid grid-cols-2 gap-3 px-4 sm:gap-4 sm:px-7 lg:grid-cols-4">
-          {video && videoId && (
-            <li className="relative col-span-2 aspect-[3/2] overflow-clip bg-ink lg:row-span-2 lg:aspect-auto">
-              {playing ? (
-                <iframe
-                  src={`${video.videoUrl}?autoplay=1`}
-                  title={video.caption}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
+      {/* El video, enmarcado como un aftermovie */}
+      {video && videoId && (
+        <div className="mx-auto mt-24 max-w-5xl rounded-[28px] bg-rojo p-4 sm:p-8" data-reveal>
+          <h3 className="display mb-5 text-center text-[clamp(2.25rem,5vw,4rem)] text-crema">
+            Mirá el Encuentro
+          </h3>
+          <div className="relative aspect-video overflow-hidden rounded-[16px] bg-tinta">
+            {playing ? (
+              <iframe
+                src={`${video.videoUrl}?autoplay=1`}
+                title={video.caption}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setPlaying(true)}
+                className="group absolute inset-0"
+                aria-label={`Ver el video: ${video.caption}`}
+              >
+                <Image
+                  src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 92vw, 64rem"
+                  className="object-cover opacity-85 transition-opacity group-hover:opacity-100"
                 />
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setPlaying(true)}
-                  className="group absolute inset-0"
-                  aria-label={`Ver el video: ${video.caption}`}
-                >
-                  <Image
-                    src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1024px) 92vw, 48vw"
-                    className="object-cover opacity-80"
-                  />
-                  <span className="button absolute bottom-4 left-4 min-h-11 text-small">
-                    <FaPlay className="h-3 w-3" aria-hidden />
-                    Ver el video
-                  </span>
-                </button>
-              )}
-            </li>
-          )}
-          {photos.map((photo, i) => {
-            // La última foto ocupa dos columnas para cerrar la grilla sin huecos
-            const last = i === photos.length - 1 && photos.length % 2 === 1;
-            return (
-              <li key={photo.id} className={last ? "col-span-2" : undefined}>
-                <button
-                  type="button"
-                  onClick={() => open(photo.id)}
-                  className={`group relative block w-full overflow-clip ${last ? "aspect-[3/1]" : "aspect-[3/2]"}`}
-                  aria-label={`Ampliar: ${photo.caption}`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes={last ? "(max-width: 1024px) 92vw, 48vw" : "(max-width: 1024px) 46vw, 24vw"}
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                  />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+                <span className="pill absolute left-1/2 top-1/2 min-h-16 -translate-x-1/2 -translate-y-1/2 text-[1.0625rem]">
+                  <FaPlay className="h-4 w-4" aria-hidden />
+                  Ver el video
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {index >= 0 && <Lightbox photos={photos} open index={index} onClose={() => setIndex(-1)} />}
     </section>

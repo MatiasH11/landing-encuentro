@@ -46,25 +46,29 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
   const tooFew = members !== "" && Number(members) < edition.minMembersPerBallet;
 
   const field =
-    "mt-2 block min-h-12 w-full rounded-[10px] bg-bg px-4 text-body text-ink transition-shadow duration-150 shadow-[inset_0_0_0_1px_var(--color-field-line)] focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_var(--color-accent)]";
+    "mt-2 block min-h-12 w-full rounded-[12px] bg-white px-4 text-tinta transition-shadow duration-150 shadow-[inset_0_0_0_2px_var(--color-crema-oscuro)] focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_3px_var(--color-bordo)]";
 
   return (
-    <section id="inscripcion" className="bg-celeste px-4 py-24 text-celeste-ink sm:px-7 sm:pb-28 sm:pt-36">
-      <h2 className="display text-head">
-        <span className="block">Tu ballet, en escena</span>
-        <span className="mt-[0.08em] inline-block rounded-[10px] bg-night px-[0.15em] pb-[0.06em] text-night-ink">
-          {isPast ? "en la próxima edición" : edition.dateRange.replace(/ de \d{4}$/, "")}
+    <section id="inscripcion" className="relative bg-turquesa px-4 py-24 text-tinta sm:px-7 sm:py-32">
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <h2 className="display text-[clamp(3.25rem,8vw,8rem)]" data-reveal>
+          <span className="block">Tu ballet</span>
+          <span className="tag bg-bordo text-crema">en escena</span>
+        </h2>
+        <span className="sticker bg-amarillo text-[1rem] sm:text-[1.5rem]" data-reveal>
+          {isPast ? "Próxima edición" : `${edition.dateRange.replace(/ de \d{4}$/, "")} · ${edition.location}`}
         </span>
-      </h2>
+      </div>
 
-      <div className="mt-16 grid grid-cols-[minmax(0,1fr)] gap-16 lg:grid-cols-12 lg:gap-x-6">
+      <div className="mt-14 grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5" data-reveal>
-          <h3 className="text-lead font-semibold">
+          <h3 className="display text-[2.25rem]">
             {isPast ? `Qué incluyó en ${edition.location}` : `Qué incluye en ${edition.location}`}
           </h3>
           <ul className="mt-6 space-y-3">
             {edition.inclusions.map((inclusion) => (
-              <li key={inclusion.label} className="text-body sm:text-lead">
+              <li key={inclusion.label} className="flex gap-3 text-[1.1875rem] font-semibold">
+                <span aria-hidden className="mt-2 size-3.5 shrink-0 rotate-45 bg-bordo" />
                 {inclusion.label}
               </li>
             ))}
@@ -79,7 +83,7 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
 
         {/* Lo vivo de la página: la consulta se arma mientras escribís y sale por WhatsApp */}
         <form
-          className="rounded-[18px] bg-bg p-6 text-ink sm:p-8 lg:col-span-6 lg:col-start-7"
+          className="rounded-[28px] bg-crema p-6 shadow-[12px_12px_0_var(--color-bordo)] sm:p-8 lg:col-span-7"
           onSubmit={(e) => {
             e.preventDefault();
             trackEvent("Lead", {
@@ -92,7 +96,7 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
           data-reveal
           style={{ "--i": 1 } as React.CSSProperties}
         >
-          <h3 className="text-lead font-semibold">Armá tu consulta</h3>
+          <h3 className="display text-[2.5rem]">Armá tu consulta</h3>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <label className="block font-semibold">
               Nombre del ballet
@@ -126,7 +130,7 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
               />
               <span
                 id={`${id}-min`}
-                className={`mt-2 block text-small font-normal ${tooFew ? "text-danger" : "text-muted"}`}
+                className={`mt-2 block text-[0.875rem] font-normal ${tooFew ? "font-semibold text-[#b42318]" : "text-tinta-suave"}`}
               >
                 Mínimo {edition.minMembersPerBallet} por ballet.
               </span>
@@ -137,8 +141,8 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
                 {CONTACTS.map((c, i) => (
                   <label
                     key={c.name}
-                    className={`flex min-h-12 flex-1 cursor-pointer items-center justify-center rounded-[10px] px-3 text-small font-semibold transition-colors has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-accent ${
-                      i === contactIndex ? "bg-night text-night-ink" : "bg-surface text-ink"
+                    className={`flex min-h-12 flex-1 cursor-pointer items-center justify-center rounded-full px-3 font-extrabold transition-colors has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-bordo ${
+                      i === contactIndex ? "bg-bordo text-crema" : "bg-crema-oscuro text-tinta"
                     }`}
                   >
                     <input
@@ -155,11 +159,9 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
             </fieldset>
           </div>
 
-          <p className="mt-6 rounded-[10px] bg-surface p-4 text-muted">
-            {message}
-          </p>
+          <p className="mt-6 rounded-[16px] bg-crema-oscuro p-4 text-tinta-suave">{message}</p>
 
-          <button type="submit" className="button mt-6 min-h-14 w-full whitespace-normal py-3 text-center text-body">
+          <button type="submit" className="pill mt-6 min-h-14 w-full whitespace-normal py-3 text-center text-[1.0625rem]">
             <FaWhatsapp className="h-5 w-5" aria-hidden />
             Enviar por WhatsApp a {contact.name.split(" ")[0]}
           </button>

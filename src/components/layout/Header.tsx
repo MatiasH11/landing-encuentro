@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/event-data";
-import { EVENT_NAME } from "@/constants/history-data";
 import TrackedLink from "@/components/ui/TrackedLink";
 
 const LINKS = NAV_LINKS.filter((l) => l.href !== "#inicio" && l.href !== "#inscripcion");
@@ -49,22 +47,19 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-bg">
-      <div className="flex h-16 items-center justify-between gap-6 px-4 sm:h-[72px] sm:px-7">
-        <a href="#inicio" className="shrink-0" aria-label={`${EVENT_NAME}, inicio`}>
-          <Image
-            src="/images/branding/logo.png"
-            alt=""
-            width={627}
-            height={320}
-            className="h-11 w-auto sm:h-12"
-            priority
-          />
+    <header className="sticky top-0 z-50 bg-tinta text-crema">
+      <div className="flex h-16 items-center justify-between gap-6 px-4 sm:px-7">
+        <a href="#inicio" className="display text-[1.375rem] leading-none sm:text-[1.625rem]">
+          Encuentro <span className="text-amarillo">Latinoamericano</span>
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegación principal">
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="link text-small font-semibold">
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[0.9375rem] font-semibold decoration-amarillo decoration-2 underline-offset-4 hover:underline"
+            >
               {link.label}
             </a>
           ))}
@@ -77,7 +72,7 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
             rel="noopener noreferrer"
             event="Lead"
             params={{ content_name: "WhatsApp Inscripcion", edition, placement: "header" }}
-            className="button hidden min-h-11 text-small sm:inline-flex"
+            className="pill hidden min-h-11 text-[0.9375rem] sm:inline-flex"
           >
             <FaWhatsapp className="h-4 w-4" aria-hidden />
             Inscribí tu ballet
@@ -85,7 +80,7 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
           <button
             ref={toggleRef}
             type="button"
-            className="min-h-11 px-2 text-small font-semibold lg:hidden"
+            className="min-h-11 px-2 font-semibold lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="menu-movil"
@@ -100,7 +95,7 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
           ref={navRef}
           id="menu-movil"
           data-menu
-          className="bg-bg px-4 pb-6 shadow-[0_24px_32px_-24px_rgb(20_33_46/0.35)] sm:px-7 lg:hidden"
+          className="bg-tinta px-4 pb-8 pt-2 sm:px-7 lg:hidden"
           aria-label="Navegación móvil"
         >
           <ul>
@@ -109,7 +104,7 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="display block py-2 text-head"
+                  className="display block py-1.5 text-[2.75rem] hover:text-amarillo"
                 >
                   {link.label}
                 </a>

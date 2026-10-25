@@ -1,107 +1,118 @@
 import Image from "next/image";
 import type { EventEdition } from "@/types";
 import TrackedLink from "@/components/ui/TrackedLink";
+import DaysLeft from "@/components/ui/DaysLeft";
 
 interface UpcomingEditionsSectionProps {
   upcoming: EventEdition[];
   past: EventEdition[];
 }
 
-function Row({ kind, value }: { kind: string; value: string }) {
-  return (
-    <tr className="align-baseline">
-      <th scope="row" className="w-[34%] py-[13px] pr-4 text-left font-normal text-muted">
-        {kind}
-      </th>
-      <td className="py-[13px] font-semibold">{value}</td>
-    </tr>
-  );
+// Cada edición tiene su afiche: color, foto y encuadre propios
+const POSTER: Record<string, { bg: string; photo: string; pos: string; alt: string }> = {
+  "mdp-2026": {
+    bg: "bg-turquesa text-tinta",
+    photo: "/images/gallery/imagen-4.jpeg",
+    pos: "object-[45%_62%]",
+    alt: "Ballet con polleras celestes bailando en el escenario",
+  },
+  "paso-2026": {
+    bg: "bg-bordo text-crema",
+    photo: "/images/gallery/imagen-2.jpeg",
+    pos: "object-[40%_50%]",
+    alt: "Parejas bailando danzas gauchas en el escenario",
+  },
+};
+const FALLBACK = POSTER["mdp-2026"];
+
+function details(edition: EventEdition) {
+  return [
+    { k: "Delegaciones", v: `Hasta ${edition.maxBallets} ballets y ${edition.maxMusicGroups} grupos musicales` },
+    { k: "Integrantes", v: `Mínimo ${edition.minMembersPerBallet} por ballet` },
+    { k: "Actuación", v: `Hasta ${edition.maxPerformanceMinutes} minutos por ballet` },
+    { k: "Noches", v: `${edition.guaranteedNights} noches garantizadas por grupo` },
+    ...(edition.freeAdmission ? [{ k: "Público", v: "Entrada libre y gratuita" }] : []),
+    { k: "Pagos", v: `Hasta el ${edition.paymentDeadline}` },
+  ];
 }
 
-function UpcomingTable({ edition }: { edition: EventEdition }) {
+function Poster({ edition, isPast }: { edition: EventEdition; isPast: boolean }) {
+  const p = POSTER[edition.id] ?? FALLBACK;
   return (
-    <div data-reveal>
-      <table className="w-full border-collapse">
-        <caption className="display mb-4 text-left text-lead">
-          {edition.editionNumber}º Encuentro · {edition.location}
-        </caption>
-        <tbody>
-          <Row kind="Fechas" value={edition.dateRange} />
-          <Row kind="Sala" value={edition.venue} />
-          <Row kind="Ciudad" value={`${edition.location}, ${edition.province}`} />
-        </tbody>
-        <tbody className="before:block before:h-4">
-          <Row
-            kind="Delegaciones"
-            value={`Hasta ${edition.maxBallets} ballets y ${edition.maxMusicGroups} grupos musicales`}
-          />
-          <Row kind="Integrantes" value={`Mínimo ${edition.minMembersPerBallet} por ballet`} />
-          <Row kind="Actuación" value={`Hasta ${edition.maxPerformanceMinutes} minutos por ballet`} />
-          <Row kind="Noches" value={`${edition.guaranteedNights} noches garantizadas por grupo`} />
-        </tbody>
-        <tbody className="before:block before:h-4">
-          {edition.freeAdmission && <Row kind="Público" value="Entrada libre y gratuita" />}
-          <Row kind="Pagos" value={`Hasta el ${edition.paymentDeadline}`} />
-        </tbody>
-      </table>
-      <p className="mt-8 flex flex-wrap gap-x-8 gap-y-3 font-semibold">
-        <TrackedLink
-          href="#inscripcion"
-          event="ViewContent"
-          params={{ content_name: "Inscripcion", edition: edition.location }}
-          className="link"
+    <article className={`relative flex flex-col overflow-hidden rounded-[28px] ${p.bg}`} data-reveal>
+      <div className="p-6 sm:p-8">
+        <p className="display text-[1.375rem]">{edition.editionNumber}º Encuentro</p>
+        <h3 className="display mt-1 text-[clamp(3.25rem,6vw,5.75rem)]">{edition.location}</h3>
+        <p className="mt-3 text-[1.0625rem] font-extrabold">
+          {edition.dateRange} · {edition.venue}
+        </p>
+        <span
+          className={`sticker absolute right-5 top-6 text-[0.9375rem] sm:right-8 sm:top-8 ${
+            isPast ? "bg-crema text-tinta" : "bg-amarillo text-tinta"
+          }`}
         >
-          Qué incluye la inscripción →
-        </TrackedLink>
-        <a href="#programa" className="link">
-          Programa día por día →
-        </a>
-      </p>
-    </div>
-  );
-}
+          {isPast ? (
+            "Realizado"
+          ) : (
+            <DaysLeft startDate={edition.startDate} endDate={edition.endDate} fallback="Próximo" />
+          )}
+        </span>
+      </div>
 
-function PastTable({ edition }: { edition: EventEdition }) {
-  return (
-    <table className="w-full border-collapse" data-reveal>
-      <caption className="mb-2 text-left font-semibold">
-        {edition.editionNumber}º Encuentro · {edition.location} · realizado
-      </caption>
-      <tbody>
-        <Row kind="Fechas" value={edition.dateRange} />
-        <Row kind="Lugar" value={`${edition.venue}, ${edition.province}`} />
-      </tbody>
-    </table>
+      <div className={`relative ${isPast ? "h-64" : "h-72 sm:h-80"} [clip-path:polygon(0_10%,100%_0,100%_100%,0_100%)]`}>
+        <Image
+          src={p.photo}
+          alt={p.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className={`object-cover ${p.pos}`}
+        />
+      </div>
+
+      {!isPast && (
+        <div className="p-6 sm:p-8">
+          <dl className="grid grid-cols-2 gap-x-5 gap-y-4">
+            {details(edition).map((d) => (
+              <div key={d.k}>
+                <dt className="text-[0.8125rem] font-semibold sm:text-[0.875rem]">{d.k}</dt>
+                <dd className="text-[0.9375rem] font-extrabold leading-snug sm:text-[1.0625rem]">{d.v}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-8 flex flex-wrap gap-3">
+            <TrackedLink
+              href="#inscripcion"
+              event="ViewContent"
+              params={{ content_name: "Inscripcion", edition: edition.location }}
+              className="pill pill-tinta"
+            >
+              Qué incluye la inscripción →
+            </TrackedLink>
+            <a href="#programa" className="pill pill-linea">
+              Programa día por día
+            </a>
+          </p>
+        </div>
+      )}
+    </article>
   );
 }
 
 export default function UpcomingEditionsSection({ upcoming, past }: UpcomingEditionsSectionProps) {
   return (
-    <section id="ediciones" className="px-4 pt-20 sm:px-7 sm:pt-48">
-      <h2 className="display text-head" data-reveal>
-        <span className="block lg:pl-[3vw]">Dos escenarios,</span>
-        <span className="block">cuatro días cada uno</span>
+    <section id="ediciones" className="px-4 pb-24 pt-24 sm:px-7 sm:pb-32 sm:pt-32">
+      <h2 className="display text-[clamp(3.25rem,8vw,8rem)]" data-reveal>
+        <span className="block">Dos escenarios</span>
+        <span className="block text-bordo">en 2026</span>
       </h2>
 
-      <div className="mt-14 grid gap-12 sm:mt-24 lg:grid-cols-12 lg:gap-x-6">
-        <figure className="relative aspect-[4/5] w-[60%] justify-self-end overflow-clip lg:col-span-4 lg:w-full lg:self-end max-lg:order-last" data-reveal>
-          <Image
-            src="/images/gallery/imagen-3.jpeg"
-            alt="Ballet de adultos mayores con polleras celestes y blancas, frente al público"
-            fill
-            sizes="(max-width: 1024px) 60vw, 30vw"
-            className="object-cover object-[46%_50%]"
-          />
-        </figure>
-
-        <div className="grid content-start gap-14 lg:col-span-5 lg:col-start-8">
-          {upcoming.map((edition) => (
-            <UpcomingTable key={edition.id} edition={edition} />
-          ))}
-          {past.map((edition) => (
-            <PastTable key={edition.id} edition={edition} />
-          ))}
-        </div>
+      <div className="mt-12 grid items-start gap-5 lg:grid-cols-[1.25fr_1fr]">
+        {upcoming.map((edition) => (
+          <Poster key={edition.id} edition={edition} isPast={false} />
+        ))}
+        {past.map((edition) => (
+          <Poster key={edition.id} edition={edition} isPast />
+        ))}
       </div>
     </section>
   );

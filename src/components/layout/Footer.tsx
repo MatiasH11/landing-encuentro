@@ -1,5 +1,5 @@
 import { CONTACTS, NAV_LINKS } from "@/constants/event-data";
-import { EVENT_NAME, ORGANIZED_BY } from "@/constants/history-data";
+import { EVENT_NAME, EVENT_TAGLINE } from "@/constants/history-data";
 import TrackedLink from "@/components/ui/TrackedLink";
 
 export default function Footer() {
@@ -7,37 +7,35 @@ export default function Footer() {
   const main = CONTACTS[0];
 
   return (
-    <footer className="flex min-h-[70svh] flex-col bg-accent px-4 pb-28 pt-10 text-accent-ink sm:px-7 sm:pb-8">
-      <div className="grid gap-6 text-small sm:grid-cols-12 sm:gap-x-6">
-        <p className="font-semibold sm:col-span-4">{EVENT_NAME}</p>
-        <p className="sm:col-span-4">Organizan {ORGANIZED_BY.join(" y ")}.</p>
-        <a href="#inicio" className="link font-semibold sm:col-span-4 sm:justify-self-end">
-          Volver arriba ↑
-        </a>
-      </div>
-
-      <div className="mt-auto pt-24">
-        <p className="text-lead">Para inscribir a tu ballet, llamá o escribí a {main.name}:</p>
+    <footer className="text-crema">
+      <div className="guarda" aria-hidden />
+      <div className="grano bg-bordo px-4 pb-28 pt-16 sm:px-7 sm:pb-10 sm:pt-24">
+        <p className="display text-[clamp(2.75rem,6vw,5.5rem)]">
+          ¿Tu ballet <span className="text-amarillo">se suma?</span>
+        </p>
+        <p className="mt-8 text-[1.125rem] font-semibold">Llamá o escribí a {main.name}:</p>
         <TrackedLink
           href={`tel:${main.phone.replace(/\s/g, "")}`}
           event="Contact"
           params={{ content_name: "Telefono", placement: "footer" }}
-          className="display tabular mt-4 block whitespace-nowrap text-[9vw] leading-[0.95] sm:text-display"
+          className="display tabular mt-2 block whitespace-nowrap text-[11.5vw] text-amarillo hover:text-crema sm:text-[clamp(4rem,9vw,9rem)]"
         >
           {main.phone}
         </TrackedLink>
-      </div>
 
-      <div className="mt-12 grid gap-3 text-small sm:grid-cols-3">
-        <nav aria-label="Secciones" className="flex flex-wrap gap-x-5">
-          {NAV_LINKS.filter((l) => l.href !== "#inicio").map((link) => (
-            <a key={link.href} href={link.href} className="link inline-block py-2">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <p className="sm:text-center">Fotos: ediciones anteriores del Encuentro</p>
-        <p className="sm:text-right">Paso de la Patria · Mar del Plata · © {year}</p>
+        <div className="mt-16 grid gap-6 text-[0.9375rem] sm:grid-cols-3">
+          <nav aria-label="Secciones" className="flex flex-wrap gap-x-5">
+            {NAV_LINKS.filter((l) => l.href !== "#inicio").map((link) => (
+              <a key={link.href} href={link.href} className="inline-block py-2 font-semibold hover:text-amarillo">
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <p className="sm:text-center">{EVENT_TAGLINE}</p>
+          <p className="sm:text-right">
+            © {year} {EVENT_NAME}
+          </p>
+        </div>
       </div>
     </footer>
   );

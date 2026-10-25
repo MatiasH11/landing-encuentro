@@ -1,112 +1,128 @@
 import Image from "next/image";
-import {
-  HISTORY_TEXT,
-  OBJECTIVES,
-  ORGANIZED_BY,
-  STATS,
-} from "@/constants/history-data";
+import { HISTORY_TEXT, OBJECTIVES, STATS } from "@/constants/history-data";
+
+// Fotos del collage: cada una con su sombra de color y su etiqueta
+const COLLAGE = [
+  {
+    src: "/images/gallery/imagen-2.jpeg",
+    alt: "Parejas de distintas edades bailando con vestimenta tradicional gaucha",
+    label: "Danzas gauchas",
+    sombra: "var(--color-amarillo)",
+    className: "left-0 top-[6%] w-[58%] aspect-[4/5] -rotate-3 z-10",
+    pos: "object-[34%_55%]",
+    f: "0s",
+  },
+  {
+    src: "/images/gallery/imagen-7.jpeg",
+    alt: "Niños bailando danzas folclóricas en el escenario",
+    label: "Los más chicos",
+    sombra: "var(--color-magenta)",
+    className: "right-0 top-0 w-[46%] aspect-square rotate-[5deg] z-20",
+    pos: "object-[50%_45%]",
+    f: "1.2s",
+  },
+  {
+    src: "/images/gallery/imagen-5.jpeg",
+    alt: "Percusionistas tocando bombos legüeros en el escenario",
+    label: "Bombos legüeros",
+    sombra: "var(--color-turquesa)",
+    className: "right-[4%] bottom-0 w-[54%] aspect-[4/3] -rotate-2 z-30",
+    pos: "object-[45%_55%]",
+    f: "0.6s",
+  },
+];
+
+const STAT_COLORS = [
+  "bg-bordo text-crema",
+  "bg-turquesa text-tinta",
+  "bg-amarillo text-tinta",
+  "bg-magenta text-tinta",
+];
 
 export default function HistorySection() {
   return (
-    <section id="historia" className="px-4 sm:px-7">
-      {/* La foto de la tira del lema, abierta a todo el ancho */}
-      <figure className="relative -mx-4 h-[56svh] overflow-clip bg-night sm:-mx-7 sm:h-[86svh]">
-        <Image
-          src="/images/gallery/imagen-1.jpeg"
-          alt="Delegación con trajes bordó girando las polleras en el escenario del Encuentro"
-          fill
-          sizes="100vw"
-          className="drift object-cover object-[50%_60%]"
-        />
-      </figure>
+    <section id="historia" className="px-4 py-24 sm:px-7 sm:py-32">
+      <h2 className="display text-[clamp(3.5rem,10vw,10rem)]" data-reveal>
+        <span className="block text-bordo">19 ediciones</span>
+        <span className="block">desde 2010</span>
+      </h2>
 
-      {/* Historia: un párrafo grande con la foto como letra capital */}
-      <div className="mt-20 grid gap-y-10 sm:mt-40 lg:grid-cols-12 lg:gap-x-6">
-        <h2 className="display text-head lg:col-span-12" data-reveal>
-          {HISTORY_TEXT.headline}
-        </h2>
-
-        <dl className="grid grid-cols-3 gap-4 text-small max-lg:order-last lg:col-span-2 lg:grid-cols-1 lg:content-start lg:gap-6" data-reveal>
-          <div>
-            <dt className="text-muted">Nació en</dt>
-            <dd className="font-semibold">Paso de la Patria, Corrientes</dd>
-          </div>
-          <div>
-            <dt className="text-muted">Desde</dt>
-            <dd className="font-semibold">2010</dd>
-          </div>
-          <div>
-            <dt className="text-muted">Organizan</dt>
-            <dd className="font-semibold">{ORGANIZED_BY.join(" y ")}</dd>
-          </div>
-        </dl>
-
-        <div className="text-lead lg:col-span-10" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
-          <p className="max-w-[46ch]">
-            <span className="relative float-left mr-[0.5em] mt-[0.15em] block size-[4.8em] overflow-clip sm:size-[3.7em]">
-              <Image
-                src="/images/gallery/imagen-7.jpeg"
-                alt="Niños de una delegación bailando con vestimenta tradicional"
-                fill
-                sizes="(max-width: 640px) 110px, 140px"
-                className="object-cover object-[35%_50%]"
-              />
-            </span>
-            {HISTORY_TEXT.body}
-          </p>
-          <p className="mt-[1.2em] max-w-[46ch] text-muted">{HISTORY_TEXT.mission}</p>
-        </div>
-      </div>
-
-      {/* Cifras alineadas como un libro de cuentas */}
-      <div className="mt-20 grid gap-12 sm:mt-40 lg:grid-cols-12 lg:gap-x-6">
-        <div className="lg:col-span-5 lg:self-center" data-reveal>
-          <h3 className="display text-head">
-            <span className="block text-muted">Lo que reúne</span>
-            <span className="block">cada Encuentro</span>
-          </h3>
-          <p className="mt-8 max-w-[44ch]">{HISTORY_TEXT.impact}</p>
-          <p className="mt-4 max-w-[44ch]">{HISTORY_TEXT.credibility}</p>
+      <div className="mt-14 grid items-center gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="space-y-5 text-[1.1875rem] lg:col-span-5" data-reveal>
+          <p className="text-[1.375rem] font-semibold leading-snug">{HISTORY_TEXT.body}</p>
+          <p>{HISTORY_TEXT.mission}</p>
+          <p>{HISTORY_TEXT.impact}</p>
         </div>
 
-        {/* Una sola grilla: todas las cifras comparten el borde derecho y las leyendas el izquierdo */}
-        <dl className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-6 gap-y-5 lg:col-span-6 lg:col-start-7">
-          {STATS.map((stat, i) => (
-            <div key={stat.label} className="contents">
-              <dt
-                className="col-start-2 max-w-[22ch]"
-                style={{ gridRow: i + 1 }}
-                data-reveal
+        <div className="relative h-[min(118vw,620px)] lg:col-span-7">
+          {COLLAGE.map((photo, i) => (
+            <figure
+              key={photo.src}
+              className={`absolute ${photo.className}`}
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <div
+                className="copia flota h-full w-full"
+                style={{ "--sombra": photo.sombra, "--f": photo.f } as React.CSSProperties}
               >
-                {stat.label}
-              </dt>
-              <dd
-                className="display tabular col-start-1 text-right text-[15vw] leading-none sm:text-display"
-                style={{ gridRow: i + 1, "--i": i } as React.CSSProperties}
-                data-reveal
-              >
-                {stat.value}
-              </dd>
-            </div>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 1024px) 60vw, 34vw"
+                  className={`object-cover ${photo.pos}`}
+                />
+                <figcaption className="absolute bottom-3 left-3 rounded-full bg-crema px-3 py-1 text-[0.875rem] font-extrabold text-tinta">
+                  {photo.label}
+                </figcaption>
+              </div>
+            </figure>
           ))}
-        </dl>
+        </div>
       </div>
+
+      {/* Cifras en bloques de color */}
+      <dl className="mt-24 grid grid-cols-2 gap-3 sm:mt-32 sm:gap-4 lg:grid-cols-4">
+        {STATS.map((stat, i) => (
+          <div
+            key={stat.label}
+            className={`flex min-h-44 flex-col justify-between rounded-[22px] p-5 sm:min-h-56 sm:p-7 ${STAT_COLORS[i % STAT_COLORS.length]}`}
+            data-reveal
+            style={{ "--i": i } as React.CSSProperties}
+          >
+            <dt className="order-2 text-[1rem] font-semibold leading-tight sm:text-[1.125rem]">
+              {stat.label}
+            </dt>
+            <dd className="display order-1 text-[clamp(3.5rem,7vw,6.5rem)]">{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
 
       {/* Para qué existe */}
-      <div className="mt-20 grid gap-10 sm:mt-40 lg:grid-cols-12 lg:gap-x-6">
-        <h3 className="display text-head lg:col-span-5" data-reveal>
-          Para qué existe el Encuentro
+      <div className="mt-24 grid gap-10 sm:mt-32 lg:grid-cols-12 lg:gap-8">
+        <h3 className="display text-[clamp(2.75rem,6vw,5.5rem)] lg:col-span-5" data-reveal>
+          Para qué existe <span className="text-rojo">el Encuentro</span>
         </h3>
-        <ul className="grid gap-x-10 gap-y-4 text-body sm:grid-cols-2 sm:gap-y-6 sm:text-lead lg:col-span-7">
+        <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7">
           {OBJECTIVES.map((objective, i) => (
-            <li key={objective.slice(0, 30)} data-reveal style={{ "--i": i } as React.CSSProperties}>
+            <li
+              key={objective.slice(0, 30)}
+              className="flex gap-4 text-[1.125rem]"
+              data-reveal
+              style={{ "--i": i } as React.CSSProperties}
+            >
+              <span
+                aria-hidden
+                className={`mt-1.5 size-4 shrink-0 rotate-45 ${["bg-bordo", "bg-turquesa", "bg-amarillo", "bg-magenta"][i % 4]}`}
+              />
               {objective}
             </li>
           ))}
+          <li className="text-[1.0625rem] text-tinta-suave sm:col-span-2" data-reveal>
+            {HISTORY_TEXT.trust}
+          </li>
         </ul>
-        <p className="max-w-[60ch] lg:col-span-7 lg:col-start-6" data-reveal>
-          {HISTORY_TEXT.trust}
-        </p>
       </div>
     </section>
   );
