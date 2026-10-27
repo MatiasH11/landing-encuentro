@@ -27,15 +27,16 @@ export default function ComingSoonSection({ ediciones }: { ediciones: AnnouncedE
           <span className="tag -rotate-2 bg-rojo text-crema">fechas 2027</span>
         </h2>
 
-        {/* Sello de afiche: anillo de texto alrededor del año */}
+        {/* Sello de afiche: anillo de texto alrededor del año. En el teléfono va arriba del título, a la derecha,
+            pisando apenas la esquina como un sello estampado; desde tablet, al costado */}
         <div
           aria-hidden
-          className="grid size-40 shrink-0 rotate-[10deg] place-items-center rounded-full border-4 border-dashed border-bordo text-center text-bordo sm:size-48"
+          className="order-first -mb-10 ml-auto grid size-28 shrink-0 rotate-[10deg] place-items-center rounded-full border-4 border-dashed border-bordo text-center text-bordo sm:order-none sm:mb-0 sm:size-48"
         >
-          <div className="px-4">
-            <p className="display text-[1rem] leading-none sm:text-[1.1875rem]">Cupos limitados</p>
-            <p className="display text-[3rem] leading-none sm:text-[3.75rem]">2027</p>
-            <p className="text-[0.75rem] font-extrabold uppercase leading-tight sm:text-[0.8125rem]">Reservá tu lugar</p>
+          <div className="px-3 sm:px-4">
+            <p className="display text-[0.8125rem] leading-none sm:text-[1.1875rem]">Cupos limitados</p>
+            <p className="display text-[2.25rem] leading-none sm:text-[3.75rem]">2027</p>
+            <p className="text-[0.625rem] font-extrabold uppercase leading-tight sm:text-[0.8125rem]">Reservá tu lugar</p>
           </div>
         </div>
       </div>
