@@ -2,6 +2,7 @@ import type { GalleryItem } from "@/types";
 
 // Gallery items from past editions.
 // To add new photos/videos: add entries here and place files in public/images/gallery/
+// Las de 2026 van en public/images/gallery/2026/ como WebP de 2400 px de ancho (los originales no se suben).
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "video-001",
@@ -11,6 +12,46 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: "Video del festival folclórico",
     year: 2024,
     src: "", // Required by GalleryItem type based on src/types/index.ts
+  },
+  {
+    id: "photo-2026-arcos",
+    type: "photo",
+    src: "/images/gallery/2026/arcos-de-flores.webp",
+    alt: "Bailarinas con vestidos blancos y polleras de volados naranja, verde y amarillo levantan arcos de flores mientras bailan",
+    caption: "Arcos de flores — Encuentro 2026",
+    year: 2026,
+  },
+  {
+    id: "photo-2026-bombo",
+    type: "photo",
+    src: "/images/gallery/2026/bombo-y-polleras.webp",
+    alt: "Un bailarín mayor con boina y bombo baila rodeado de bailarinas con vestidos blancos y polleras de volados",
+    caption: "Bombo y polleras — Encuentro 2026",
+    year: 2026,
+  },
+  {
+    id: "photo-2026-pareja",
+    type: "photo",
+    src: "/images/gallery/2026/pareja-de-baile.webp",
+    alt: "Pareja vestida de negro baila en el escenario frente a los banners coloridos del Encuentro Latinoamericano",
+    caption: "Pareja en escena — Encuentro 2026",
+    year: 2026,
+  },
+  {
+    id: "photo-2026-saludo",
+    type: "photo",
+    src: "/images/gallery/2026/saludo-final-paso-de-la-patria.webp",
+    alt: "Un ballet de bailarinas de negro saluda tomado de la mano en el escenario de Paso de la Patria, con la bandera argentina al frente",
+    caption: "Saludo final — Paso de la Patria 2026",
+    year: 2026,
+  },
+  {
+    id: "photo-2026-reconocimiento",
+    type: "photo",
+    src: "/images/gallery/2026/reconocimiento-en-escena.webp",
+    alt: "Un organizador abraza a integrantes de una delegación andina mientras reciben su certificado en el escenario",
+    caption: "Reconocimiento — Encuentro 2026",
+    year: 2026,
   },
   {
     id: "photo-001",

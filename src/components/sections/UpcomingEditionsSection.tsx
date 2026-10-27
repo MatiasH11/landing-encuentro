@@ -1,140 +1,125 @@
-"use client";
-
 import Image from "next/image";
-import { EDITIONS_2026 } from "@/constants/event-data";
-import { trackEvent } from "@/lib/pixel";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { CalendarDays, MapPin, Theater, Users, AlertCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import type { EventEdition } from "@/types";
+import TrackedLink from "@/components/ui/TrackedLink";
+import DaysLeft from "@/components/ui/DaysLeft";
+import EntraDesde from "@/components/motion/EntraDesde";
 
-const EDITION_IMAGES = [
-  "/images/gallery/imagen-3.jpeg",
-  "/images/gallery/imagen-6.jpeg",
-];
+interface UpcomingEditionsSectionProps {
+  upcoming: EventEdition[];
+  past: EventEdition[];
+}
 
-export default function UpcomingEditionsSection() {
+// Cada edición tiene su afiche: color, foto y encuadre propios
+const POSTER: Record<string, { bg: string; photo: string; pos: string; alt: string }> = {
+  "mdp-2026": {
+    bg: "bg-turquesa text-tinta",
+    photo: "/images/gallery/imagen-4.jpeg",
+    pos: "object-[45%_62%]",
+    alt: "Ballet con polleras celestes bailando en el escenario",
+  },
+  "paso-2026": {
+    bg: "bg-bordo text-crema",
+    photo: "/images/gallery/2026/saludo-final-paso-de-la-patria.webp",
+    pos: "object-[50%_68%]",
+    alt: "Un ballet saluda en el escenario del Encuentro 2026 en Paso de la Patria",
+  },
+};
+const FALLBACK = POSTER["mdp-2026"];
+
+function details(edition: EventEdition) {
+  return [
+    { k: "Delegaciones", v: `Hasta ${edition.maxBallets} ballets y ${edition.maxMusicGroups} grupos musicales` },
+    { k: "Integrantes", v: `Mínimo ${edition.minMembersPerBallet} por ballet` },
+    { k: "Actuación", v: `Hasta ${edition.maxPerformanceMinutes} minutos por ballet` },
+    { k: "Noches", v: `${edition.guaranteedNights} noches garantizadas por grupo` },
+    ...(edition.freeAdmission ? [{ k: "Público", v: "Entrada libre y gratuita" }] : []),
+    { k: "Pagos", v: `Hasta el ${edition.paymentDeadline}` },
+  ];
+}
+
+function Poster({ edition, isPast }: { edition: EventEdition; isPast: boolean }) {
+  const p = POSTER[edition.id] ?? FALLBACK;
   return (
-    <section id="ediciones" className="relative overflow-hidden bg-cream py-24 md:py-32">
-      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-tierra/40 to-transparent" />
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section header */}
-        <motion.div
-          className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+    <article className={`doblez relative flex flex-col overflow-hidden rounded-[28px] ${p.bg}`}>
+      <div className="p-6 sm:p-8">
+        <p className="display text-[1.375rem]">{edition.editionNumber}º Encuentro</p>
+        <h3 className="display mt-1 text-[clamp(3.25rem,6vw,5.75rem)]">{edition.location}</h3>
+        <p className="mt-3 text-[1.0625rem] font-extrabold">
+          {edition.dateRange} · {edition.venue}
+        </p>
+        <span
+          className={`sticker absolute right-5 top-6 text-[0.9375rem] sm:right-8 sm:top-8 ${
+            isPast ? "bg-crema text-tinta" : "bg-amarillo text-tinta"
+          }`}
         >
-          <p className="font-heading text-xl italic text-tierra">Próximamente</p>
-          <h2 className="mt-1 font-heading text-3xl font-bold text-navy md:text-5xl">
-            Ediciones 2026
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Dos encuentros, dos ciudades, una misma pasión por el folclore
-          </p>
-        </motion.div>
+          {isPast ? (
+            "Realizado"
+          ) : (
+            <DaysLeft startDate={edition.startDate} endDate={edition.endDate} fallback="Próximo" />
+          )}
+        </span>
+      </div>
 
-        {/* Edition cards */}
-        <motion.div
-          className="mt-16 grid gap-8 lg:grid-cols-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.15
-              }
-            }
-          }}
-        >
-          {EDITIONS_2026.map((edition, i) => (
-            <motion.div
-              key={edition.id}
-              className="group relative overflow-hidden rounded-2xl border border-border/30 bg-white shadow-lg transition-all"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.15)"
-              }}
-              transition={{ duration: 0.3 }}
+      <div className={`relative ${isPast ? "h-64" : "h-72 sm:h-80"} [clip-path:polygon(0_10%,100%_0,100%_100%,0_100%)]`}>
+        <Image
+          src={p.photo}
+          alt={p.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className={`object-cover ${p.pos}`}
+        />
+      </div>
+
+      {!isPast && (
+        <div className="p-6 sm:p-8">
+          <dl className="grid grid-cols-2 gap-x-5 gap-y-4">
+            {details(edition).map((d) => (
+              <div key={d.k}>
+                <dt className="text-[0.8125rem] font-semibold sm:text-[0.875rem]">{d.k}</dt>
+                <dd className="text-[0.9375rem] font-extrabold leading-snug sm:text-[1.0625rem]">{d.v}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-8 flex flex-wrap gap-3">
+            <TrackedLink
+              href="#inscripcion"
+              event="ViewContent"
+              params={{ content_name: "Inscripcion", edition: edition.location }}
+              className="pill pill-tinta"
             >
-              {/* Image header */}
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={EDITION_IMAGES[i]}
-                  alt={`${edition.title} en ${edition.location}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-tierra-dark/90 via-tierra/40 to-transparent"
-                  initial={{ opacity: 0.8 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="absolute bottom-5 left-6 right-6">
-                  <Badge className="mb-3 rounded-full bg-tierra/95 px-4 py-1.5 text-sm font-semibold text-white shadow-lg">
-                    {edition.editionNumber}º Edición
-                  </Badge>
-                  <h3 className="font-heading text-3xl font-bold text-white drop-shadow-lg">
-                    {edition.location}
-                  </h3>
-                </div>
-              </div>
+              Qué incluye la inscripción →
+            </TrackedLink>
+            <a href="#programa" className="pill pill-linea">
+              Programa día por día
+            </a>
+          </p>
+        </div>
+      )}
+    </article>
+  );
+}
 
-              {/* Details */}
-              <div className="p-7">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 rounded-lg bg-tierra/5 p-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-tierra/10">
-                      <CalendarDays className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span className="font-semibold text-foreground">{edition.dateRange}</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-base text-muted-foreground">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <Theater className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span>{edition.venue}</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-base text-muted-foreground">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <MapPin className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span>{edition.location}, {edition.province}</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-base text-muted-foreground">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
-                      <Users className="h-5 w-5 text-tierra" />
-                    </div>
-                    <span>Hasta {edition.maxBallets} delegaciones</span>
-                  </div>
-                  <div className="flex items-center gap-4 rounded-lg bg-warning-bg p-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-warning-muted">
-                      <AlertCircle className="h-5 w-5 text-warning" />
-                    </div>
-                    <span className="font-semibold text-warning-text">Cupos limitados</span>
-                  </div>
-                </div>
+export default function UpcomingEditionsSection({ upcoming, past }: UpcomingEditionsSectionProps) {
+  return (
+    <section id="ediciones" className="papel px-4 pb-32 pt-16 sm:px-7 sm:pb-40 sm:pt-20">
+      <h2 className="display tinta flex flex-wrap items-end gap-x-5 gap-y-2 text-[clamp(3.25rem,7vw,7rem)]">
+        <span>Dos escenarios</span>
+        <span className="tag -rotate-2 bg-bordo text-crema">en 2026</span>
+      </h2>
 
-                <div className="mt-6 flex gap-3">
-                  <Button asChild className="flex-1 rounded-full bg-tierra hover:bg-tierra-dark">
-                    <a href="#programa">Ver Programa</a>
-                  </Button>
-                  <Button asChild variant="outline" className="flex-1 rounded-full border-2 border-tierra/30 text-tierra hover:bg-tierra/5 hover:border-tierra">
-                    <a href="#inscripcion" onClick={() => trackEvent('ViewContent', { content_name: 'Inscripcion', edition: edition.location })}>Inscribirse</a>
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+      <div className="mt-12 grid items-start gap-5 lg:grid-cols-[1.25fr_1fr]">
+        {/* Cada afiche entra desde su costado y queda sostenido con una cinta */}
+        {[...upcoming.map((e) => ({ e, isPast: false })), ...past.map((e) => ({ e, isPast: true }))].map(
+          ({ e, isPast }, i) => (
+            <EntraDesde
+              key={e.id}
+              lado={i % 2 ? 1 : -1}
+              className="cinta relative"
+            >
+              <Poster edition={e} isPast={isPast} />
+            </EntraDesde>
+          )
+        )}
       </div>
     </section>
   );

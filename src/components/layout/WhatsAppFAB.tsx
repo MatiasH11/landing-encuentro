@@ -1,128 +1,135 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { CONTACTS } from "@/constants/event-data";
+import { whatsappLink } from "@/lib/editions";
+import TrackedLink from "@/components/ui/TrackedLink";
 
-export default function WhatsAppFAB() {
+const GLOBITO_VISTO = "fab-globito-cerrado";
+
+/**
+ * Botón flotante de WhatsApp con el menú de contactos.
+ * En el teléfono se apoya sobre la barra fija de abajo para no taparla.
+ */
+export default function WhatsAppFAB({ message }: { message: string }) {
   const [open, setOpen] = useState(false);
-  const [showBubble, setShowBubble] = useState(false);
+  const [globito, setGlobito] = useState(false);
 
+  // El globito aparece a los 3 segundos, salvo que ya lo hayan cerrado en esta visita.
+  // Se va solo a los 12 segundos o apenas la persona empieza a recorrer la página, para no tapar texto.
   useEffect(() => {
-    const t = setTimeout(() => setShowBubble(true), 3000);
-    return () => clearTimeout(t);
+    let cerrado = false;
+    try {
+      cerrado = sessionStorage.getItem(GLOBITO_VISTO) === "1";
+    } catch {}
+    if (cerrado) return;
+    const mostrar = setTimeout(() => setGlobito(true), 3000);
+    const ocultar = setTimeout(() => setGlobito(false), 15000);
+    const onScroll = () => {
+      if (window.scrollY > 400) setGlobito(false);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      clearTimeout(mostrar);
+      clearTimeout(ocultar);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
-  const handleToggle = () => {
+  // Mientras la galería ocupa el centro de la pantalla el botón se aparta, para no tapar fotos.
+  // El WhatsApp sigue a mano en el header (desktop) y en la barra fija (teléfono).
+  const [enGaleria, setEnGaleria] = useState(false);
+  useEffect(() => {
+    const galeria = document.getElementById("galeria");
+    if (!galeria || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([e]) => setEnGaleria(e.isIntersecting), {
+      rootMargin: "-35% 0px -35% 0px",
+    });
+    io.observe(galeria);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const cerrarGlobito = () => {
+    setGlobito(false);
+    try {
+      sessionStorage.setItem(GLOBITO_VISTO, "1");
+    } catch {}
+  };
+
+  const toggle = () => {
     setOpen((v) => !v);
-    setShowBubble(false);
+    cerrarGlobito();
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-3">
-
-      {/* Mensaje flotante que aparece solo */}
-      <AnimatePresence>
-        {showBubble && !open && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, y: 8 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.85, y: 8 }}
-            transition={{ type: "spring", stiffness: 380, damping: 26 }}
-            className="relative mr-1 flex items-center gap-3 rounded-2xl rounded-br-sm bg-white px-4 py-3 shadow-2xl ring-1 ring-black/5"
+    <div
+      className={`fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] right-4 z-50 flex flex-col items-end gap-3 transition-[opacity,translate] duration-300 sm:bottom-6 sm:right-6 ${
+        enGaleria && !open ? "pointer-events-none translate-y-6 opacity-0" : ""
+      }`}
+      inert={enGaleria && !open}
+    >
+      {/* En el teléfono el globito va al costado del botón (ocupa una sola franja); en desktop, arriba */}
+      {globito && !open && (
+        <div data-menu className="sticker absolute bottom-2 right-[4.25rem] flex items-center gap-1 whitespace-nowrap bg-crema py-2 pl-4 pr-2 text-[0.9375rem] text-tinta shadow-[0_5px_0_var(--color-tinta)] sm:bottom-[5.25rem] sm:right-0">
+          <button type="button" onClick={toggle} className="font-extrabold">
+            ¿Consultas?<span className="hidden sm:inline"> Escribinos</span>
+          </button>
+          <button
+            type="button"
+            onClick={cerrarGlobito}
+            className="grid size-7 place-items-center rounded-full hover:bg-crema-oscuro"
+            aria-label="Cerrar aviso"
           >
-            <span className="text-sm font-semibold text-foreground">
-              ¿Tenés consultas? ¡Escribinos! 👋
-            </span>
-            <button
-              onClick={() => setShowBubble(false)}
-              className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Cerrar"
-            >
-              <X className="h-3.5 w-3.5" />
-            </button>
-            {/* Triangulito apuntando al FAB */}
-            <span className="absolute -bottom-[7px] right-5 h-3.5 w-3.5 rotate-45 rounded-br-sm bg-white ring-1 ring-black/5" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Tarjetas de contacto */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="flex flex-col gap-2"
-            initial={{ opacity: 0, y: 12, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.95 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-          >
-            {CONTACTS.map((contact, i) => (
-              <motion.a
-                key={contact.name}
-                href={contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: 14 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.07, duration: 0.16 }}
-                className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl ring-1 ring-black/5 transition-transform hover:scale-[1.03]"
-              >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-whatsapp text-white">
-                  <FaWhatsapp className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Escribir a</p>
-                  <p className="whitespace-nowrap text-sm font-semibold text-foreground">
-                    {contact.name}
-                  </p>
-                </div>
-              </motion.a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Backdrop para cerrar al hacer click afuera */}
-      {open && (
-        <div
-          className="fixed inset-0 z-[-1]"
-          onClick={() => setOpen(false)}
-          aria-hidden
-        />
+            <X className="size-4" aria-hidden />
+          </button>
+        </div>
       )}
 
-      {/* Anillos de pulso + FAB principal */}
-      <div className="relative">
-        <motion.span
-          className="absolute inset-0 rounded-full bg-whatsapp"
-          animate={{ scale: [1, 1.7], opacity: [0.5, 0] }}
-          transition={{ duration: 1.9, repeat: Infinity, ease: "easeOut" }}
-          aria-hidden
-        />
-        <motion.span
-          className="absolute inset-0 rounded-full bg-whatsapp"
-          animate={{ scale: [1, 1.35], opacity: [0.35, 0] }}
-          transition={{ duration: 1.9, repeat: Infinity, ease: "easeOut", delay: 0.45 }}
-          aria-hidden
-        />
+      {open && (
+        <>
+          {/* Clic afuera cierra el menú */}
+          <div className="fixed inset-0 -z-10" onClick={() => setOpen(false)} aria-hidden />
+          <ul id="fab-contactos" data-menu className="flex flex-col items-end gap-2">
+            {CONTACTS.map((contact) => (
+              <li key={contact.name}>
+                <TrackedLink
+                  href={whatsappLink(contact, message)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  event="Contact"
+                  params={{ content_name: "WhatsApp", placement: "flotante" }}
+                  className="pill bg-crema shadow-[0_5px_0_var(--color-tinta)]"
+                >
+                  <FaWhatsapp className="size-5" aria-hidden />
+                  Escribir a {contact.name.split(" ")[0]}
+                </TrackedLink>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
-        <motion.button
-          onClick={handleToggle}
-          className="relative flex h-16 w-16 items-center justify-center rounded-full bg-whatsapp text-white shadow-2xl hover:bg-whatsapp-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2"
-          whileTap={{ scale: 0.88 }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 340, damping: 20, delay: 0.6 }}
-          aria-label={open ? "Cerrar opciones de WhatsApp" : "Contactar por WhatsApp"}
+      <div className="relative">
+        {!open && <span aria-hidden className="fab-pulso absolute inset-0 rounded-full bg-amarillo" />}
+        <button
+          type="button"
+          onClick={toggle}
           aria-expanded={open}
+          aria-controls="fab-contactos"
+          aria-label={open ? "Cerrar contactos de WhatsApp" : "Escribir por WhatsApp"}
+          className="relative grid size-14 place-items-center rounded-full bg-amarillo text-tinta shadow-[0_5px_0_var(--color-tinta)] transition-transform duration-150 active:scale-95 sm:size-16"
         >
-          <motion.div animate={{ rotate: open ? 90 : 0 }} transition={{ duration: 0.2 }}>
-            {open ? <X className="h-7 w-7" /> : <FaWhatsapp className="h-7 w-7" />}
-          </motion.div>
-        </motion.button>
+          {open ? <X className="size-7" aria-hidden /> : <FaWhatsapp className="size-7 sm:size-8" aria-hidden />}
+        </button>
       </div>
     </div>
   );

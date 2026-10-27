@@ -4,32 +4,22 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Dirección "afiche de festival folclórico" (ver CLAUDE.md).
+ * Paleta sacada de las fotos: trajes bordó y rojos, polleras turquesa, banners amarillos y magenta.
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-playfair);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --font-sans: var(--font-bricolage);
+  --font-display: var(--font-anton);
+  --font-heading: var(--font-anton);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
@@ -42,60 +32,44 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
 
-  /* Brand palette — Celeste, black & white (matching logo) */
-  --color-tierra: #5B9BD5;
-  --color-tierra-light: #89BDE3;
-  --color-tierra-dark: #2B5A83;
-  --color-tierra-deep: #0F1A24;
-  --color-celeste: #5B9BD5;
-  --color-celeste-light: #A3CCE9;
-  --color-celeste-dark: #3A7BB8;
-  --color-cream: #F2F6FA;
-  --color-cream-dark: #E1EAF2;
-  --color-warm-bg: #F7F9FC;
-  --color-slate: #3A3A3A;
-  --color-slate-light: #7A7A7A;
-  --color-navy: #1B3A57;
-  --color-oro: #C08B2A;
+  /* Paleta */
+  --color-bordo: #7a1c2c;
+  --color-bordo-oscuro: #5e1421;
+  --color-rojo: #e23b2e;
+  --color-turquesa: #2fc2bd;
+  --color-amarillo: #f7c531;
+  --color-amarillo-oscuro: #e5b11c;
+  --color-magenta: #d63384;
+  --color-crema: #fff4e4;
+  --color-crema-oscuro: #f6e6cc;
+  --color-tinta: #170d11;
+  --color-tinta-suave: #4a3a3f;
 
-  /* Third-party & semantic tokens */
-  --color-whatsapp: #25D366;
-  --color-whatsapp-dark: #128C7E;
-  --color-warning: #B45309;
-  --color-warning-bg: #FFFBEB;
-  --color-warning-muted: #FEF3C7;
-  --color-warning-text: #78350F;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: #F7F9FC;
-  --foreground: #111111;
-  --card: #FFFFFF;
-  --card-foreground: #111111;
-  --popover: #FFFFFF;
-  --popover-foreground: #111111;
-  --primary: #5B9BD5;
-  --primary-foreground: #FFFFFF;
-  --secondary: #E1EAF2;
-  --secondary-foreground: #2B5A83;
-  --muted: #E1EAF2;
-  --muted-foreground: #5A5A5A;
-  --accent: #5B9BD5;
-  --accent-foreground: #111111;
-  --destructive: #DC2626;
-  --border: #D8E2EC;
-  --input: #D8E2EC;
-  --ring: #5B9BD5;
-  --chart-1: #5B9BD5;
-  --chart-2: #3A7BB8;
-  --chart-3: #89BDE3;
-  --chart-4: #2B5A83;
-  --chart-5: #E1EAF2;
+  --radius: 1rem;
+  --background: #fff4e4;
+  --foreground: #170d11;
+  --card: #ffffff;
+  --card-foreground: #170d11;
+  --popover: #ffffff;
+  --popover-foreground: #170d11;
+  --primary: #7a1c2c;
+  --primary-foreground: #fff4e4;
+  --secondary: #f6e6cc;
+  --secondary-foreground: #170d11;
+  --muted: #f6e6cc;
+  --muted-foreground: #4a3a3f;
+  --accent: #f7c531;
+  --accent-foreground: #170d11;
+  --destructive: #b42318;
+  --border: #e8d5b5;
+  --input: #d9c3a0;
+  --ring: #7a1c2c;
 }
 
 @layer base {
@@ -103,44 +77,362 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-crema font-sans text-tinta;
+    font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+    line-height: 1.5;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-amarillo);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-amarillo);
+    color: var(--color-tinta);
   }
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
-
-/* Gentle float — replaces bounce for scroll indicators */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-.animate-float {
-  animation: float 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-/* Respect user motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+@media (max-width: 639px) {
   html {
-    scroll-behavior: auto;
+    /* La barra fija de abajo no tapa lo que se ancla */
+    scroll-padding-bottom: 5rem;
   }
 }
 
-.glass {
-  background: rgba(247, 249, 252, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* En la capa components, así las utilidades de Tailwind pueden pisarlas */
+@layer components {
+  /* Títulos de afiche: Anton en mayúsculas */
+  .display {
+    font-family: var(--font-anton);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+  }
+
+  /* Etiqueta de color detrás de una línea de título */
+  .tag {
+    display: inline-block;
+    padding: 0.07em 0.16em 0.02em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* Botón píldora */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    min-height: 48px;
+    padding: 0 1.5em;
+    border-radius: 999px;
+    font-weight: 800;
+    white-space: nowrap;
+    background: var(--color-amarillo);
+    color: var(--color-tinta);
+    transition:
+      transform 140ms var(--ease-out),
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+  .pill:active {
+    transform: scale(0.97);
+  }
+  .pill-bordo {
+    background: var(--color-bordo);
+    color: var(--color-crema);
+  }
+  .pill-tinta {
+    background: var(--color-tinta);
+    color: var(--color-crema);
+  }
+  .pill-linea {
+    background: transparent;
+    color: inherit;
+    box-shadow: inset 0 0 0 2px currentColor;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--color-tinta);
+    }
+    .pill-linea:hover {
+      box-shadow: inset 0 0 0 2px currentColor, 0 6px 0 currentColor;
+    }
+  }
+
+  /* Sticker inclinado */
+  .sticker {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 0.55em 1em;
+    font-weight: 800;
+    line-height: 1.1;
+    rotate: 5deg;
+  }
+
+  /* Foto con sombra de color plano, como una copia pegada en el afiche */
+  .copia {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 14px 14px 0 var(--sombra, var(--color-turquesa));
+  }
+
+  /* Cinta que corre: el contenido va dos veces y se desplaza la mitad */
+  .ticker {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: flex;
+    flex: none;
+    animation: ticker var(--ticker-dur, 40s) linear infinite;
+  }
+
+  /* Guarda textil de rombos */
+  .guarda {
+    height: 56px;
+    background-color: var(--color-bordo);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='56' viewBox='0 0 96 64'%3E%3Cpath d='M0 64 L24 40 L48 64Z M48 64 L72 40 L96 64Z' fill='%23f7c531'/%3E%3Cpath d='M0 0 L24 24 L48 0Z M48 0 L72 24 L96 0Z' fill='%232fc2bd'/%3E%3Cpath d='M48 14 L66 32 L48 50 L30 32Z' fill='%23fff4e4'/%3E%3Cpath d='M48 24 L56 32 L48 40 L40 32Z' fill='%23e23b2e'/%3E%3Cpath d='M0 14 L18 32 L0 50Z M96 14 L78 32 L96 50Z' fill='%23fff4e4'/%3E%3C/svg%3E");
+    background-size: 84px 56px;
+    animation: guarda 24s linear infinite;
+  }
+
+  .link {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 180ms ease;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
-.glass-dark {
-  background: rgba(15, 26, 36, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+/* ---------- Papel de afiche gastado ----------
+ * Siempre detrás del contenido (z-index -1 dentro de un contexto aislado): nunca queda encima del texto.
+ * Las texturas son tiles SVG chicos en data-URI; no hay imágenes pesadas.
+ */
+
+/* Grano de papel en las secciones oscuras: fibras finas y alguna mancha clara, en soft-light */
+.grano {
+  position: relative;
+  isolation: isolate;
+}
+.grano::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(ellipse 40% 30% at 18% 22%, rgb(255 244 228 / 0.5), transparent 70%),
+    radial-gradient(ellipse 35% 25% at 82% 70%, rgb(255 244 228 / 0.4), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.95 0 0 0 0 0.88 0 0 0 1.4 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Papel crema de afiche viejo: fibras, manchas amarillentas y pliegues tenues, en multiply */
+.papel {
+  position: relative;
+  isolation: isolate;
+}
+.papel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image:
+    /* pliegues: una línea vertical y una horizontal apenas marcadas */
+    linear-gradient(90deg, transparent calc(50% - 1px), rgb(122 90 60 / 0.08) 50%, transparent calc(50% + 1px)),
+    linear-gradient(180deg, transparent calc(46% - 1px), rgb(122 90 60 / 0.06) 46%, transparent calc(46% + 1px)),
+    /* manchas de humedad y amarillento en los bordes */
+    radial-gradient(ellipse 30% 22% at 12% 18%, rgb(214 170 96 / 0.18), transparent 70%),
+    radial-gradient(ellipse 26% 30% at 88% 82%, rgb(196 150 80 / 0.16), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgb(200 160 100 / 0.14), transparent 70%),
+    /* fibras del papel */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.04 .9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.9 -0.42'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.7 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Grano muy leve encima del video del hero, para emparejarlo con el papel del resto de la página.
+ * Más fuerte se lee como pixelado. */
+.video-tramado::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Tinta de serigrafía: bordes de letra irregulares. Solo en títulos que no se animan. */
+.tinta {
+  filter: url(#tinta);
+}
+/* Desregistro: la capa de color corrida unos píxeles, como afiche impreso a mano */
+.desregistro {
+  /* proporcional al tamaño de letra: unos 3 px en desktop, 2 px en el teléfono */
+  text-shadow: 0.028em 0.028em 0 var(--registro, var(--color-rojo));
+}
+
+/* Cinta de papel pegada arriba de una foto o tarjeta.
+ * El elemento tiene que estar posicionado (relative/absolute) y no recortar su contenido. */
+.cinta::after {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  top: -12px;
+  left: calc(50% - 42px);
+  width: 84px;
+  height: 26px;
+  rotate: var(--cinta-rot, -4deg);
+  background: rgb(246 230 204 / 0.82);
+  box-shadow: 0 1px 2px rgb(23 13 17 / 0.18);
+  /* puntas cortadas en zigzag, como cinta arrancada con la mano */
+  clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 88% 0, 92% 10%, 96% 0, 100% 8%, 100% 92%, 96% 100%, 92% 90%, 88% 100%, 12% 100%, 8% 90%, 4% 100%, 0 92%);
+}
+
+/* Esquina gastada: un doblez en la esquina de abajo a la derecha (el elemento tiene que estar posicionado) */
+.doblez::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 50%, rgb(23 13 17 / 0.22) 50%, rgb(246 230 204 / 0.9) 56%);
+  border-top-left-radius: 6px;
+}
+
+/* Galería en duotono: una capa de color con mix-blend color encima de la foto, que se va al pasar el mouse
+ * (desktop) o al entrar en pantalla (teléfono). Solo cambia la opacidad de la capa. */
+.duo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: color;
+  transition: opacity 600ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .duo,
+  .group:focus-visible .duo {
+    opacity: 0;
+  }
+}
+@media (hover: none) {
+  .is-in .duo {
+    opacity: 0;
+    transition-delay: 700ms;
+    transition-duration: 1200ms;
+  }
+}
+
+/* ---------- Movimiento: todo bajo no-preference; sin JS el contenido queda visible ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 700ms var(--ease-out) calc(var(--i, 0) * 80ms),
+      transform 900ms var(--ease-expo) calc(var(--i, 0) * 80ms),
+      rotate 200ms var(--ease-out);
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+  .js [data-load] {
+    animation: load-rise 600ms var(--ease-out) both;
+    animation-delay: var(--d, 450ms);
+  }
+  .zoom-lento {
+    animation: zoom-lento 18s var(--ease-out) both;
+  }
+  .flota {
+    animation: flota 7s ease-in-out infinite alternate;
+    animation-delay: var(--f, 0s);
+  }
+  [data-swap] > * {
+    animation: load-rise 450ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+  [data-menu] {
+    animation: menu-in 240ms var(--ease-out) both;
+  }
+  /* Pulso suave del botón flotante de WhatsApp */
+  .fab-pulso {
+    animation: fab-pulso 2.4s var(--ease-out) infinite;
+  }
+  /* Punto de novedad del menú (Próximamente) */
+  .punto-late {
+    animation: fab-pulso 1.8s var(--ease-out) infinite;
+  }
+}
+
+@keyframes fab-pulso {
+  from {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track,
+  .guarda {
+    animation: none;
+  }
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes guarda {
+  to {
+    background-position: 840px 0;
+  }
+}
+@keyframes load-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes zoom-lento {
+  from {
+    transform: scale(1.12);
+  }
+}
+@keyframes flota {
+  to {
+    transform: translateY(-10px);
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }

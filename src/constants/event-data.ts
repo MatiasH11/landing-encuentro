@@ -1,4 +1,5 @@
 import type {
+  AnnouncedEdition,
   EventEdition,
   ScheduleDay,
   ContactPerson,
@@ -139,7 +140,7 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     activities: [
       { time: "12:00 hs", description: "Recepción de las delegaciones nacionales e internacionales. Alojamiento y acreditaciones." },
       {
-        time: "18:00 a 22:00 hs",
+        time: "17:00 a 22:00 hs",
         description: "Apertura oficial del festival: Primera función artística en el Teatro Enrique Carreras",
         highlight: true,
       },
@@ -150,13 +151,8 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     date: "21 de noviembre",
     activities: [
       {
-        time: "10:00 a 13:00 hs",
-        description: "Función matutina en el Teatro Enrique Carreras",
-        highlight: true,
-      },
-      {
-        time: "18:00 a 22:00 hs",
-        description: "Función vespertina en el Teatro Enrique Carreras",
+        time: "17:00 a 22:00 hs",
+        description: "Función en el Teatro Enrique Carreras",
         highlight: true,
       },
     ],
@@ -166,13 +162,8 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     date: "22 de noviembre",
     activities: [
       {
-        time: "10:00 a 13:00 hs",
-        description: "Función matutina en el Teatro Enrique Carreras",
-        highlight: true,
-      },
-      {
-        time: "8:00 a 22:00 hs",
-        description: "Función vespertina en el Teatro Enrique Carreras",
+        time: "17:00 a 22:00 hs",
+        description: "Función en el Teatro Enrique Carreras",
         highlight: true,
       },
     ],
@@ -182,13 +173,8 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     date: "23 de noviembre",
     activities: [
       {
-        time: "10:00 a 13:00 hs",
-        description: "Función matutina en el Teatro Enrique Carreras",
-        highlight: true,
-      },
-      {
-        time: "18:00 a 22:00 hs",
-        description: "Función vespertina en el Teatro Enrique Carreras",
+        time: "17:00 a 22:00 hs",
+        description: "Función en el Teatro Enrique Carreras",
         highlight: true,
       },
     ],
@@ -214,11 +200,38 @@ export const CONTACTS: ContactPerson[] = [
   },
 ];
 
+// Fechas 2027 confirmadas por Matías (27/10/2026). Solo fecha y localidad: sede, programa, cupos y costos
+// todavía no están confirmados, así que no se muestran.
+export const EDITIONS_2027: AnnouncedEdition[] = [
+  {
+    id: "paso-2027-julio",
+    location: "Paso de la Patria",
+    province: "Corrientes",
+    startDate: "2027-07-16",
+    endDate: "2027-07-18",
+  },
+  {
+    id: "paso-2027-octubre",
+    location: "Paso de la Patria",
+    province: "Corrientes",
+    startDate: "2027-10-08",
+    endDate: "2027-10-10",
+  },
+  {
+    id: "mdp-2027",
+    location: "Mar del Plata",
+    province: "Buenos Aires",
+    startDate: "2027-11-19",
+    endDate: "2027-11-21",
+  },
+];
+
 export const NAV_LINKS: NavLink[] = [
   { label: "Inicio", href: "#inicio" },
   { label: "Historia", href: "#historia" },
   { label: "Ediciones 2026", href: "#ediciones" },
   { label: "Programa", href: "#programa" },
+  { label: "Próximamente", href: "#proximamente", badge: "2027" },
   { label: "Galería", href: "#galeria" },
   { label: "Inscripción", href: "#inscripcion" },
   { label: "Contacto", href: "#contacto" },

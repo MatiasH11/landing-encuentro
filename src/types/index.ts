@@ -70,4 +70,20 @@ export interface Organizer {
 export interface NavLink {
   label: string;
   href: string;
+  /** Etiqueta para destacar el ítem en el menú (por ejemplo "2027") */
+  badge?: string;
+}
+
+/**
+ * Edición anunciada con fecha y localidad confirmadas, pero sin el resto de los datos (sede, programa, cupos,
+ * costos). Cuando se confirmen, pasa a ser un EventEdition completo.
+ */
+export interface AnnouncedEdition {
+  id: string;
+  location: string;
+  province: string;
+  /** ISO, primer día */
+  startDate: string;
+  /** ISO, último día */
+  endDate: string;
 }

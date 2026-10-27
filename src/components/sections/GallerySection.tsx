@@ -1,177 +1,195 @@
 "use client";
 
-import { useState } from "react";
-import { GALLERY_ITEMS } from "@/constants/gallery-data";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
-import Lightbox from "@/components/gallery/Lightbox";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { AnimatePresence, m, useReducedMotion } from "framer-motion";
+import { FaPlay } from "react-icons/fa";
+import { GALLERY_ITEMS } from "@/constants/gallery-data";
 
-const INITIAL_ITEMS_COUNT = 6;
+// El visor se descarga recién cuando alguien abre una foto
+const Lightbox = dynamic(() => import("@/components/gallery/Lightbox"), { ssr: false });
+
+const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
+const video = GALLERY_ITEMS.find((item) => item.type === "video");
+const videoId = video?.videoUrl?.split("/embed/")[1];
+
+// Las seis que se muestran, en orden: una de apertura grande y cinco con tamaños distintos.
+// Se eligieron para que el telón con el logo del evento aparezca poco; el resto se ve en el visor.
+const DESTACADAS = [
+  {
+    id: "photo-2026-arcos",
+    label: "Arcos de flores",
+    span: "col-span-2 aspect-[4/3] lg:col-span-7 lg:row-span-2 lg:aspect-auto",
+    rot: "",
+    pos: "object-[50%_45%]",
+  },
+  { id: "photo-2026-bombo", label: "Bombo y polleras", span: "aspect-square lg:col-span-5 lg:aspect-auto", rot: "-rotate-1", pos: "object-[45%_45%]" },
+  { id: "photo-001", label: "Ballet en escena", span: "aspect-square lg:col-span-5 lg:aspect-auto", rot: "rotate-[0.6deg]", pos: "object-[50%_60%]" },
+  { id: "photo-002", label: "Danzas gauchas", span: "aspect-square lg:col-span-4 lg:aspect-auto", rot: "", pos: "object-[38%_55%]" },
+  { id: "photo-005", label: "Bombos legüeros", span: "aspect-square lg:col-span-4 lg:aspect-auto", rot: "-rotate-[0.6deg]", pos: "object-[45%_60%]" },
+  { id: "photo-004", label: "Polleras celestes", span: "col-span-2 aspect-[16/10] lg:col-span-4 lg:aspect-auto", rot: "rotate-[0.4deg]", pos: "object-[50%_62%]" },
+];
+
+
+// Color de la capa de duotono de cada foto, en orden
+const DUO = ["bg-bordo", "bg-turquesa", "bg-amarillo"];
+
+const sinCambios = () => () => {};
 
 export default function GallerySection() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [showAll, setShowAll] = useState(false);
+  const [index, setIndex] = useState(-1);
+  const [playing, setPlaying] = useState(false);
+  const [zoom, setZoom] = useState<{ id: string; index: number } | null>(null);
+  const reduce = useReducedMotion();
+  // El portal se monta recién en el navegador, después de hidratar
+  const enCliente = useSyncExternalStore(
+    sinCambios,
+    () => true,
+    () => false
+  );
 
-  const hasContent = GALLERY_ITEMS.length > 0;
-  const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
-
-  const displayedItems = showAll ? GALLERY_ITEMS : GALLERY_ITEMS.slice(0, INITIAL_ITEMS_COUNT);
-  const hasMore = GALLERY_ITEMS.length > INITIAL_ITEMS_COUNT;
-
-  const openLightbox = (clickedItem: typeof GALLERY_ITEMS[0]) => {
-    if (clickedItem.type === "photo") {
-      const photoIndex = photos.findIndex(p => p.id === clickedItem.id);
-      setLightboxIndex(photoIndex);
-      setLightboxOpen(true);
-    }
+  const abrir = (id: string, i: number) => {
+    // Con movimiento reducido se abre el visor directo, sin agrandar la foto
+    if (reduce) return setIndex(i);
+    setZoom({ id, index: i });
   };
 
-  if (!hasContent) {
-    return (
-      <section id="galeria" className="py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-4 text-center md:px-6">
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-6 bg-oro/60" />
-            <span className="text-lg text-oro">✦</span>
-            <span className="h-px w-6 bg-oro/60" />
-          </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold italic text-white md:text-5xl">
-            Momentos inolvidables
-          </h2>
-          <p className="mt-12 text-white/60">
-            Próximamente fotos y videos de nuestras ediciones anteriores.
-          </p>
-        </div>
-      </section>
-    );
-  }
+  // Cuando el visor ya está abierto, la foto agrandada se retira (queda detrás del visor).
+  // Si la animación no llega a avisar que terminó, el visor se abre igual.
+  useEffect(() => {
+    if (!zoom) return;
+    if (index >= 0) {
+      const t = setTimeout(() => setZoom(null), 350);
+      return () => clearTimeout(t);
+    }
+    const respaldo = setTimeout(() => setIndex(zoom.index), 900);
+    return () => clearTimeout(respaldo);
+  }, [zoom, index]);
 
   return (
-    <section id="galeria" className="relative overflow-hidden bg-navy py-24 md:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy via-tierra-deep/95 to-navy" />
-
-      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section header */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-6 bg-oro/60" />
-            <span className="text-lg text-oro">✦</span>
-            <span className="h-px w-6 bg-oro/60" />
-          </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold italic text-white md:text-5xl">
-            Momentos inolvidables
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-white/60">
-            Imágenes y videos de nuestras ediciones anteriores
-          </p>
-        </motion.div>
-
-        {/* Mixed gallery grid */}
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {displayedItems.map((item, index) => {
-            return item.type === "photo" ? (
-              <motion.button
-                key={item.id}
-                onClick={() => openLightbox(item)}
-                className="group relative overflow-hidden rounded-2xl shadow-md focus:outline-none focus:ring-2 focus:ring-tierra focus:ring-offset-2"
-                aria-label={`Ver ${item.caption}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
-                whileHover={{ y: -4, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-              >
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
-                  {/* Overlay */}
-                  <motion.div
-                    className="absolute inset-0 flex items-end bg-gradient-to-t from-tierra-dark/90 via-tierra/20 to-transparent"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="p-5">
-                      <p className="text-sm font-semibold text-white drop-shadow-lg">{item.caption}</p>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.button>
-            ) : (
-              <motion.div
-                key={item.id}
-                className="group overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-border/30"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                whileHover={{ y: -6, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-              >
-                <div className="relative aspect-video">
-                  <iframe
-                    src={item.videoUrl}
-                    title={item.caption}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full"
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-medium text-slate">{item.caption}</p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {hasMore && (
-          <motion.div
-            className="mt-8 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Button
-              onClick={() => setShowAll(!showAll)}
-              variant="outline"
-              size="lg"
-              className="rounded-full border-2 border-white/60 bg-white/10 px-8 text-white hover:bg-white/20 hover:border-white"
-            >
-              {showAll ? "Ver menos" : "Ver más contenido"}
-              {showAll ? (
-                <ChevronUp className="ml-2 h-5 w-5" />
-              ) : (
-                <ChevronDown className="ml-2 h-5 w-5" />
-              )}
-            </Button>
-          </motion.div>
-        )}
+    <section id="galeria" className="grano px-4 pb-24 pt-12 text-crema sm:px-7 sm:pb-32 sm:pt-16">
+      {/* Título en un solo bloque, entero dentro del ancho; el acento es la etiqueta de "baila" */}
+      <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+        <h2 className="display tinta text-[clamp(2.75rem,6.4vw,6.25rem)]">
+          <span className="block">
+            Así se <span className="tag -rotate-2 bg-amarillo text-tinta">baila</span>
+          </span>
+          <span className="mt-2 block text-turquesa">en el Encuentro</span>
+        </h2>
+        <p className="max-w-[34ch] text-[1.0625rem] text-crema/85" data-reveal>
+          Arcos de flores, bombos, chacareras y ballets de todas las edades. Fotos de las ediciones 2024 y 2026.
+        </p>
       </div>
 
-      {photos.length > 0 && (
-        <Lightbox
-          photos={photos}
-          open={lightboxOpen}
-          index={lightboxIndex}
-          onClose={() => setLightboxOpen(false)}
-        />
+      {/* Mosaico: una foto de apertura grande y cinco más chicas, con un solo tratamiento de borde */}
+      {/* Las fotos van en duotono con los colores del sitio y pasan a color al pasar el mouse (desktop)
+          o al entrar en pantalla (teléfono) */}
+      <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-12 lg:auto-rows-[15.5rem]">
+        {DESTACADAS.map((d, i) => {
+          const index = photos.findIndex((p) => p.id === d.id);
+          const photo = photos[index];
+          if (!photo) return null;
+          return (
+            <li key={d.id} className={`${d.span} ${d.rot}`} data-reveal style={{ "--i": i % 3 } as React.CSSProperties}>
+              <button
+                type="button"
+                onClick={() => abrir(d.id, index)}
+                className="group relative block h-full w-full overflow-hidden rounded-[18px] transition-[rotate] duration-200 hover:rotate-0"
+                aria-label={`Ampliar: ${photo.caption}`}
+              >
+                <m.div layoutId={`foto-${d.id}`} className="absolute inset-0">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes={i === 0 ? "(max-width: 1024px) 92vw, 56vw" : "(max-width: 1024px) 46vw, 40vw"}
+                    className={`object-cover ${d.pos} transition-transform duration-500 ease-out group-hover:scale-[1.04]`}
+                  />
+                </m.div>
+                <span aria-hidden className={`duo ${DUO[i % DUO.length]}`} />
+                <span className="absolute bottom-3 left-3 z-10 max-w-[calc(100%-1.5rem)] truncate rounded-full bg-crema px-3 py-1 text-left text-[0.8125rem] font-extrabold text-tinta sm:text-[0.875rem]">
+                  {d.label}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* La foto tocada se agranda desde su lugar hasta el centro y ahí se abre el visor */}
+      {enCliente &&
+        createPortal(
+          <AnimatePresence>
+            {zoom && (
+              <m.div
+                key="zoom"
+                className="fixed inset-0 z-[70] grid place-items-center bg-tinta/85 p-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              >
+                <m.div
+                  layoutId={`foto-${zoom.id}`}
+                  className="relative aspect-[3/2] w-[min(92vw,calc(82vh*1.5))] overflow-hidden rounded-[18px]"
+                  transition={{ type: "spring", stiffness: 260, damping: 30 }}
+                  onLayoutAnimationComplete={() => setIndex(zoom.index)}
+                >
+                  <Image src={photos[zoom.index].src} alt="" fill sizes="92vw" className="object-cover" />
+                </m.div>
+              </m.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
+
+      <p className="mt-8 flex justify-center">
+        <button type="button" onClick={() => setIndex(0)} className="pill pill-linea text-crema">
+          Ver las {photos.length} fotos
+        </button>
+      </p>
+
+      {/* El video, enmarcado como un aftermovie */}
+      {video && videoId && (
+        <div className="mx-auto mt-24 max-w-5xl rounded-[28px] bg-rojo p-4 sm:p-8" data-reveal>
+          <h3 className="display mb-5 text-center text-[clamp(2.25rem,5vw,4rem)] text-crema">
+            Mirá el Encuentro
+          </h3>
+          <div className="relative aspect-video overflow-hidden rounded-[16px] bg-tinta">
+            {playing ? (
+              <iframe
+                src={`${video.videoUrl}?autoplay=1`}
+                title={video.caption}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full"
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setPlaying(true)}
+                className="group absolute inset-0"
+                aria-label={`Ver el video: ${video.caption}`}
+              >
+                <Image
+                  src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 92vw, 64rem"
+                  className="object-cover opacity-85 transition-opacity group-hover:opacity-100"
+                />
+                <span className="pill absolute left-1/2 top-1/2 min-h-16 -translate-x-1/2 -translate-y-1/2 text-[1.0625rem]">
+                  <FaPlay className="h-4 w-4" aria-hidden />
+                  Ver el video
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
       )}
+
+      {index >= 0 && <Lightbox photos={photos} open index={index} onClose={() => setIndex(-1)} />}
     </section>
   );
 }

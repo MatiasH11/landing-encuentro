@@ -1,189 +1,110 @@
-"use client";
-
+import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 import { CONTACTS } from "@/constants/event-data";
-import { trackEvent } from "@/lib/pixel";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, Mail, Phone, Facebook, MapPin, Instagram } from "lucide-react";
-import { motion } from "framer-motion";
+import { EVENT_NAME, HISTORY_TEXT, ORGANIZED_BY, ORGANIZERS } from "@/constants/history-data";
+import TrackedLink from "@/components/ui/TrackedLink";
+
+const CARD_COLORS = ["bg-bordo text-crema", "bg-amarillo text-tinta"];
 
 export default function ContactSection() {
   return (
-    <section id="contacto" className="relative overflow-hidden py-24 md:py-32">
-      {/* Background with pattern */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-warm-bg to-cream" />
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
-          backgroundSize: '32px 32px',
-          color: 'var(--color-tierra)'
-        }} />
+    <section id="contacto" className="papel px-4 pb-24 pt-16 sm:px-7 sm:pb-32 sm:pt-24">
+      <h2 className="display tinta text-[clamp(3.25rem,8vw,8rem)]">
+        <span className="block">Hablá con</span>
+        <span className="block text-bordo">quienes lo organizan</span>
+      </h2>
+      <p className="mt-6 max-w-[48ch] text-[1.25rem] font-semibold">
+        Escribinos o llamanos: te contamos costos, formas de pago y cómo inscribir a tu delegación.
+      </p>
+
+      <div className="mt-14 grid gap-5 md:grid-cols-2">
+        {CONTACTS.map((contact, i) => (
+          <article
+            key={contact.name}
+            className={`flex flex-col justify-between gap-10 rounded-[28px] p-6 sm:p-8 ${CARD_COLORS[i % CARD_COLORS.length]}`}
+          >
+            <h3 className="display text-[clamp(2.5rem,4.5vw,4rem)]">{contact.name}</h3>
+            <div className="space-y-4">
+              <TrackedLink
+                href={contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                event="Contact"
+                params={{ content_name: "WhatsApp" }}
+                className={`pill ${i === 0 ? "" : "pill-tinta"}`}
+              >
+                <FaWhatsapp className="h-5 w-5" aria-hidden />
+                Escribir por WhatsApp
+              </TrackedLink>
+              <p className="flex flex-col gap-1 text-[1.0625rem] font-semibold">
+                <TrackedLink
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                  event="Contact"
+                  params={{ content_name: "Telefono" }}
+                  className="link tabular w-fit"
+                >
+                  {contact.phone}
+                </TrackedLink>
+                <TrackedLink
+                  href={`mailto:${contact.email}`}
+                  event="Contact"
+                  params={{ content_name: "Email" }}
+                  className="link w-fit break-all"
+                >
+                  {contact.email}
+                </TrackedLink>
+              </p>
+            </div>
+          </article>
+        ))}
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
-        {/* Section header */}
-        <motion.div
-          className="mx-auto max-w-2xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+      <div className="mt-16 grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+        <div
+          className="copia relative aspect-[4/3] -rotate-2 lg:col-span-5"
+          style={{ "--sombra": "var(--color-magenta)" } as React.CSSProperties}
         >
-          <p className="text-sm font-semibold uppercase tracking-widest text-tierra">
-            Hablemos
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold italic text-navy md:text-5xl">
-            ¿Tenés dudas?
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Estamos para ayudarte con cualquier consulta sobre el encuentro
-          </p>
-        </motion.div>
-
-        {/* Main contact container */}
-        <motion.div
-          className="mt-16 overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-border/30"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="grid md:grid-cols-2">
-            {/* Contact persons */}
-            {CONTACTS.map((contact, i) => (
-              <motion.div
-                key={contact.name}
-                className="group relative p-8 transition-colors hover:bg-tierra/5"
-                initial={{ opacity: 0, x: i === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-              >
-                {/* Divider between cards on desktop */}
-                {i === 0 && (
-                  <div className="absolute right-0 top-8 bottom-8 w-px bg-gradient-to-b from-transparent via-border to-transparent hidden md:block" />
-                )}
-
-                {/* Name and role */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-foreground">
-                    {contact.name}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-tierra">Organizador del Encuentro</p>
-                </div>
-
-                {/* Contact methods */}
-                <div className="space-y-4">
-                  <a
-                    href={`tel:${contact.phone}`}
-                    className="group/link flex items-center gap-4 rounded-xl p-3 transition-all hover:bg-white hover:shadow-md"
-                    onClick={() => trackEvent('Contact', { content_name: 'Telefono' })}
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tierra text-white transition-transform group-hover/link:scale-110">
-                      <Phone className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-medium text-muted-foreground">Teléfono</p>
-                      <p className="text-sm font-semibold text-foreground">{contact.phone}</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="group/link flex items-center gap-4 rounded-xl p-3 transition-all hover:bg-white hover:shadow-md"
-                    onClick={() => trackEvent('Contact', { content_name: 'Email' })}
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tierra text-white transition-transform group-hover/link:scale-110">
-                      <Mail className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-xs font-medium text-muted-foreground">Email</p>
-                      <p className="truncate text-sm font-semibold text-foreground">{contact.email}</p>
-                    </div>
-                  </a>
-                </div>
-
-                {/* WhatsApp CTA */}
-                <Button
-                  asChild
-                  size="lg"
-                  className="mt-6 w-full rounded-full bg-whatsapp text-base font-semibold shadow-lg transition-all hover:scale-105 hover:bg-whatsapp-dark hover:shadow-xl"
-                >
-                  <a
-                    href={contact.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                    onClick={() => trackEvent('Contact', { content_name: 'WhatsApp' })}
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    Escribir por WhatsApp
-                  </a>
-                </Button>
-              </motion.div>
-            ))}
+          <Image
+            src="/images/gallery/familia.jpeg"
+            alt="Familias y delegaciones en el escenario del Encuentro"
+            fill
+            sizes="(max-width: 1024px) 92vw, 40vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="space-y-6 lg:col-span-6 lg:col-start-7">
+          <Image
+            src="/images/branding/logo.png"
+            alt={EVENT_NAME}
+            width={627}
+            height={320}
+            className="h-auto w-56"
+          />
+          <p className="text-[1.125rem]">{HISTORY_TEXT.credibility}</p>
+          <div>
+            <h3 className="font-extrabold">Dirección general</h3>
+            <p className="mt-1">{ORGANIZERS.map((o) => o.name).join(" · ")}</p>
+            <p className="mt-1 text-tinta-suave">Organizan {ORGANIZED_BY.join(" y ")}.</p>
           </div>
-
-          {/* Footer section with social and location */}
-          <div className="border-t border-border/50 bg-gradient-to-r from-warm-bg to-cream p-8">
-            <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-              {/* Location */}
-              <motion.div
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-tierra/10">
-                  <MapPin className="h-5 w-5 text-tierra" />
-                </div>
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground">Ubicaciones</p>
-                  <p className="text-sm font-semibold text-foreground">Paso de la Patria & Mar del Plata</p>
-                </div>
-              </motion.div>
-
-              {/* Social links */}
-              <motion.div
-                className="flex gap-3"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-              >
-                <a
-                  href="https://www.facebook.com/groups/599225440173246"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:scale-110 hover:shadow-lg"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-5 w-5 text-tierra transition-transform group-hover:scale-110" />
-                </a>
-                <a
-                  href="https://www.instagram.com/encuentrolatinoamericano"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md transition-all hover:scale-110 hover:shadow-lg"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5 text-tierra transition-transform group-hover:scale-110" />
-                </a>
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Help text */}
-        <motion.p
-          className="mt-8 text-center text-sm text-muted-foreground"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.5 }}
-        >
-          Respondemos todas las consultas a la brevedad
-        </motion.p>
+          <p className="flex flex-wrap gap-3">
+            <a
+              href="https://www.facebook.com/groups/599225440173246"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill pill-linea"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.instagram.com/encuentrolatinoamericano"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill pill-linea"
+            >
+              Instagram
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );

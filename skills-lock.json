@@ -31,6 +31,12 @@
       "sourceType": "github",
       "computedHash": "59a710d03e1f66e962b145283c676ed411ea71aec641601abd2ed7c5b61b3879"
     },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "53590ee9325bee34d7888bf0d81bd3941a108b1e7850df46802d93104e3f2b90"
+    },
     "distill": {
       "source": "pbakaus/impeccable",
       "sourceType": "github",

@@ -1,74 +1,99 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import CountdownTimer from "@/components/ui/CountdownTimer";
-import { EVENT_TAGLINE } from "@/constants/history-data";
-import { ArrowDown } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import type { AnnouncedEdition, EventEdition } from "@/types";
+import { fechasDe } from "@/lib/editions";
+import TrackedLink from "@/components/ui/TrackedLink";
+import Countdown from "@/components/ui/Countdown";
+import HeroBackdrop from "@/components/motion/HeroBackdrop";
+import HeroTitle from "@/components/motion/HeroTitle";
+import HeroVideo from "@/components/motion/HeroVideo";
 
-export default function HeroSection() {
+// Video del hero: IMG_7996 (8,6 s, grabado en HDR) pasado a SDR, sin audio, a 1920 px.
+// WebM VP9 (2,5 MB) primero y MP4 H.264 con faststart (2,8 MB) de respaldo; los dos se reproducen en cualquier
+// navegador actual. Para regenerarlos, ver el comando en public/videos/README.md.
+const HERO_VIDEO = {
+  fuentes: [
+    { src: "/videos/hero.webm", type: "video/webm" },
+    { src: "/videos/hero.mp4", type: "video/mp4" },
+  ],
+};
+
+interface HeroSectionProps {
+  edition: EventEdition;
+  isPast: boolean;
+  inscriptionHref: string;
+  /** Edición anunciada que pasa al frente cuando ya terminaron las de 2026 */
+  proxima?: AnnouncedEdition;
+}
+
+/** El escenario a pantalla completa y el lema como etiquetas de afiche. */
+export default function HeroSection({ edition, isPast, inscriptionHref, proxima }: HeroSectionProps) {
   return (
-    <section id="inicio" className="relative h-screen overflow-hidden">
-      {/* Background image */}
-      <Image
-        src="/images/gallery/imagen-1.jpeg"
-        alt=""
-        fill
-        className="object-cover"
-        priority
-        quality={85}
+    <section
+      id="inicio"
+      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-40 pt-24 text-crema sm:px-7 sm:pb-14"
+    >
+      <HeroBackdrop>
+        <Image
+          src="/images/gallery/2026/arcos-de-flores.webp"
+          alt="Bailarinas con polleras de volados levantan arcos de flores en el Encuentro 2026"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="zoom-lento object-cover object-[50%_40%]"
+        />
+        <HeroVideo fuentes={HERO_VIDEO.fuentes} />
+      </HeroBackdrop>
+      {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_28%,rgb(23_13_17/0.2)_55%,rgb(23_13_17/0.88)_100%)]"
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+      <HeroTitle />
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        {/* Logo */}
-        <div className="mb-6 md:mb-10">
-          <Image
-            src="/images/branding/logo.png"
-            alt="Encuentro Latinoamericano del Canto y las Danzas Folclóricas"
-            width={627}
-            height={320}
-            className="h-auto w-72 drop-shadow-2xl sm:w-96 md:w-[440px] lg:w-[520px] xl:w-[580px]"
-            priority
-          />
-        </div>
-
-        {/* Tagline - Simplified */}
-        <p className="mb-10 text-xl font-light tracking-wide text-white drop-shadow-lg md:mb-14 md:text-3xl lg:text-4xl">
-          {EVENT_TAGLINE}
-        </p>
-
-        {/* Countdown */}
-        <CountdownTimer />
-
-        {/* CTAs */}
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-tierra px-10 py-6 text-base font-semibold text-white shadow-lg hover:bg-tierra-light hover:shadow-xl"
-          >
-            <a href="#ediciones">Próximas Ediciones 2026</a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="rounded-full border-2 border-white/30 bg-white/10 px-10 py-6 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20"
-          >
-            <a href="#galeria">Ver Galería</a>
-          </Button>
-        </div>
-
-        {/* Scroll indicator */}
-        <a
-          href="#historia"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float text-white/70 transition-colors hover:text-white"
-          aria-label="Scroll hacia abajo"
+      {/* sm:pr-24 deja lugar al botón flotante de WhatsApp, abajo a la derecha */}
+      <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-7 sm:pr-24">
+        {proxima ? (
+          // Terminó 2026 y ya hay una fecha anunciada: va al frente, solo con lo confirmado
+          <p className="max-w-[42ch] text-[1.1875rem] font-semibold" data-load>
+            <span className="font-extrabold">Próxima edición: {proxima.location}, {fechasDe(proxima).rango}.</span>{" "}
+            <span className="font-normal">Sede y programa a confirmar.</span>
+          </p>
+        ) : (
+          <p className="max-w-[42ch] text-[1.1875rem] font-semibold" data-load>
+            <span className="font-extrabold">
+              {edition.editionNumber}º Encuentro Latinoamericano del Canto y las Danzas Folclóricas.
+            </span>{" "}
+            <span className="font-normal">
+              {isPast ? "Se realizó en " : ""}
+              {edition.location}, {edition.dateRange}, en el {edition.venue}.
+            </span>
+          </p>
+        )}
+        {(proxima || !isPast) && (
+          <div data-load style={{ "--d": "520ms" } as React.CSSProperties}>
+            <Countdown startDate={proxima ? proxima.startDate : edition.startDate} />
+          </div>
+        )}
+        <TrackedLink
+          href={inscriptionHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          event="Lead"
+          params={{
+            content_name: proxima ? "WhatsApp Reserva 2027" : "WhatsApp Inscripcion",
+            edition: proxima ? `${proxima.location} ${fechasDe(proxima).rango}` : edition.location,
+            placement: "hero",
+          }}
+          className="pill min-h-14 text-[1.0625rem]"
+          data-load
+          style={{ "--d": "600ms" } as React.CSSProperties}
         >
-          <ArrowDown className="h-8 w-8" />
-        </a>
+          <FaWhatsapp className="h-5 w-5" aria-hidden />
+          {proxima ? "Reservá tu lugar" : isPast ? "Consultá por la próxima edición" : "Inscribí a tu ballet"}
+        </TrackedLink>
       </div>
     </section>
   );

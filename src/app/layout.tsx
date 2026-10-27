@@ -1,20 +1,24 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Anton, Bricolage_Grotesque } from "next/font/google";
 import Script from "next/script";
+import MotionProvider from "@/components/motion/MotionProvider";
+import PaperFilters from "@/components/motion/PaperFilters";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Títulos de afiche
+const anton = Anton({
+  variable: "--font-anton",
   subsets: ["latin"],
   display: "swap",
+  weight: "400",
 });
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
+// Texto
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "600", "800"],
 });
 
 export const metadata: Metadata = {
@@ -47,9 +51,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.variable} ${playfairDisplay.variable} font-sans antialiased`}>
-        {children}
+    <html lang="es" suppressHydrationWarning>
+      <head>
+        {/* Marca que hay JS: las animaciones de entrada solo ocultan contenido bajo html.js */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className={`${anton.variable} ${bricolage.variable} font-sans antialiased`}>
+        <PaperFilters />
+        <MotionProvider>{children}</MotionProvider>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)

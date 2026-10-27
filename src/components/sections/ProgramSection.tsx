@@ -1,113 +1,112 @@
 "use client";
 
-import { useState } from "react";
-import { SCHEDULE_PASO_2026, SCHEDULE_MDP_2026 } from "@/constants/event-data";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Clock } from "lucide-react";
+import { useState, useSyncExternalStore } from "react";
+import { resaltadoPara, type Resaltado } from "@/lib/schedule";
+import type { EventEdition, ScheduleDay } from "@/types";
 
-type EditionType = "paso" | "mdp";
+interface ProgramEntry {
+  edition: EventEdition;
+  schedule: ScheduleDay[];
+  isPast: boolean;
+}
 
-export default function ProgramSection() {
-  const [selectedEdition, setSelectedEdition] = useState<EditionType>("paso");
+// Se revisa una vez por minuto qué actividad marcar
+function cadaMinuto(onChange: () => void) {
+  const id = setInterval(onChange, 60_000);
+  return () => clearInterval(id);
+}
 
-  const currentSchedule = selectedEdition === "paso" ? SCHEDULE_PASO_2026 : SCHEDULE_MDP_2026;
-  const editionInfo = selectedEdition === "paso"
-    ? { city: "Paso de la Patria", dates: "9 al 12 de octubre", venue: "Anfiteatro Pinin Palma" }
-    : { city: "Mar del Plata", dates: "20 al 23 de noviembre", venue: "Teatro Enrique Carreras" };
+export default function ProgramSection({ entries }: { entries: ProgramEntry[] }) {
+  const [active, setActive] = useState(0);
+  const current = entries[active];
+  // "Ahora" o "Próxima función", solo durante los días del evento. Se calcula en el navegador (el servidor no
+  // marca nada) y se guarda como texto para que el valor sea estable entre renders.
+  const marcaTexto = useSyncExternalStore(
+    cadaMinuto,
+    () => (current ? JSON.stringify(resaltadoPara(current.edition, current.schedule)) : "null"),
+    () => "null"
+  );
+  const resaltado = JSON.parse(marcaTexto) as Resaltado | null;
+  if (!current) return null;
 
   return (
-    <section id="programa" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-cream to-warm-bg" />
-
-      <div className="relative mx-auto max-w-3xl px-4 md:px-6">
-        {/* Section header */}
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-6 bg-oro/60" />
-            <span className="text-lg text-oro">✦</span>
-            <span className="h-px w-6 bg-oro/60" />
-          </div>
-          <h2 className="mt-4 font-heading text-3xl font-bold text-navy md:text-5xl">
-            Programa 2026
-          </h2>
-
-          {/* Edition switcher */}
-          <div className="mt-8 flex justify-center">
-            <div className="inline-flex rounded-full bg-white p-1.5 shadow-lg ring-1 ring-border/50">
-              <button
-                onClick={() => setSelectedEdition("paso")}
-                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${
-                  selectedEdition === "paso"
-                    ? "bg-tierra text-white shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Paso de la Patria
-              </button>
-              <button
-                onClick={() => setSelectedEdition("mdp")}
-                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${
-                  selectedEdition === "mdp"
-                    ? "bg-tierra text-white shadow-md"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                Mar del Plata
-              </button>
-            </div>
-          </div>
-
-          <p className="mt-6 text-muted-foreground">
-            {editionInfo.city} · {editionInfo.dates} · {editionInfo.venue}
-          </p>
-        </div>
-
-        <Accordion type="single" collapsible className="mt-12" defaultValue="day-0" key={selectedEdition}>
-          {currentSchedule.map((day, dayIndex) => (
-            <AccordionItem
-              key={dayIndex}
-              value={`day-${dayIndex}`}
-              className="mb-3 overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm data-[state=open]:shadow-md"
+    <section id="programa" className="grano px-4 pb-24 pt-16 text-crema sm:px-7 sm:pb-32 sm:pt-24">
+      <div className="flex flex-wrap items-end justify-between gap-8">
+        <h2 className="display tinta text-[clamp(3.25rem,8vw,8rem)]">
+          <span className="block">Programa</span>
+          <span className="block text-amarillo">{current.edition.location}</span>
+        </h2>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Elegir edición" data-reveal>
+          {entries.map((entry, i) => (
+            <button
+              key={entry.edition.id}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-pressed={i === active}
+              className={`pill min-h-11 text-[0.9375rem] ${i === active ? "" : "pill-linea text-crema"}`}
             >
-              <AccordionTrigger className="px-6 py-5 hover:no-underline [&[data-state=open]]:bg-tierra [&[data-state=open]]:text-white">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-tierra/10 text-sm font-bold text-tierra [&[data-state=open]]:bg-white/20 [&[data-state=open]]:text-white">
-                    {dayIndex + 1}
-                  </div>
-                  <div className="text-left">
-                    <p className="text-base font-semibold">{day.day}</p>
-                    <p className="text-sm opacity-70">{day.date}</p>
-                  </div>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-6">
-                <ul className="mt-2 space-y-3">
-                  {day.activities.map((activity, actIndex) => (
-                    <li
-                      key={actIndex}
-                      className={`flex gap-4 rounded-xl p-3 transition-colors ${
-                        activity.highlight
-                          ? "bg-tierra/5 border border-tierra/15"
-                          : "hover:bg-muted/50"
+              {entry.edition.location}
+              {entry.isPast ? " · realizado" : ""}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <p className="mt-6 max-w-[60ch] text-crema/85">
+        {current.edition.dateRange}, {current.edition.venue}.{" "}
+        {current.isPast
+          ? "Así fueron los cuatro días de esta edición."
+          : "Las noches de festival, marcadas en amarillo, tienen entrada libre y gratuita para el público."}
+      </p>
+
+      {/* En el teléfono los días se deslizan de costado (se ve un pedazo del siguiente como señal);
+          desde tablet van en grilla */}
+      <p className="mt-10 text-[0.9375rem] font-semibold text-crema/85 sm:hidden" aria-hidden>
+        Deslizá para ver los cuatro días →
+      </p>
+      <div
+        key={current.edition.id}
+        data-swap
+        className="-mx-4 mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:mt-12 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4"
+      >
+        {current.schedule.map((day, i) => (
+          <article
+            key={day.date}
+            className={`w-[82%] shrink-0 snap-start rounded-[22px] bg-bordo-oscuro p-6 sm:w-auto ${
+              resaltado?.dia === i ? "ring-4 ring-amarillo" : ""
+            }`}
+            style={{ "--i": i } as React.CSSProperties}
+          >
+            <h3>
+              <span className="display block text-[2.75rem] text-amarillo">{day.day}</span>
+              <span className="font-semibold text-crema/85">{day.date}</span>
+            </h3>
+            <ul className="mt-6 space-y-5">
+              {day.activities.map((activity, j) => {
+                const marca = resaltado?.dia === i && resaltado.actividad === j ? resaltado.tipo : null;
+                return (
+                  <li key={j}>
+                    {marca && (
+                      <span className="sticker mb-2 mr-2 bg-crema text-[0.8125rem] text-bordo">
+                        {marca === "ahora" ? "Ahora" : "Próxima función"}
+                      </span>
+                    )}
+                    <span
+                      className={`tabular inline-block rounded-full px-2.5 py-0.5 text-[0.875rem] font-extrabold ${
+                        activity.highlight ? "bg-amarillo text-tinta" : "bg-crema/15 text-crema"
                       }`}
                     >
-                      <div className="flex shrink-0 items-center gap-2 text-sm font-medium text-tierra">
-                        <Clock className="h-4 w-4" />
-                        <span className="w-28">{activity.time}</span>
-                      </div>
-                      <p className="text-sm text-slate">{activity.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+                      {activity.time}
+                    </span>
+                    <p className={`mt-2 leading-snug ${activity.highlight ? "font-extrabold" : "text-crema/85"}`}>
+                      {activity.description}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
   );
