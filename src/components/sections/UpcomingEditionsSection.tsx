@@ -32,8 +32,6 @@ function details(edition: EventEdition) {
     { k: "Integrantes", v: `Mínimo ${edition.minMembersPerBallet} por ballet` },
     { k: "Actuación", v: `Hasta ${edition.maxPerformanceMinutes} minutos por ballet` },
     { k: "Noches", v: `${edition.guaranteedNights} noches garantizadas por grupo` },
-    ...(edition.freeAdmission ? [{ k: "Público", v: "Entrada libre y gratuita" }] : []),
-    { k: "Pagos", v: `Hasta el ${edition.paymentDeadline}` },
   ];
 }
 
@@ -42,22 +40,23 @@ function Poster({ edition, isPast }: { edition: EventEdition; isPast: boolean })
   return (
     <article className={`doblez relative flex flex-col overflow-hidden rounded-[28px] ${p.bg}`}>
       <div className="p-6 sm:p-8">
-        <p className="display text-[1.375rem]">{edition.editionNumber}º Encuentro</p>
+        {/* El sticker va en la fila del número, no encima del título: en el teléfono pisaba "Paso de la Patria" */}
+        <div className="flex items-start justify-between gap-3">
+          <p className="display text-[1.375rem]">{edition.editionNumber}º Encuentro</p>
+          <span
+            className={`sticker shrink-0 text-[0.9375rem] ${isPast ? "bg-crema text-tinta" : "bg-amarillo text-tinta"}`}
+          >
+            {isPast ? (
+              "Realizado"
+            ) : (
+              <DaysLeft startDate={edition.startDate} endDate={edition.endDate} fallback="Próximo" />
+            )}
+          </span>
+        </div>
         <h3 className="display mt-1 text-[clamp(3.25rem,6vw,5.75rem)]">{edition.location}</h3>
         <p className="mt-3 text-[1.0625rem] font-extrabold">
           {edition.dateRange} · {edition.venue}
         </p>
-        <span
-          className={`sticker absolute right-5 top-6 text-[0.9375rem] sm:right-8 sm:top-8 ${
-            isPast ? "bg-crema text-tinta" : "bg-amarillo text-tinta"
-          }`}
-        >
-          {isPast ? (
-            "Realizado"
-          ) : (
-            <DaysLeft startDate={edition.startDate} endDate={edition.endDate} fallback="Próximo" />
-          )}
-        </span>
       </div>
 
       <div className={`relative ${isPast ? "h-64" : "h-72 sm:h-80"} [clip-path:polygon(0_10%,100%_0,100%_100%,0_100%)]`}>

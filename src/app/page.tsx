@@ -60,7 +60,6 @@ export default function Home() {
         `${edition.location}`,
         edition.dateRange.replace(/ de \d{4}$/, ""),
         edition.venue,
-        ...(edition.freeAdmission ? ["Entrada libre y gratuita"] : []),
         `Hasta ${edition.maxBallets} ballets`,
       ];
   const stats = [EVENT_TAGLINE, ...STATS.map((s) => `${s.value} ${s.label.toLowerCase()}`)];
@@ -107,7 +106,7 @@ export default function Home() {
         </PosterPanel>
       </main>
       <Footer />
-      <MobileActionBar inscriptionHref={inscriptionHref} edition={leadEdition} message={message} />
+      <MobileActionBar inscriptionHref={inscriptionHref} edition={leadEdition} />
       <WhatsAppFAB message={message} />
       <RevealObserver />
     </>

@@ -10,8 +10,8 @@ import TrackedLink from "@/components/ui/TrackedLink";
 const GLOBITO_VISTO = "fab-globito-cerrado";
 
 /**
- * Botón flotante de WhatsApp con el menú de contactos.
- * En el teléfono se apoya sobre la barra fija de abajo para no taparla.
+ * Botón flotante de WhatsApp con el menú de contactos. Solo desde tablet: en el teléfono la barra fija de abajo ya
+ * tiene los dos WhatsApp, y el botón encima tapaba texto y fotos del borde derecho.
  */
 export default function WhatsAppFAB({ message }: { message: string }) {
   const [open, setOpen] = useState(false);
@@ -72,16 +72,16 @@ export default function WhatsAppFAB({ message }: { message: string }) {
 
   return (
     <div
-      className={`fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom))] right-4 z-50 flex flex-col items-end gap-3 transition-[opacity,translate] duration-300 sm:bottom-6 sm:right-6 ${
+      className={`fixed bottom-6 right-6 z-50 hidden flex-col items-end gap-3 transition-[opacity,translate] duration-300 sm:flex ${
         enGaleria && !open ? "pointer-events-none translate-y-6 opacity-0" : ""
       }`}
       inert={enGaleria && !open}
     >
-      {/* En el teléfono el globito va al costado del botón (ocupa una sola franja); en desktop, arriba */}
+      {/* El globito va arriba del botón */}
       {globito && !open && (
-        <div data-menu className="sticker absolute bottom-2 right-[4.25rem] flex items-center gap-1 whitespace-nowrap bg-crema py-2 pl-4 pr-2 text-[0.9375rem] text-tinta shadow-[0_5px_0_var(--color-tinta)] sm:bottom-[5.25rem] sm:right-0">
+        <div data-menu className="sticker absolute bottom-[5.25rem] right-0 flex items-center gap-1 whitespace-nowrap bg-crema py-2 pl-4 pr-2 text-[0.9375rem] text-tinta shadow-[0_5px_0_var(--color-tinta)]">
           <button type="button" onClick={toggle} className="font-extrabold">
-            ¿Consultas?<span className="hidden sm:inline"> Escribinos</span>
+            ¿Consultas? Escribinos
           </button>
           <button
             type="button"
@@ -126,9 +126,9 @@ export default function WhatsAppFAB({ message }: { message: string }) {
           aria-expanded={open}
           aria-controls="fab-contactos"
           aria-label={open ? "Cerrar contactos de WhatsApp" : "Escribir por WhatsApp"}
-          className="relative grid size-14 place-items-center rounded-full bg-amarillo text-tinta shadow-[0_5px_0_var(--color-tinta)] transition-transform duration-150 active:scale-95 sm:size-16"
+          className="relative grid size-16 place-items-center rounded-full bg-amarillo text-tinta shadow-[0_5px_0_var(--color-tinta)] transition-transform duration-150 active:scale-95"
         >
-          {open ? <X className="size-7" aria-hidden /> : <FaWhatsapp className="size-7 sm:size-8" aria-hidden />}
+          {open ? <X className="size-7" aria-hidden /> : <FaWhatsapp className="size-8" aria-hidden />}
         </button>
       </div>
     </div>

@@ -56,7 +56,7 @@ export default function ProgramSection({ entries }: { entries: ProgramEntry[] })
         {current.edition.dateRange}, {current.edition.venue}.{" "}
         {current.isPast
           ? "Así fueron los cuatro días de esta edición."
-          : "Las noches de festival, marcadas en amarillo, tienen entrada libre y gratuita para el público."}
+          : "Las noches de festival van marcadas en amarillo."}
       </p>
 
       {/* En el teléfono los días se deslizan de costado (se ve un pedazo del siguiente como señal);

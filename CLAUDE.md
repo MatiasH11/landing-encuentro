@@ -48,14 +48,16 @@ change stays inside this direction unless he explicitly asks for a new one. Refe
 - **Signature pieces:**
   - Hero: stage photo full-bleed (slow zoom) with a dark scrim, the motto as stacked colored label blocks (`.tag`:
     "ARGENTINA LE CANTA" bordó · "Y BAILA" crema, tilted · "A LATINOAMÉRICA" turquesa), live countdown, yellow pill CTA.
-  - `.ticker`: marquee bands with real facts (dates, venue, entrada libre, ballets).
+  - `.ticker`: marquee bands with real facts (dates, venue, ballets).
   - `.guarda`: the textile diamond band as separator/frame, slowly sliding.
   - Each edition is its own poster card (own color, photo, "Faltan N días" / "Realizado" sticker).
   - Photos used big and often: collages with solid colored offset shadows, sticker labels, slight rotations; "BAILA"
     with the photo inside the letters is a valid section title. Subtle grain texture is allowed.
 - **Motion: "medido pero visible"** — marquees, tag slide-in, photo zoom/float, staggered reveals; always with a
   `prefers-reduced-motion` fallback.
-- **Audience and action:** ballet directors; the main action is WhatsApp (Lead). Prices are not shown on the page.
+- **Audience and action:** ballet directors; the main action is WhatsApp (Lead). Prices, free admission ("entrada libre y
+  gratuita") and the payment deadline are not shown on the page. On phones the fixed bar has a single WhatsApp
+  button (Ángeles) and appears only once the hero's button scrolls away.
 
 ## Styling
 
@@ -71,8 +73,10 @@ animate; `.desregistro` is the misregistered color layer (`--registro`); `.cinta
 doesn't clip) and `.doblez` (worn corner); `.duo` is the gallery duotone layer.
 
 **framer-motion** pieces live in `src/components/motion/`: `PosterPanel` (section sheet with `TornEdge`, slight rotation
-on enter), `Guarda` (woven with scroll), `HeroTitle`, `HeroBackdrop` (parallax), `StatsBoard` (count-up + beat),
-`EntraDesde`, `LluviaDeRombos`. `MotionProvider` wraps the app in `LazyMotion` (`features.ts`, `strict`) and
+on enter), `Guarda` (woven with scroll), `HeroBackdrop` (parallax), `StatsBoard` (count-up + beat),
+`EntraDesde`, `LluviaDeRombos`. framer server-renders each `initial` state, so anything above the fold animates
+with CSS instead (`HeroTitle` uses `.palabra-cae`, the rest `data-load`). On phones sections are ~2000 px tall:
+trigger `whileInView` with `amount: "some"` or a pixel `margin`, never a fraction of the height. `MotionProvider` wraps the app in `LazyMotion` (`features.ts`, `strict`) and
 `MotionConfig reducedMotion="user"`: use `m.div`, never `motion.div`. Animate only `transform`/`opacity`, never put a
 framer element on something that also has `data-reveal` or a CSS animation, and gate scroll-linked values with
 `useReducedMotion()`. Keep the hero image server-rendered (LCP) and don't fade it in.

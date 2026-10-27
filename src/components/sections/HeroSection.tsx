@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import type { AnnouncedEdition, EventEdition } from "@/types";
 import { fechasDe } from "@/lib/editions";
+import { CTA_HERO_ID } from "@/lib/cta-hero";
 import TrackedLink from "@/components/ui/TrackedLink";
 import Countdown from "@/components/ui/Countdown";
 import HeroBackdrop from "@/components/motion/HeroBackdrop";
@@ -10,11 +11,16 @@ import HeroVideo from "@/components/motion/HeroVideo";
 
 // Video del hero: IMG_7996 (8,6 s, grabado en HDR) pasado a SDR, sin audio, a 1920 px.
 // WebM VP9 (2,5 MB) primero y MP4 H.264 con faststart (2,8 MB) de respaldo; los dos se reproducen en cualquier
-// navegador actual. Para regenerarlos, ver el comando en public/videos/README.md.
+// navegador actual. En el teléfono, un recorte vertical a 540 × 960 (0,76 MB y 0,93 MB).
+// Para regenerarlos, ver los comandos en public/videos/README.md.
 const HERO_VIDEO = {
   fuentes: [
     { src: "/videos/hero.webm", type: "video/webm" },
     { src: "/videos/hero.mp4", type: "video/mp4" },
+  ],
+  fuentesMovil: [
+    { src: "/videos/hero-movil.webm", type: "video/webm" },
+    { src: "/videos/hero-movil.mp4", type: "video/mp4" },
   ],
 };
 
@@ -31,7 +37,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-40 pt-24 text-crema sm:px-7 sm:pb-14"
+      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-12 pt-24 text-crema sm:px-7 sm:pb-14"
     >
       <HeroBackdrop>
         <Image
@@ -43,12 +49,13 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
           sizes="100vw"
           className="zoom-lento object-cover object-[50%_40%]"
         />
-        <HeroVideo fuentes={HERO_VIDEO.fuentes} />
+        <HeroVideo fuentes={HERO_VIDEO.fuentes} fuentesMovil={HERO_VIDEO.fuentesMovil} />
       </HeroBackdrop>
-      {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto */}
+      {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto. En el teléfono el
+          texto y la cuenta regresiva arrancan a mitad de pantalla, sobre las polleras blancas: ahí oscurece antes */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_28%,rgb(23_13_17/0.2)_55%,rgb(23_13_17/0.88)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_22%,rgb(23_13_17/0.5)_45%,rgb(23_13_17/0.9)_100%)] sm:bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_28%,rgb(23_13_17/0.2)_55%,rgb(23_13_17/0.88)_100%)]"
       />
 
       <HeroTitle />
@@ -87,6 +94,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
             edition: proxima ? `${proxima.location} ${fechasDe(proxima).rango}` : edition.location,
             placement: "hero",
           }}
+          id={CTA_HERO_ID}
           className="pill min-h-14 text-[1.0625rem]"
           data-load
           style={{ "--d": "600ms" } as React.CSSProperties}
