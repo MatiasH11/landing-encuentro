@@ -80,8 +80,7 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
           <p className="mt-8 max-w-[44ch]">
             Pueden participar hasta {edition.maxBallets} ballets, con un mínimo de{" "}
             {edition.minMembersPerBallet} integrantes cada uno, y {edition.maxMusicGroups} grupos
-            musicales. Costos y formas de pago se consultan por WhatsApp
-            {isPast ? "." : `; la fecha límite de pago es el ${edition.paymentDeadline}.`}
+            musicales. Costos y formas de pago se consultan por WhatsApp.
           </p>
         </div>
 

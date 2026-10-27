@@ -32,8 +32,6 @@ function details(edition: EventEdition) {
     { k: "Integrantes", v: `Mínimo ${edition.minMembersPerBallet} por ballet` },
     { k: "Actuación", v: `Hasta ${edition.maxPerformanceMinutes} minutos por ballet` },
     { k: "Noches", v: `${edition.guaranteedNights} noches garantizadas por grupo` },
-    ...(edition.freeAdmission ? [{ k: "Público", v: "Entrada libre y gratuita" }] : []),
-    { k: "Pagos", v: `Hasta el ${edition.paymentDeadline}` },
   ];
 }
 

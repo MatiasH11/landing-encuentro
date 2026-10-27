@@ -79,7 +79,7 @@ export const SCHEDULE_PASO_2026: ScheduleDay[] = [
       { time: "Tarde libre", description: "Tiempo libre para disfrutar de las playas" },
       {
         time: "19:30 hs",
-        description: "Inicio de la primera noche de festival folclórico en el Anfiteatro Pinin Palma — Entradas libres y gratuitas",
+        description: "Inicio de la primera noche de festival folclórico en el Anfiteatro Pinin Palma",
         highlight: true,
       },
       { time: "19:30 hs", description: "Expo-Encuentro Latinoamericano: paseo de artesanos y gastronomía" },
@@ -98,7 +98,7 @@ export const SCHEDULE_PASO_2026: ScheduleDay[] = [
       },
       {
         time: "20:00 hs",
-        description: "Acto inaugural. - Inicio de la segunda noche de festival folclórico en el Anfiteatro Pinin Palma con entradas libres y gratuitas",
+        description: "Acto inaugural. - Inicio de la segunda noche de festival folclórico en el Anfiteatro Pinin Palma",
         highlight: true,
       },
       { time: "20:00 hs", description: "Expo-Encuentro Latinoamericano: paseo de artesanos y gastronomía" },

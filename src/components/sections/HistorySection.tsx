@@ -19,7 +19,7 @@ const COLLAGE = [
   {
     src: "/images/gallery/2026/pareja-de-baile.webp",
     alt: "Pareja vestida de negro bailando en el escenario del Encuentro",
-    label: "En pareja",
+    label: "Danza criolla",
     sombra: "var(--color-magenta)",
     className: "right-[2%] top-[3%] w-[42%] h-[42%] rotate-[3deg] z-20",
     pos: "object-[50%_55%]",
