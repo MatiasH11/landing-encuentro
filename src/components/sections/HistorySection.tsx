@@ -2,15 +2,18 @@ import Image from "next/image";
 import { HISTORY_TEXT, STATS } from "@/constants/history-data";
 import StatsBoard from "@/components/motion/StatsBoard";
 
-// Fotos del collage: cada una con su sombra de color, su etiqueta y el giro de la cinta que la sostiene
+// Fotos del collage: cada una con su sombra de color, su etiqueta y el giro de la cinta que la sostiene.
+// Ancho y alto van en % del contenedor (que tiene proporción propia), así el collage nunca se sale de su bloque.
+// La foto grande ocupa la columna izquierda; las otras dos se apilan a la derecha y solo pisan una esquina de
+// las polleras de la grande, lejos de las caras.
 const COLLAGE = [
   {
     src: "/images/gallery/2026/bombo-y-polleras.webp",
     alt: "Un bailarín mayor con bombo baila entre bailarinas con polleras de volados",
     label: "Bombo y polleras",
     sombra: "var(--color-amarillo)",
-    className: "left-0 top-[6%] w-[58%] aspect-[4/5] -rotate-3 z-10",
-    pos: "object-[50%_50%]",
+    className: "left-[1%] top-[5%] w-[54%] h-[86%] -rotate-2 z-10",
+    pos: "object-[50%_45%]",
     cinta: "-6deg",
   },
   {
@@ -18,7 +21,7 @@ const COLLAGE = [
     alt: "Pareja vestida de negro bailando en el escenario del Encuentro",
     label: "En pareja",
     sombra: "var(--color-magenta)",
-    className: "right-0 top-0 w-[46%] aspect-square rotate-[5deg] z-20",
+    className: "right-[2%] top-[3%] w-[42%] h-[42%] rotate-[3deg] z-20",
     pos: "object-[50%_55%]",
     cinta: "5deg",
   },
@@ -27,17 +30,10 @@ const COLLAGE = [
     alt: "Percusionistas tocando bombos legüeros en el escenario",
     label: "Bombos legüeros",
     sombra: "var(--color-turquesa)",
-    className: "right-[4%] bottom-0 w-[54%] aspect-[4/3] -rotate-2 z-30",
+    className: "right-[3%] bottom-[4%] w-[48%] h-[40%] -rotate-[1.5deg] z-30",
     pos: "object-[45%_55%]",
     cinta: "-3deg",
   },
-];
-
-const STAT_COLORS = [
-  "bg-bordo text-crema",
-  "bg-turquesa text-tinta",
-  "bg-amarillo text-tinta",
-  "bg-magenta text-tinta",
 ];
 
 export default function HistorySection() {
@@ -51,14 +47,16 @@ export default function HistorySection() {
         <span className="block">desde 2010</span>
       </h2>
 
-      <div className="mt-14 grid items-center gap-16 lg:grid-cols-12 lg:gap-8">
+      <div className="mt-14 grid items-center gap-16 lg:grid-cols-12 lg:gap-x-8">
         <div className="space-y-5 text-[1.1875rem] lg:col-span-5" data-reveal>
           <p className="text-[1.375rem] font-semibold leading-snug">{HISTORY_TEXT.body}</p>
           <p>{HISTORY_TEXT.mission}</p>
           <p>{HISTORY_TEXT.impact}</p>
         </div>
 
-        <div className="relative h-[min(118vw,620px)] lg:col-span-7">
+        {/* Proporción fija (no altura fija): las fotos escalan juntas y la caja crece con ellas.
+            En desktop el ancho tope lo empareja con el alto de la columna de texto. */}
+        <div className="relative aspect-[5/6] w-full sm:aspect-[6/5] lg:col-span-7 lg:max-w-[760px] lg:justify-self-end 2xl:max-w-[900px] 2xl:justify-self-center">
           {COLLAGE.map((photo, i) => (
             // Fotos pegadas con cinta: ya no flotan, la cinta las sostiene en su lugar
             <figure
@@ -75,7 +73,7 @@ export default function HistorySection() {
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  sizes="(max-width: 1024px) 60vw, 34vw"
+                  sizes="(max-width: 1024px) 55vw, 420px"
                   className={`object-cover ${photo.pos}`}
                 />
                 <figcaption className="absolute bottom-3 left-3 rounded-full bg-crema px-3 py-1 text-[0.875rem] font-extrabold text-tinta">
