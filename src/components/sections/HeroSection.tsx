@@ -10,11 +10,16 @@ import HeroVideo from "@/components/motion/HeroVideo";
 
 // Video del hero: IMG_7996 (8,6 s, grabado en HDR) pasado a SDR, sin audio, a 1920 px.
 // WebM VP9 (2,5 MB) primero y MP4 H.264 con faststart (2,8 MB) de respaldo; los dos se reproducen en cualquier
-// navegador actual. Para regenerarlos, ver el comando en public/videos/README.md.
+// navegador actual. En el teléfono, un recorte vertical a 540 × 960 (0,76 MB y 0,93 MB).
+// Para regenerarlos, ver los comandos en public/videos/README.md.
 const HERO_VIDEO = {
   fuentes: [
     { src: "/videos/hero.webm", type: "video/webm" },
     { src: "/videos/hero.mp4", type: "video/mp4" },
+  ],
+  fuentesMovil: [
+    { src: "/videos/hero-movil.webm", type: "video/webm" },
+    { src: "/videos/hero-movil.mp4", type: "video/mp4" },
   ],
 };
 
@@ -43,7 +48,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
           sizes="100vw"
           className="zoom-lento object-cover object-[50%_40%]"
         />
-        <HeroVideo fuentes={HERO_VIDEO.fuentes} />
+        <HeroVideo fuentes={HERO_VIDEO.fuentes} fuentesMovil={HERO_VIDEO.fuentesMovil} />
       </HeroBackdrop>
       {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto. En el teléfono el
           texto y la cuenta regresiva arrancan a mitad de pantalla, sobre las polleras blancas: ahí oscurece antes */}
