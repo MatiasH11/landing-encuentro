@@ -280,6 +280,14 @@ html {
 .tinta {
   filter: url(#tinta);
 }
+/* Safari (y todo navegador WebKit, incluido Chrome en iPhone) redibuja los filtros SVG sobre texto HTML en cada
+ * repintado: los títulos titilaban al scrollear y el carrusel del programa se trababa. Ahí el título va sin filtro.
+ * hanging-punctuation solo lo soporta WebKit: sirve para detectarlo sin mirar el user agent. */
+@supports (hanging-punctuation: first) {
+  .tinta {
+    filter: none;
+  }
+}
 /* Desregistro: la capa de color corrida unos píxeles, como afiche impreso a mano */
 .desregistro {
   /* proporcional al tamaño de letra: unos 3 px en desktop, 2 px en el teléfono */
