@@ -139,7 +139,7 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     activities: [
       { time: "12:00 hs", description: "Recepción de las delegaciones nacionales e internacionales. Alojamiento y acreditaciones." },
       {
-        time: "18:00 a 22:00 hs",
+        time: "17:00 a 22:00 hs",
         description: "Apertura oficial del festival: Primera función artística en el Teatro Enrique Carreras",
         highlight: true,
       },
@@ -150,13 +150,8 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     date: "21 de noviembre",
     activities: [
       {
-        time: "10:00 a 13:00 hs",
-        description: "Función matutina en el Teatro Enrique Carreras",
-        highlight: true,
-      },
-      {
-        time: "18:00 a 22:00 hs",
-        description: "Función vespertina en el Teatro Enrique Carreras",
+        time: "17:00 a 22:00 hs",
+        description: "Función en el Teatro Enrique Carreras",
         highlight: true,
       },
     ],
@@ -166,13 +161,8 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     date: "22 de noviembre",
     activities: [
       {
-        time: "10:00 a 13:00 hs",
-        description: "Función matutina en el Teatro Enrique Carreras",
-        highlight: true,
-      },
-      {
-        time: "18:00 a 22:00 hs",
-        description: "Función vespertina en el Teatro Enrique Carreras",
+        time: "17:00 a 22:00 hs",
+        description: "Función en el Teatro Enrique Carreras",
         highlight: true,
       },
     ],
@@ -182,13 +172,8 @@ export const SCHEDULE_MDP_2026: ScheduleDay[] = [
     date: "23 de noviembre",
     activities: [
       {
-        time: "10:00 a 13:00 hs",
-        description: "Función matutina en el Teatro Enrique Carreras",
-        highlight: true,
-      },
-      {
-        time: "18:00 a 22:00 hs",
-        description: "Función vespertina en el Teatro Enrique Carreras",
+        time: "17:00 a 22:00 hs",
+        description: "Función en el Teatro Enrique Carreras",
         highlight: true,
       },
     ],
