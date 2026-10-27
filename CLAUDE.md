@@ -65,6 +65,18 @@ Tailwind CSS v4. Tokens live in `src/app/globals.css` under `@theme inline` (pal
 Motion: entrances use `data-reveal` (observed by `RevealObserver`); hidden states live under `html.js` and
 `prefers-reduced-motion: no-preference`.
 
+**Worn poster paper** (in `globals.css`, always behind content): `.papel` (cream sections) and `.grano` (dark ones) are
+paper textures; `.tinta` is the static SVG serigraphy filter (`#tinta` in `PaperFilters`) — only on headlines that never
+animate; `.desregistro` is the misregistered color layer (`--registro`); `.cinta` (tape, needs a positioned element that
+doesn't clip) and `.doblez` (worn corner); `.duo` is the gallery duotone layer.
+
+**framer-motion** pieces live in `src/components/motion/`: `PosterPanel` (section sheet with `TornEdge`, slight rotation
+on enter), `Guarda` (woven with scroll), `HeroTitle`, `HeroBackdrop` (parallax), `StatsBoard` (count-up + beat),
+`EntraDesde`, `LluviaDeRombos`. `MotionProvider` wraps the app in `LazyMotion` (`features.ts`, `strict`) and
+`MotionConfig reducedMotion="user"`: use `m.div`, never `motion.div`. Animate only `transform`/`opacity`, never put a
+framer element on something that also has `data-reveal` or a CSS animation, and gate scroll-linked values with
+`useReducedMotion()`. Keep the hero image server-rendered (LCP) and don't fade it in.
+
 **Editions by date** (`src/lib/editions.ts`): the hero, inscription and program feature the next edition automatically;
 past ones show as "realizado". `page.tsx` revalidates every hour.
 

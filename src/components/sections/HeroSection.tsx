@@ -3,18 +3,14 @@ import { FaWhatsapp } from "react-icons/fa";
 import type { EventEdition } from "@/types";
 import TrackedLink from "@/components/ui/TrackedLink";
 import Countdown from "@/components/ui/Countdown";
+import HeroBackdrop from "@/components/motion/HeroBackdrop";
+import HeroTitle from "@/components/motion/HeroTitle";
 
 interface HeroSectionProps {
   edition: EventEdition;
   isPast: boolean;
   inscriptionHref: string;
 }
-
-const TAGS = [
-  { text: "Argentina le canta", className: "bg-bordo text-crema" },
-  { text: "y baila", className: "bg-crema text-bordo -rotate-[1.5deg]" },
-  { text: "a Latinoamérica", className: "bg-turquesa text-tinta" },
-];
 
 /** El escenario a pantalla completa y el lema como etiquetas de afiche. */
 export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSectionProps) {
@@ -23,33 +19,24 @@ export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSe
       id="inicio"
       className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-40 pt-24 text-crema sm:px-7 sm:pb-14"
     >
-      <Image
-        src="/images/gallery/2026/arcos-de-flores.webp"
-        alt="Bailarinas con polleras de volados levantan arcos de flores en el Encuentro 2026"
-        fill
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        className="zoom-lento -z-20 object-cover object-[50%_40%]"
-      />
+      <HeroBackdrop>
+        <Image
+          src="/images/gallery/2026/arcos-de-flores.webp"
+          alt="Bailarinas con polleras de volados levantan arcos de flores en el Encuentro 2026"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="zoom-lento object-cover object-[50%_40%]"
+        />
+      </HeroBackdrop>
       {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_28%,rgb(23_13_17/0.2)_55%,rgb(23_13_17/0.88)_100%)]"
       />
 
-      <h1 className="display flex flex-col items-start gap-2 text-[10.8vw] sm:text-[clamp(3rem,7.4vw,8rem)]">
-        {TAGS.map((tag, i) => (
-          <span
-            key={tag.text}
-            data-tag
-            style={{ "--i": i } as React.CSSProperties}
-            className={`tag ${tag.className}`}
-          >
-            {tag.text}
-          </span>
-        ))}
-      </h1>
+      <HeroTitle />
 
       {/* sm:pr-24 deja lugar al botón flotante de WhatsApp, abajo a la derecha */}
       <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-7 sm:pr-24">

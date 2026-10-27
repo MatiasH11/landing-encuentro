@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Anton, Bricolage_Grotesque } from "next/font/google";
 import Script from "next/script";
+import MotionProvider from "@/components/motion/MotionProvider";
+import PaperFilters from "@/components/motion/PaperFilters";
 import "./globals.css";
 
 // Títulos de afiche
@@ -55,7 +57,8 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className={`${anton.variable} ${bricolage.variable} font-sans antialiased`}>
-        {children}
+        <PaperFilters />
+        <MotionProvider>{children}</MotionProvider>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)

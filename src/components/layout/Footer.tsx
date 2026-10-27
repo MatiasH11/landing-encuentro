@@ -1,6 +1,7 @@
 import { CONTACTS, NAV_LINKS } from "@/constants/event-data";
 import { EVENT_NAME, EVENT_TAGLINE } from "@/constants/history-data";
 import TrackedLink from "@/components/ui/TrackedLink";
+import Guarda from "@/components/motion/Guarda";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -8,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="text-crema">
-      <div className="guarda" aria-hidden />
+      <Guarda />
       <div className="grano bg-bordo px-4 pb-28 pt-16 sm:px-7 sm:pb-10 sm:pt-24">
         <p className="display text-[clamp(2.75rem,6vw,5.5rem)]">
           ¿Tu ballet <span className="text-amarillo">se suma?</span>

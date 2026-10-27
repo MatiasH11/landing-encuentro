@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { HISTORY_TEXT, STATS } from "@/constants/history-data";
+import StatsBoard from "@/components/motion/StatsBoard";
 
-// Fotos del collage: cada una con su sombra de color y su etiqueta
+// Fotos del collage: cada una con su sombra de color, su etiqueta y el giro de la cinta que la sostiene
 const COLLAGE = [
   {
     src: "/images/gallery/2026/bombo-y-polleras.webp",
@@ -10,7 +11,7 @@ const COLLAGE = [
     sombra: "var(--color-amarillo)",
     className: "left-0 top-[6%] w-[58%] aspect-[4/5] -rotate-3 z-10",
     pos: "object-[50%_50%]",
-    f: "0s",
+    cinta: "-6deg",
   },
   {
     src: "/images/gallery/2026/pareja-de-baile.webp",
@@ -19,7 +20,7 @@ const COLLAGE = [
     sombra: "var(--color-magenta)",
     className: "right-0 top-0 w-[46%] aspect-square rotate-[5deg] z-20",
     pos: "object-[50%_55%]",
-    f: "1.2s",
+    cinta: "5deg",
   },
   {
     src: "/images/gallery/imagen-5.jpeg",
@@ -28,7 +29,7 @@ const COLLAGE = [
     sombra: "var(--color-turquesa)",
     className: "right-[4%] bottom-0 w-[54%] aspect-[4/3] -rotate-2 z-30",
     pos: "object-[45%_55%]",
-    f: "0.6s",
+    cinta: "-3deg",
   },
 ];
 
@@ -41,9 +42,12 @@ const STAT_COLORS = [
 
 export default function HistorySection() {
   return (
-    <section id="historia" className="px-4 pb-20 pt-24 sm:px-7 sm:pb-24 sm:pt-32">
-      <h2 className="display text-[clamp(3.5rem,10vw,10rem)]" data-reveal>
-        <span className="block text-bordo">19 ediciones</span>
+    <section id="historia" className="papel px-4 pb-20 pt-20 sm:px-7 sm:pb-24 sm:pt-28">
+      {/* Título impreso: tinta de serigrafía y la capa bordó corrida (no se anima: lleva filtro) */}
+      <h2 className="display tinta text-[clamp(3.5rem,10vw,10rem)]">
+        <span className="desregistro block text-bordo" style={{ "--registro": "rgb(47 194 189 / 0.55)" } as React.CSSProperties}>
+          19 ediciones
+        </span>
         <span className="block">desde 2010</span>
       </h2>
 
@@ -56,15 +60,16 @@ export default function HistorySection() {
 
         <div className="relative h-[min(118vw,620px)] lg:col-span-7">
           {COLLAGE.map((photo, i) => (
+            // Fotos pegadas con cinta: ya no flotan, la cinta las sostiene en su lugar
             <figure
               key={photo.src}
-              className={`absolute ${photo.className}`}
+              className={`cinta absolute ${photo.className}`}
               data-reveal
-              style={{ "--i": i } as React.CSSProperties}
+              style={{ "--i": i, "--cinta-rot": photo.cinta } as React.CSSProperties}
             >
               <div
-                className="copia flota h-full w-full"
-                style={{ "--sombra": photo.sombra, "--f": photo.f } as React.CSSProperties}
+                className="copia doblez h-full w-full"
+                style={{ "--sombra": photo.sombra } as React.CSSProperties}
               >
                 <Image
                   src={photo.src}
@@ -82,22 +87,8 @@ export default function HistorySection() {
         </div>
       </div>
 
-      {/* Cifras en bloques de color */}
-      <dl className="mt-24 grid grid-cols-2 gap-3 sm:mt-32 sm:gap-4 lg:grid-cols-4">
-        {STATS.map((stat, i) => (
-          <div
-            key={stat.label}
-            className={`flex min-h-44 flex-col justify-between rounded-[22px] p-5 sm:min-h-56 sm:p-7 ${STAT_COLORS[i % STAT_COLORS.length]}`}
-            data-reveal
-            style={{ "--i": i } as React.CSSProperties}
-          >
-            <dt className="order-2 text-[1rem] font-semibold leading-tight sm:text-[1.125rem]">
-              {stat.label}
-            </dt>
-            <dd className="display order-1 text-[clamp(3.5rem,7vw,6.5rem)]">{stat.value}</dd>
-          </div>
-        ))}
-      </dl>
+      {/* Cifras en bloques de color, al ritmo del bombo */}
+      <StatsBoard stats={STATS} />
     </section>
   );
 }

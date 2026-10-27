@@ -5,6 +5,8 @@ import HeroSection from "@/components/sections/HeroSection";
 import HistorySection from "@/components/sections/HistorySection";
 import PurposeSection from "@/components/sections/PurposeSection";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
+import Guarda from "@/components/motion/Guarda";
+import PosterPanel from "@/components/motion/PosterPanel";
 import UpcomingEditionsSection from "@/components/sections/UpcomingEditionsSection";
 import ProgramSection from "@/components/sections/ProgramSection";
 import GallerySection from "@/components/sections/GallerySection";
@@ -61,18 +63,30 @@ export default function Home() {
       </a>
       <Ticker items={facts} className="h-9 bg-amarillo text-[1.125rem] text-tinta" duration="36s" />
       <Header inscriptionHref={inscriptionHref} edition={edition.location} />
-      <main id="contenido">
+      {/* overflow-x: clip (no hidden) para que los pliegues que entran girados no generen scroll lateral */}
+      <main id="contenido" className="overflow-x-clip">
         <HeroSection edition={edition} isPast={featuredIsPast} inscriptionHref={inscriptionHref} />
-        <div className="guarda" aria-hidden />
-        <HistorySection />
+        <Guarda />
+        {/* Cada sección es un pliego de afiche pegado encima de la anterior, con el borde rasgado */}
+        <PosterPanel color={["bg-crema", "fill-crema"]} rot={-0.3} variante={0}>
+          <HistorySection />
+        </PosterPanel>
         <PurposeSection />
-        <div className="guarda" aria-hidden />
+        <Guarda />
         <UpcomingEditionsSection upcoming={upcoming} past={past} />
-        <ProgramSection entries={programEntries} />
+        <PosterPanel color={["bg-bordo", "fill-bordo"]} rot={0.35} variante={1}>
+          <ProgramSection entries={programEntries} />
+        </PosterPanel>
         <Ticker items={stats} className="h-16 bg-turquesa text-[1.75rem] text-tinta" duration="48s" />
-        <GallerySection />
-        <RegistrationSection edition={edition} isPast={featuredIsPast} />
-        <ContactSection />
+        <PosterPanel color={["bg-tinta", "fill-tinta"]} rot={-0.25} variante={2}>
+          <GallerySection />
+        </PosterPanel>
+        <PosterPanel color={["bg-turquesa", "fill-turquesa"]} rot={0.3} variante={3}>
+          <RegistrationSection edition={edition} isPast={featuredIsPast} />
+        </PosterPanel>
+        <PosterPanel color={["bg-crema", "fill-crema"]} rot={-0.2} variante={4}>
+          <ContactSection />
+        </PosterPanel>
       </main>
       <Footer />
       <MobileActionBar inscriptionHref={inscriptionHref} edition={edition.location} message={message} />

@@ -214,7 +214,12 @@ html {
   }
 }
 
-/* Grano de papel, solo en las secciones oscuras (sin blend, liviano) */
+/* ---------- Papel de afiche gastado ----------
+ * Siempre detrás del contenido (z-index -1 dentro de un contexto aislado): nunca queda encima del texto.
+ * Las texturas son tiles SVG chicos en data-URI; no hay imágenes pesadas.
+ */
+
+/* Grano de papel en las secciones oscuras: fibras finas y alguna mancha clara, en soft-light */
 .grano {
   position: relative;
   isolation: isolate;
@@ -225,8 +230,103 @@ html {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(ellipse 40% 30% at 18% 22%, rgb(255 244 228 / 0.5), transparent 70%),
+    radial-gradient(ellipse 35% 25% at 82% 70%, rgb(255 244 228 / 0.4), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.95 0 0 0 0 0.88 0 0 0 1.4 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Papel crema de afiche viejo: fibras, manchas amarillentas y pliegues tenues, en multiply */
+.papel {
+  position: relative;
+  isolation: isolate;
+}
+.papel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image:
+    /* pliegues: una línea vertical y una horizontal apenas marcadas */
+    linear-gradient(90deg, transparent calc(50% - 1px), rgb(122 90 60 / 0.08) 50%, transparent calc(50% + 1px)),
+    linear-gradient(180deg, transparent calc(46% - 1px), rgb(122 90 60 / 0.06) 46%, transparent calc(46% + 1px)),
+    /* manchas de humedad y amarillento en los bordes */
+    radial-gradient(ellipse 30% 22% at 12% 18%, rgb(214 170 96 / 0.18), transparent 70%),
+    radial-gradient(ellipse 26% 30% at 88% 82%, rgb(196 150 80 / 0.16), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgb(200 160 100 / 0.14), transparent 70%),
+    /* fibras del papel */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.04 .9' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.9 -0.42'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.7 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Tinta de serigrafía: bordes de letra irregulares. Solo en títulos que no se animan. */
+.tinta {
+  filter: url(#tinta);
+}
+/* Desregistro: la capa de color corrida unos píxeles, como afiche impreso a mano */
+.desregistro {
+  /* proporcional al tamaño de letra: unos 3 px en desktop, 2 px en el teléfono */
+  text-shadow: 0.028em 0.028em 0 var(--registro, var(--color-rojo));
+}
+
+/* Cinta de papel pegada arriba de una foto o tarjeta.
+ * El elemento tiene que estar posicionado (relative/absolute) y no recortar su contenido. */
+.cinta::after {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  top: -12px;
+  left: calc(50% - 42px);
+  width: 84px;
+  height: 26px;
+  rotate: var(--cinta-rot, -4deg);
+  background: rgb(246 230 204 / 0.82);
+  box-shadow: 0 1px 2px rgb(23 13 17 / 0.18);
+  /* puntas cortadas en zigzag, como cinta arrancada con la mano */
+  clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 88% 0, 92% 10%, 96% 0, 100% 8%, 100% 92%, 96% 100%, 92% 90%, 88% 100%, 12% 100%, 8% 90%, 4% 100%, 0 92%);
+}
+
+/* Esquina gastada: un doblez en la esquina de abajo a la derecha (el elemento tiene que estar posicionado) */
+.doblez::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  width: 34px;
+  height: 34px;
+  pointer-events: none;
+  background: linear-gradient(135deg, transparent 50%, rgb(23 13 17 / 0.22) 50%, rgb(246 230 204 / 0.9) 56%);
+  border-top-left-radius: 6px;
+}
+
+/* Galería en duotono: una capa de color con mix-blend color encima de la foto, que se va al pasar el mouse
+ * (desktop) o al entrar en pantalla (teléfono). Solo cambia la opacidad de la capa. */
+.duo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: color;
+  transition: opacity 600ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .duo,
+  .group:focus-visible .duo {
+    opacity: 0;
+  }
+}
+@media (hover: none) {
+  .is-in .duo {
+    opacity: 0;
+    transition-delay: 700ms;
+    transition-duration: 1200ms;
+  }
 }
 
 /* ---------- Movimiento: todo bajo no-preference; sin JS el contenido queda visible ---------- */
@@ -245,11 +345,6 @@ html {
   .js [data-reveal].is-in {
     opacity: 1;
     transform: none;
-  }
-  /* Las etiquetas del lema entran deslizando */
-  .js [data-tag] {
-    animation: tag-in 800ms var(--ease-expo) both;
-    animation-delay: calc(120ms + var(--i, 0) * 90ms);
   }
   .js [data-load] {
     animation: load-rise 600ms var(--ease-out) both;
@@ -301,12 +396,6 @@ html {
 @keyframes guarda {
   to {
     background-position: 840px 0;
-  }
-}
-/* Sin fundido: el título se pinta en el primer cuadro (LCP) y solo desliza */
-@keyframes tag-in {
-  from {
-    transform: translateX(-48px);
   }
 }
 @keyframes load-rise {

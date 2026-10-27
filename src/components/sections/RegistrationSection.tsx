@@ -1,7 +1,9 @@
 "use client";
 
 import { useId, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
+import LluviaDeRombos from "@/components/motion/LluviaDeRombos";
 import { CONTACTS } from "@/constants/event-data";
 import { trackEvent } from "@/lib/pixel";
 import { whatsappLink } from "@/lib/editions";
@@ -40,6 +42,8 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
   const [city, setCity] = useState("");
   const [members, setMembers] = useState("");
   const [contactIndex, setContactIndex] = useState(0);
+  const [lluvia, setLluvia] = useState(0);
+  const reduce = useReducedMotion();
 
   const contact = CONTACTS[contactIndex];
   const message = buildMessage(edition, isPast, ballet.trim(), city.trim(), members.trim());
@@ -49,7 +53,7 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
     "mt-2 block min-h-12 w-full rounded-[12px] bg-white px-4 text-tinta transition-shadow duration-150 shadow-[inset_0_0_0_2px_var(--color-crema-oscuro)] focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_3px_var(--color-bordo)]";
 
   return (
-    <section id="inscripcion" className="relative bg-turquesa px-4 py-24 text-tinta sm:px-7 sm:py-32">
+    <section id="inscripcion" className="papel px-4 pb-24 pt-16 text-tinta sm:px-7 sm:pb-32 sm:pt-24">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <h2 className="display text-[clamp(3.25rem,8vw,8rem)]" data-reveal>
           <span className="block">Tu ballet</span>
@@ -83,19 +87,26 @@ export default function RegistrationSection({ edition, isPast }: RegistrationSec
 
         {/* Lo vivo de la página: la consulta se arma mientras escribís y sale por WhatsApp */}
         <form
-          className="rounded-[28px] bg-crema p-6 shadow-[12px_12px_0_var(--color-bordo)] sm:p-8 lg:col-span-7"
+          className="cinta doblez relative rounded-[28px] bg-crema p-6 shadow-[12px_12px_0_var(--color-bordo)] sm:p-8 lg:col-span-7"
           onSubmit={(e) => {
             e.preventDefault();
+            // El evento y la apertura de WhatsApp van primero y sin demora (los navegadores bloquean
+            // ventanas que no salen directo del clic); la lluvia de rombos es solo el festejo
             trackEvent("Lead", {
               content_name: "WhatsApp Inscripcion",
               edition: edition.location,
               placement: "consulta",
             });
             window.open(whatsappLink(contact, message), "_blank", "noopener,noreferrer");
+            if (!reduce) {
+              setLluvia((n) => n + 1);
+              setTimeout(() => setLluvia(0), 1400);
+            }
           }}
           data-reveal
           style={{ "--i": 1 } as React.CSSProperties}
         >
+          {lluvia > 0 && <LluviaDeRombos key={lluvia} />}
           <h3 className="display text-[2.5rem]">Armá tu consulta</h3>
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             <label className="block font-semibold">

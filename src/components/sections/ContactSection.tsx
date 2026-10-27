@@ -8,8 +8,8 @@ const CARD_COLORS = ["bg-bordo text-crema", "bg-amarillo text-tinta"];
 
 export default function ContactSection() {
   return (
-    <section id="contacto" className="px-4 py-24 sm:px-7 sm:py-32">
-      <h2 className="display text-[clamp(3.25rem,8vw,8rem)]">
+    <section id="contacto" className="papel px-4 pb-24 pt-16 sm:px-7 sm:pb-32 sm:pt-24">
+      <h2 className="display tinta text-[clamp(3.25rem,8vw,8rem)]">
         <span className="block">Hablá con</span>
         <span className="block text-bordo">quienes lo organizan</span>
       </h2>
