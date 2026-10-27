@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import type { AnnouncedEdition, EventEdition } from "@/types";
 import { fechasDe } from "@/lib/editions";
+import { CTA_HERO_ID } from "@/lib/cta-hero";
 import TrackedLink from "@/components/ui/TrackedLink";
 import Countdown from "@/components/ui/Countdown";
 import HeroBackdrop from "@/components/motion/HeroBackdrop";
@@ -36,7 +37,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-28 pt-24 text-crema sm:px-7 sm:pb-14"
+      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-12 pt-24 text-crema sm:px-7 sm:pb-14"
     >
       <HeroBackdrop>
         <Image
@@ -93,6 +94,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
             edition: proxima ? `${proxima.location} ${fechasDe(proxima).rango}` : edition.location,
             placement: "hero",
           }}
+          id={CTA_HERO_ID}
           className="pill min-h-14 text-[1.0625rem]"
           data-load
           style={{ "--d": "600ms" } as React.CSSProperties}

@@ -107,7 +107,7 @@ export default function Home() {
         </PosterPanel>
       </main>
       <Footer />
-      <MobileActionBar inscriptionHref={inscriptionHref} edition={leadEdition} message={message} />
+      <MobileActionBar inscriptionHref={inscriptionHref} edition={leadEdition} />
       <WhatsAppFAB message={message} />
       <RevealObserver />
     </>

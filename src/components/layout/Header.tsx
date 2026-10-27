@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/event-data";
 import { EVENT_NAME } from "@/constants/history-data";
 import TrackedLink from "@/components/ui/TrackedLink";
+import { ctaHeroFuera as ctaHeroFueraSnapshot, suscribirCtaHero } from "@/lib/cta-hero";
 
 const LINKS = NAV_LINKS.filter((l) => l.href !== "#inicio" && l.href !== "#inscripcion");
 
@@ -28,6 +29,7 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const ctaHeroFuera = useSyncExternalStore(suscribirCtaHero, ctaHeroFueraSnapshot, () => false);
 
   // Escape cierra el menú y el foco queda atrapado adentro mientras está abierto
   useEffect(() => {
@@ -112,6 +114,9 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
             rel="noopener noreferrer"
             event="Lead"
             params={{ content_name: "WhatsApp Inscripcion", edition, placement: "header" }}
+            // Aparece cuando el botón del hero sale de pantalla: en el inicio no se repite
+            data-tras-hero="header"
+            data-visible={ctaHeroFuera || undefined}
             className="pill hidden min-h-11 text-[0.9375rem] sm:inline-flex"
           >
             <FaWhatsapp className="h-4 w-4" aria-hidden />
