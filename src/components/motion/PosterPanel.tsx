@@ -13,21 +13,24 @@ interface PosterPanelProps {
 }
 
 /**
- * Pliego de afiche pegado encima de la sección anterior: un fondo con borde rasgado arriba que entra con una
- * rotación chica. El contenido no se mueve ni se rota: solo el papel de atrás.
+ * Pliego de afiche pegado encima de la sección anterior: un fondo con borde rasgado arriba que entra torcido y se
+ * asienta. El contenido no se mueve ni se tuerce: solo el papel de atrás.
+ * Se inclina con skewY y no con rotate: el borde de arriba queda torcido igual, pero los costados siguen verticales.
+ * Con rotate, en el teléfono (secciones de 2000 px de alto) la parte de abajo se corría hasta 90 px de costado.
  */
 export default function PosterPanel({ children, color, rot = 0, variante = 0 }: PosterPanelProps) {
   const [bg, fill] = color;
   return (
     <div className="relative isolate -mt-5 sm:-mt-7">
-      {/* El pliego es un poco más ancho que la pantalla, así al girar no destapa el fondo en los costados;
+      {/* El pliego es un poco más ancho que la pantalla, así el borde rasgado nunca termina antes del costado;
           lo que sobra lo recorta el overflow-x: clip de main */}
       <m.div
         aria-hidden
         className="absolute -inset-x-[3%] inset-y-0 -z-10 origin-top"
-        initial={{ rotate: rot * 4 - 1.2, y: 18 }}
-        whileInView={{ rotate: rot, y: 0 }}
-        viewport={{ once: true, amount: 0.08 }}
+        initial={{ skewY: rot * 4 - 1.2, y: 18 }}
+        whileInView={{ skewY: rot, y: 0 }}
+        // Arranca apenas asoma: con una fracción del alto, en el teléfono quedaba torcido mientras se veía
+        viewport={{ once: true, amount: "some" }}
         transition={{ type: "spring", stiffness: 140, damping: 18 }}
       >
         <TornEdge className={fill} variante={variante} />

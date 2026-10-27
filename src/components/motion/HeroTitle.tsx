@@ -1,7 +1,4 @@
-"use client";
-
 import { Fragment } from "react";
-import { m } from "framer-motion";
 
 const TAGS = [
   { text: "Argentina le canta", className: "bg-bordo text-crema", registro: "var(--color-rojo)" },
@@ -11,7 +8,9 @@ const TAGS = [
 
 /**
  * El lema como carteles: cada palabra cae y se pega con un rebote chico.
- * Solo se anima transform (nunca la opacidad): el título se pinta en el primer cuadro y no demora el LCP.
+ * La caída es una animación CSS (.palabra-cae en globals.css), no de framer: arranca con el primer cuadro y no
+ * espera al JS. Con framer, el servidor pintaba las palabras giradas y encimadas hasta que cargaba el script.
+ * Solo se anima transform (nunca la opacidad): el título no demora el LCP.
  * El desregistro (sombra de color corrida) va en el texto, que se mueve con la palabra.
  */
 export default function HeroTitle() {
@@ -25,15 +24,12 @@ export default function HeroTitle() {
             return (
               // El espacio va afuera del bloque animado: adentro de un inline-block se colapsa
               <Fragment key={word + j}>
-                <m.span
-                  className="desregistro inline-block"
-                  style={{ "--registro": tag.registro } as React.CSSProperties}
-                  initial={{ y: "-0.45em", rotate: i % 2 ? 7 : -7, scale: 1.12 }}
-                  animate={{ y: 0, rotate: 0, scale: 1 }}
-                  transition={{ type: "spring", stiffness: 520, damping: 17, mass: 0.7, delay: 0.08 + i * 0.075 }}
+                <span
+                  className="desregistro palabra-cae inline-block"
+                  style={{ "--registro": tag.registro, "--i": i, "--giro": i % 2 ? "7deg" : "-7deg" } as React.CSSProperties}
                 >
                   {word}
-                </m.span>
+                </span>
                 {j < arr.length - 1 ? " " : ""}
               </Fragment>
             );

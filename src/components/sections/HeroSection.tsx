@@ -31,7 +31,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-40 pt-24 text-crema sm:px-7 sm:pb-14"
+      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-28 pt-24 text-crema sm:px-7 sm:pb-14"
     >
       <HeroBackdrop>
         <Image
@@ -45,10 +45,11 @@ export default function HeroSection({ edition, isPast, inscriptionHref, proxima 
         />
         <HeroVideo fuentes={HERO_VIDEO.fuentes} />
       </HeroBackdrop>
-      {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto */}
+      {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto. En el teléfono el
+          texto y la cuenta regresiva arrancan a mitad de pantalla, sobre las polleras blancas: ahí oscurece antes */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_28%,rgb(23_13_17/0.2)_55%,rgb(23_13_17/0.88)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_22%,rgb(23_13_17/0.5)_45%,rgb(23_13_17/0.9)_100%)] sm:bg-[linear-gradient(180deg,rgb(23_13_17/0.5)_0%,rgb(23_13_17/0)_28%,rgb(23_13_17/0.2)_55%,rgb(23_13_17/0.88)_100%)]"
       />
 
       <HeroTitle />

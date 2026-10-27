@@ -71,8 +71,10 @@ animate; `.desregistro` is the misregistered color layer (`--registro`); `.cinta
 doesn't clip) and `.doblez` (worn corner); `.duo` is the gallery duotone layer.
 
 **framer-motion** pieces live in `src/components/motion/`: `PosterPanel` (section sheet with `TornEdge`, slight rotation
-on enter), `Guarda` (woven with scroll), `HeroTitle`, `HeroBackdrop` (parallax), `StatsBoard` (count-up + beat),
-`EntraDesde`, `LluviaDeRombos`. `MotionProvider` wraps the app in `LazyMotion` (`features.ts`, `strict`) and
+on enter), `Guarda` (woven with scroll), `HeroBackdrop` (parallax), `StatsBoard` (count-up + beat),
+`EntraDesde`, `LluviaDeRombos`. framer server-renders each `initial` state, so anything above the fold animates
+with CSS instead (`HeroTitle` uses `.palabra-cae`, the rest `data-load`). On phones sections are ~2000 px tall:
+trigger `whileInView` with `amount: "some"` or a pixel `margin`, never a fraction of the height. `MotionProvider` wraps the app in `LazyMotion` (`features.ts`, `strict`) and
 `MotionConfig reducedMotion="user"`: use `m.div`, never `motion.div`. Animate only `transform`/`opacity`, never put a
 framer element on something that also has `data-reveal` or a CSS animation, and gate scroll-linked values with
 `useReducedMotion()`. Keep the hero image server-rendered (LCP) and don't fade it in.

@@ -365,6 +365,11 @@ html {
   .zoom-lento {
     animation: zoom-lento 18s var(--ease-out) both;
   }
+  /* Palabras del título del hero: caen y se pegan con un rebote chico, una tras otra */
+  .palabra-cae {
+    animation: palabra-cae 620ms var(--ease-out) both;
+    animation-delay: calc(80ms + var(--i, 0) * 75ms);
+  }
   .flota {
     animation: flota 7s ease-in-out infinite alternate;
     animation-delay: var(--f, 0s);
@@ -418,6 +423,20 @@ html {
   from {
     opacity: 0;
     transform: translateY(14px);
+  }
+}
+@keyframes palabra-cae {
+  from {
+    transform: translateY(-0.45em) rotate(var(--giro, -7deg)) scale(1.12);
+  }
+  55% {
+    transform: translateY(0.05em) rotate(calc(var(--giro, -7deg) * -0.15)) scale(0.98);
+  }
+  80% {
+    transform: translateY(-0.015em) rotate(calc(var(--giro, -7deg) * 0.05)) scale(1.01);
+  }
+  to {
+    transform: none;
   }
 }
 @keyframes zoom-lento {
