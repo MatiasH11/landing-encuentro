@@ -5,6 +5,17 @@ import TrackedLink from "@/components/ui/TrackedLink";
 import Countdown from "@/components/ui/Countdown";
 import HeroBackdrop from "@/components/motion/HeroBackdrop";
 import HeroTitle from "@/components/motion/HeroTitle";
+import HeroVideo from "@/components/motion/HeroVideo";
+
+// Video del hero: IMG_7996 (8,6 s, grabado en HDR) pasado a SDR, sin audio, a 1920 px.
+// WebM VP9 (2,5 MB) primero y MP4 H.264 con faststart (2,8 MB) de respaldo; los dos se reproducen en cualquier
+// navegador actual. Para regenerarlos, ver el comando en public/videos/README.md.
+const HERO_VIDEO = {
+  fuentes: [
+    { src: "/videos/hero.webm", type: "video/webm" },
+    { src: "/videos/hero.mp4", type: "video/mp4" },
+  ],
+};
 
 interface HeroSectionProps {
   edition: EventEdition;
@@ -29,6 +40,7 @@ export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSe
           sizes="100vw"
           className="zoom-lento object-cover object-[50%_40%]"
         />
+        <HeroVideo fuentes={HERO_VIDEO.fuentes} />
       </HeroBackdrop>
       {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto */}
       <div

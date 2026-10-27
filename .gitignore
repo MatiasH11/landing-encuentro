@@ -49,4 +49,6 @@ next-env.d.ts
 
 # Material original de 2026: videos (363 MB) y fotos sin optimizar. Se publican las versiones WebP de public/images/gallery/2026/
 public/images/gallery2026/*.mov
+public/images/gallery2026/*.MOV
 public/images/gallery2026/*.jpg
+public/images/gallery2026/*.mp4
