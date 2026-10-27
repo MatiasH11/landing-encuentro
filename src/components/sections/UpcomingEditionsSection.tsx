@@ -18,9 +18,9 @@ const POSTER: Record<string, { bg: string; photo: string; pos: string; alt: stri
   },
   "paso-2026": {
     bg: "bg-bordo text-crema",
-    photo: "/images/gallery/imagen-2.jpeg",
-    pos: "object-[40%_50%]",
-    alt: "Parejas bailando danzas gauchas en el escenario",
+    photo: "/images/gallery/2026/saludo-final-paso-de-la-patria.webp",
+    pos: "object-[50%_68%]",
+    alt: "Un ballet saluda en el escenario del Encuentro 2026 en Paso de la Patria",
   },
 };
 const FALLBACK = POSTER["mdp-2026"];
@@ -100,10 +100,10 @@ function Poster({ edition, isPast }: { edition: EventEdition; isPast: boolean })
 
 export default function UpcomingEditionsSection({ upcoming, past }: UpcomingEditionsSectionProps) {
   return (
-    <section id="ediciones" className="px-4 pb-24 pt-24 sm:px-7 sm:pb-32 sm:pt-32">
-      <h2 className="display text-[clamp(3.25rem,8vw,8rem)]" data-reveal>
-        <span className="block">Dos escenarios</span>
-        <span className="block text-bordo">en 2026</span>
+    <section id="ediciones" className="px-4 pb-24 pt-16 sm:px-7 sm:pb-32 sm:pt-20">
+      <h2 className="display flex flex-wrap items-end gap-x-5 gap-y-2 text-[clamp(3.25rem,7vw,7rem)]" data-reveal>
+        <span>Dos escenarios</span>
+        <span className="tag -rotate-2 bg-bordo text-crema">en 2026</span>
       </h2>
 
       <div className="mt-12 grid items-start gap-5 lg:grid-cols-[1.25fr_1fr]">

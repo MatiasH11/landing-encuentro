@@ -3,6 +3,8 @@ import Footer from "@/components/layout/Footer";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import HeroSection from "@/components/sections/HeroSection";
 import HistorySection from "@/components/sections/HistorySection";
+import PurposeSection from "@/components/sections/PurposeSection";
+import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 import UpcomingEditionsSection from "@/components/sections/UpcomingEditionsSection";
 import ProgramSection from "@/components/sections/ProgramSection";
 import GallerySection from "@/components/sections/GallerySection";
@@ -63,6 +65,8 @@ export default function Home() {
         <HeroSection edition={edition} isPast={featuredIsPast} inscriptionHref={inscriptionHref} />
         <div className="guarda" aria-hidden />
         <HistorySection />
+        <PurposeSection />
+        <div className="guarda" aria-hidden />
         <UpcomingEditionsSection upcoming={upcoming} past={past} />
         <ProgramSection entries={programEntries} />
         <Ticker items={stats} className="h-16 bg-turquesa text-[1.75rem] text-tinta" duration="48s" />
@@ -72,6 +76,7 @@ export default function Home() {
       </main>
       <Footer />
       <MobileActionBar inscriptionHref={inscriptionHref} edition={edition.location} message={message} />
+      <WhatsAppFAB message={message} />
       <RevealObserver />
     </>
   );

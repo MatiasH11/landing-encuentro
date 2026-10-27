@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { NAV_LINKS } from "@/constants/event-data";
+import { EVENT_NAME } from "@/constants/history-data";
 import TrackedLink from "@/components/ui/TrackedLink";
 
 const LINKS = NAV_LINKS.filter((l) => l.href !== "#inicio" && l.href !== "#inscripcion");
@@ -49,8 +51,21 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-tinta text-crema">
       <div className="flex h-16 items-center justify-between gap-6 px-4 sm:px-7">
-        <a href="#inicio" className="display text-[1.375rem] leading-none sm:text-[1.625rem]">
-          Encuentro <span className="text-amarillo">Latinoamericano</span>
+        <a href="#inicio" className="flex items-center gap-3" aria-label={`${EVENT_NAME}, inicio`}>
+          {/* El logo tiene trazos oscuros: va sobre una ficha crema, como un sticker */}
+          <span className="-rotate-2 rounded-[10px] bg-crema px-1.5 py-1">
+            <Image
+              src="/images/branding/logo.png"
+              alt=""
+              width={627}
+              height={320}
+              priority
+              className="h-9 w-auto sm:h-10"
+            />
+          </span>
+          <span className="display hidden text-[1.5rem] leading-none sm:inline">
+            Encuentro <span className="text-amarillo">Latinoamericano</span>
+          </span>
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegación principal">

@@ -1,24 +1,24 @@
 import Image from "next/image";
-import { HISTORY_TEXT, OBJECTIVES, STATS } from "@/constants/history-data";
+import { HISTORY_TEXT, STATS } from "@/constants/history-data";
 
 // Fotos del collage: cada una con su sombra de color y su etiqueta
 const COLLAGE = [
   {
-    src: "/images/gallery/imagen-2.jpeg",
-    alt: "Parejas de distintas edades bailando con vestimenta tradicional gaucha",
-    label: "Danzas gauchas",
+    src: "/images/gallery/2026/bombo-y-polleras.webp",
+    alt: "Un bailarín mayor con bombo baila entre bailarinas con polleras de volados",
+    label: "Bombo y polleras",
     sombra: "var(--color-amarillo)",
     className: "left-0 top-[6%] w-[58%] aspect-[4/5] -rotate-3 z-10",
-    pos: "object-[34%_55%]",
+    pos: "object-[50%_50%]",
     f: "0s",
   },
   {
-    src: "/images/gallery/imagen-7.jpeg",
-    alt: "Niños bailando danzas folclóricas en el escenario",
-    label: "Los más chicos",
+    src: "/images/gallery/2026/pareja-de-baile.webp",
+    alt: "Pareja vestida de negro bailando en el escenario del Encuentro",
+    label: "En pareja",
     sombra: "var(--color-magenta)",
     className: "right-0 top-0 w-[46%] aspect-square rotate-[5deg] z-20",
-    pos: "object-[50%_45%]",
+    pos: "object-[50%_55%]",
     f: "1.2s",
   },
   {
@@ -41,7 +41,7 @@ const STAT_COLORS = [
 
 export default function HistorySection() {
   return (
-    <section id="historia" className="px-4 py-24 sm:px-7 sm:py-32">
+    <section id="historia" className="px-4 pb-20 pt-24 sm:px-7 sm:pb-24 sm:pt-32">
       <h2 className="display text-[clamp(3.5rem,10vw,10rem)]" data-reveal>
         <span className="block text-bordo">19 ediciones</span>
         <span className="block">desde 2010</span>
@@ -98,32 +98,6 @@ export default function HistorySection() {
           </div>
         ))}
       </dl>
-
-      {/* Para qué existe */}
-      <div className="mt-24 grid gap-10 sm:mt-32 lg:grid-cols-12 lg:gap-8">
-        <h3 className="display text-[clamp(2.75rem,6vw,5.5rem)] lg:col-span-5" data-reveal>
-          Para qué existe <span className="text-rojo">el Encuentro</span>
-        </h3>
-        <ul className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-7">
-          {OBJECTIVES.map((objective, i) => (
-            <li
-              key={objective.slice(0, 30)}
-              className="flex gap-4 text-[1.125rem]"
-              data-reveal
-              style={{ "--i": i } as React.CSSProperties}
-            >
-              <span
-                aria-hidden
-                className={`mt-1.5 size-4 shrink-0 rotate-45 ${["bg-bordo", "bg-turquesa", "bg-amarillo", "bg-magenta"][i % 4]}`}
-              />
-              {objective}
-            </li>
-          ))}
-          <li className="text-[1.0625rem] text-tinta-suave sm:col-span-2" data-reveal>
-            {HISTORY_TEXT.trust}
-          </li>
-        </ul>
-      </div>
     </section>
   );
 }

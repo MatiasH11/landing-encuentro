@@ -32,6 +32,14 @@ export const OBJECTIVES = [
   "Promover la inclusión del Encuentro en los calendarios culturales y turísticos a nivel local, provincial y nacional.",
 ];
 
+// Título corto de cada objetivo, en el mismo orden que OBJECTIVES
+export const OBJECTIVE_TITLES = [
+  "Un escenario para el folclore",
+  "Turismo cultural",
+  "Integración latinoamericana",
+  "En el calendario del país",
+];
+
 export const EVENT_TAGLINE = "Argentina le canta y baila a Latinoamérica";
 export const EVENT_NAME = "Encuentro Latinoamericano del Canto y las Danzas Folclóricas";
 export const ORGANIZED_BY = [

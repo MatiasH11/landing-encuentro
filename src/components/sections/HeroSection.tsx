@@ -21,16 +21,16 @@ export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSe
   return (
     <section
       id="inicio"
-      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-32 pt-24 text-crema sm:px-7 sm:pb-14"
+      className="relative isolate flex min-h-[calc(100svh-6.25rem)] flex-col justify-end overflow-hidden px-4 pb-40 pt-24 text-crema sm:px-7 sm:pb-14"
     >
       <Image
-        src="/images/gallery/imagen-1.jpeg"
-        alt="Delegación con trajes bordó bailando en el escenario del Encuentro"
+        src="/images/gallery/2026/arcos-de-flores.webp"
+        alt="Bailarinas con polleras de volados levantan arcos de flores en el Encuentro 2026"
         fill
         priority
         fetchPriority="high"
         sizes="100vw"
-        className="zoom-lento -z-20 object-cover object-[50%_55%]"
+        className="zoom-lento -z-20 object-cover object-[50%_40%]"
       />
       {/* Oscurece arriba y abajo para que el texto se lea sobre cualquier parte de la foto */}
       <div
@@ -51,7 +51,8 @@ export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSe
         ))}
       </h1>
 
-      <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-7">
+      {/* sm:pr-24 deja lugar al botón flotante de WhatsApp, abajo a la derecha */}
+      <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-7 sm:pr-24">
         <p className="max-w-[42ch] text-[1.1875rem] font-semibold" data-load>
           <span className="font-extrabold">
             {edition.editionNumber}º Encuentro Latinoamericano del Canto y las Danzas Folclóricas.
