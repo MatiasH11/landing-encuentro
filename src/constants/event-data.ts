@@ -1,4 +1,5 @@
 import type {
+  AnnouncedEdition,
   EventEdition,
   ScheduleDay,
   ContactPerson,
@@ -199,11 +200,38 @@ export const CONTACTS: ContactPerson[] = [
   },
 ];
 
+// Fechas 2027 confirmadas por Matías (27/10/2026). Solo fecha y localidad: sede, programa, cupos y costos
+// todavía no están confirmados, así que no se muestran.
+export const EDITIONS_2027: AnnouncedEdition[] = [
+  {
+    id: "paso-2027-julio",
+    location: "Paso de la Patria",
+    province: "Corrientes",
+    startDate: "2027-07-16",
+    endDate: "2027-07-18",
+  },
+  {
+    id: "paso-2027-octubre",
+    location: "Paso de la Patria",
+    province: "Corrientes",
+    startDate: "2027-10-08",
+    endDate: "2027-10-10",
+  },
+  {
+    id: "mdp-2027",
+    location: "Mar del Plata",
+    province: "Buenos Aires",
+    startDate: "2027-11-19",
+    endDate: "2027-11-21",
+  },
+];
+
 export const NAV_LINKS: NavLink[] = [
   { label: "Inicio", href: "#inicio" },
   { label: "Historia", href: "#historia" },
   { label: "Ediciones 2026", href: "#ediciones" },
   { label: "Programa", href: "#programa" },
+  { label: "Próximamente", href: "#proximamente", badge: "2027" },
   { label: "Galería", href: "#galeria" },
   { label: "Inscripción", href: "#inscripcion" },
   { label: "Contacto", href: "#contacto" },

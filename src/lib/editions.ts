@@ -1,5 +1,5 @@
-import { EDITIONS_2026, SCHEDULE_MDP_2026, SCHEDULE_PASO_2026 } from "@/constants/event-data";
-import type { ContactPerson, EventEdition, ScheduleDay } from "@/types";
+import { EDITIONS_2026, EDITIONS_2027, SCHEDULE_MDP_2026, SCHEDULE_PASO_2026 } from "@/constants/event-data";
+import type { AnnouncedEdition, ContactPerson, EventEdition, ScheduleDay } from "@/types";
 
 const SCHEDULES: Record<string, ScheduleDay[]> = {
   "paso-2026": SCHEDULE_PASO_2026,
@@ -48,6 +48,34 @@ export function daysUntil(edition: EventEdition, now = new Date()) {
 export function whatsappLink(contact: ContactPerson, text: string) {
   const number = contact.whatsappUrl.match(/wa\.me\/(\d+)/)?.[1] ?? "";
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+}
+
+// ---------- Ediciones anunciadas (solo fecha y localidad) ----------
+
+const MESES = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+];
+
+/** Anunciadas que todavía no terminaron, en orden de fecha. */
+export function announcedEditions(now = new Date()) {
+  return EDITIONS_2027.filter(
+    (e) => new Date(`${e.endDate}T23:59:59-03:00`).getTime() >= now.getTime()
+  ).sort((a, b) => a.startDate.localeCompare(b.startDate));
+}
+
+/** Días, mes y año de una edición anunciada, y su rango en texto ("16 al 18 de julio de 2027"). */
+export function fechasDe(e: AnnouncedEdition) {
+  const [y, m, d1] = e.startDate.split("-").map(Number);
+  const d2 = Number(e.endDate.split("-")[2]);
+  const dias = Array.from({ length: d2 - d1 + 1 }, (_, i) => d1 + i);
+  const mes = MESES[m - 1];
+  return { dias, mes, anio: y, rango: `${d1} al ${d2} de ${mes} de ${y}` };
+}
+
+/** Mensaje de WhatsApp para reservar lugar en una edición anunciada. */
+export function reserveMessage(e: AnnouncedEdition) {
+  return `Hola! Quiero reservar lugar para mi ballet en el Encuentro Latinoamericano de ${e.location}, ${fechasDe(e).rango}. Quisiera más información.`;
 }
 
 /** Si la edición ya pasó (todavía no se cargó la siguiente), la consulta es por la próxima. */

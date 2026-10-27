@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
-import type { EventEdition } from "@/types";
+import type { AnnouncedEdition, EventEdition } from "@/types";
+import { fechasDe } from "@/lib/editions";
 import TrackedLink from "@/components/ui/TrackedLink";
 import Countdown from "@/components/ui/Countdown";
 import HeroBackdrop from "@/components/motion/HeroBackdrop";
@@ -21,10 +22,12 @@ interface HeroSectionProps {
   edition: EventEdition;
   isPast: boolean;
   inscriptionHref: string;
+  /** Edición anunciada que pasa al frente cuando ya terminaron las de 2026 */
+  proxima?: AnnouncedEdition;
 }
 
 /** El escenario a pantalla completa y el lema como etiquetas de afiche. */
-export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSectionProps) {
+export default function HeroSection({ edition, isPast, inscriptionHref, proxima }: HeroSectionProps) {
   return (
     <section
       id="inicio"
@@ -52,18 +55,26 @@ export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSe
 
       {/* sm:pr-24 deja lugar al botón flotante de WhatsApp, abajo a la derecha */}
       <div className="mt-8 flex flex-wrap items-end justify-between gap-x-10 gap-y-7 sm:pr-24">
-        <p className="max-w-[42ch] text-[1.1875rem] font-semibold" data-load>
-          <span className="font-extrabold">
-            {edition.editionNumber}º Encuentro Latinoamericano del Canto y las Danzas Folclóricas.
-          </span>{" "}
-          <span className="font-normal">
-            {isPast ? "Se realizó en " : ""}
-            {edition.location}, {edition.dateRange}, en el {edition.venue}.
-          </span>
-        </p>
-        {!isPast && (
+        {proxima ? (
+          // Terminó 2026 y ya hay una fecha anunciada: va al frente, solo con lo confirmado
+          <p className="max-w-[42ch] text-[1.1875rem] font-semibold" data-load>
+            <span className="font-extrabold">Próxima edición: {proxima.location}, {fechasDe(proxima).rango}.</span>{" "}
+            <span className="font-normal">Sede y programa a confirmar.</span>
+          </p>
+        ) : (
+          <p className="max-w-[42ch] text-[1.1875rem] font-semibold" data-load>
+            <span className="font-extrabold">
+              {edition.editionNumber}º Encuentro Latinoamericano del Canto y las Danzas Folclóricas.
+            </span>{" "}
+            <span className="font-normal">
+              {isPast ? "Se realizó en " : ""}
+              {edition.location}, {edition.dateRange}, en el {edition.venue}.
+            </span>
+          </p>
+        )}
+        {(proxima || !isPast) && (
           <div data-load style={{ "--d": "520ms" } as React.CSSProperties}>
-            <Countdown startDate={edition.startDate} />
+            <Countdown startDate={proxima ? proxima.startDate : edition.startDate} />
           </div>
         )}
         <TrackedLink
@@ -71,13 +82,17 @@ export default function HeroSection({ edition, isPast, inscriptionHref }: HeroSe
           target="_blank"
           rel="noopener noreferrer"
           event="Lead"
-          params={{ content_name: "WhatsApp Inscripcion", edition: edition.location, placement: "hero" }}
+          params={{
+            content_name: proxima ? "WhatsApp Reserva 2027" : "WhatsApp Inscripcion",
+            edition: proxima ? `${proxima.location} ${fechasDe(proxima).rango}` : edition.location,
+            placement: "hero",
+          }}
           className="pill min-h-14 text-[1.0625rem]"
           data-load
           style={{ "--d": "600ms" } as React.CSSProperties}
         >
           <FaWhatsapp className="h-5 w-5" aria-hidden />
-          {isPast ? "Consultá por la próxima edición" : "Inscribí a tu ballet"}
+          {proxima ? "Reservá tu lugar" : isPast ? "Consultá por la próxima edición" : "Inscribí a tu ballet"}
         </TrackedLink>
       </div>
     </section>

@@ -9,6 +9,16 @@ import TrackedLink from "@/components/ui/TrackedLink";
 
 const LINKS = NAV_LINKS.filter((l) => l.href !== "#inicio" && l.href !== "#inscripcion");
 
+/** Punto amarillo que late suave para marcar una novedad (quieto con movimiento reducido) */
+function PuntoNuevo() {
+  return (
+    <span aria-hidden className="relative inline-flex size-2.5">
+      <span className="punto-late absolute inset-0 rounded-full bg-amarillo" />
+      <span className="relative size-2.5 rounded-full bg-amarillo" />
+    </span>
+  );
+}
+
 interface HeaderProps {
   inscriptionHref: string;
   edition: string;
@@ -69,15 +79,30 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navegación principal">
-          {LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-[0.9375rem] font-semibold decoration-amarillo decoration-2 underline-offset-4 hover:underline"
-            >
-              {link.label}
-            </a>
-          ))}
+          {LINKS.map((link) =>
+            link.badge ? (
+              // Ítem destacado: en amarillo, con la etiqueta del año y un punto que late
+              <a
+                key={link.href}
+                href={link.href}
+                className="group inline-flex items-center gap-2 text-[0.9375rem] font-extrabold text-amarillo"
+              >
+                <PuntoNuevo />
+                <span className="decoration-amarillo decoration-2 underline-offset-4 group-hover:underline">
+                  {link.label}
+                </span>
+                <span className="-rotate-3 rounded-full bg-rojo px-2 py-0.5 text-[0.75rem] text-crema">{link.badge}</span>
+              </a>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-[0.9375rem] font-semibold decoration-amarillo decoration-2 underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -95,12 +120,15 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
           <button
             ref={toggleRef}
             type="button"
-            className="min-h-11 px-2 font-semibold lg:hidden"
+            className="relative inline-flex min-h-11 items-center gap-2 px-2 font-semibold lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="menu-movil"
           >
+            {/* Con el menú cerrado, el punto avisa que adentro hay algo nuevo */}
+            {!open && <PuntoNuevo />}
             {open ? "Cerrar" : "Menú"}
+            {!open && <span className="sr-only">(hay fechas 2027)</span>}
           </button>
         </div>
       </div>
@@ -119,9 +147,16 @@ export default function Header({ inscriptionHref, edition }: HeaderProps) {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="display block py-1.5 text-[2.75rem] hover:text-amarillo"
+                  className={`display flex items-center gap-3 py-1.5 text-[2.75rem] hover:text-amarillo ${
+                    link.badge ? "text-amarillo" : ""
+                  }`}
                 >
                   {link.label}
+                  {link.badge && (
+                    <span className="-rotate-3 rounded-full bg-rojo px-3 py-1 font-sans text-[1rem] font-extrabold text-crema">
+                      {link.badge}
+                    </span>
+                  )}
                 </a>
               </li>
             ))}

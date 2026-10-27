@@ -380,6 +380,10 @@ html {
   .fab-pulso {
     animation: fab-pulso 2.4s var(--ease-out) infinite;
   }
+  /* Punto de novedad del menú (Próximamente) */
+  .punto-late {
+    animation: fab-pulso 1.8s var(--ease-out) infinite;
+  }
 }
 
 @keyframes fab-pulso {
