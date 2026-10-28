@@ -1,72 +1,72 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
-import { createPortal } from "react-dom";
-import Image from "next/image";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 import { GALLERY_ITEMS } from "@/constants/gallery-data";
+import Pila, { type Hoja } from "@/components/gallery/Pila";
+import type { GalleryItem } from "@/types";
 
 // El visor se descarga recién cuando alguien abre una foto
 const Lightbox = dynamic(() => import("@/components/gallery/Lightbox"), { ssr: false });
 
-const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
-const video = GALLERY_ITEMS.find((item) => item.type === "video");
-const videoId = video?.videoUrl?.split("/embed/")[1];
-
-// Las seis que se muestran, en orden: una de apertura grande y cinco con tamaños distintos.
-// Se eligieron para que el telón con el logo del evento aparezca poco; el resto se ve en el visor.
-const DESTACADAS = [
-  {
-    id: "photo-2026-arcos",
-    label: "Arcos de flores",
-    span: "col-span-2 aspect-[4/3] lg:col-span-7 lg:row-span-2 lg:aspect-auto",
-    rot: "",
-    pos: "object-[50%_45%]",
-  },
-  { id: "photo-2026-bombo", label: "Bombo y polleras", span: "aspect-square lg:col-span-5 lg:aspect-auto", rot: "-rotate-1", pos: "object-[45%_45%]" },
-  { id: "photo-001", label: "Ballet en escena", span: "aspect-square lg:col-span-5 lg:aspect-auto", rot: "rotate-[0.6deg]", pos: "object-[50%_60%]" },
-  { id: "photo-002", label: "Danzas gauchas", span: "aspect-square lg:col-span-4 lg:aspect-auto", rot: "", pos: "object-[38%_55%]" },
-  { id: "photo-005", label: "Bombos legüeros", span: "aspect-square lg:col-span-4 lg:aspect-auto", rot: "-rotate-[0.6deg]", pos: "object-[45%_60%]" },
-  { id: "photo-004", label: "Polleras celestes", span: "col-span-2 aspect-[16/10] lg:col-span-4 lg:aspect-auto", rot: "rotate-[0.4deg]", pos: "object-[50%_62%]" },
+// Las que abren la pila, en orden y con su encuadre; después siguen las demás en el orden de gallery-data.
+// Se eligieron para que el telón con el logo del evento aparezca poco.
+const PRIMERAS: Record<string, string> = {
+  "photo-2026-arcos": "object-[50%_45%]",
+  "photo-2026-bombo": "object-[45%_45%]",
+  "photo-001": "object-[50%_60%]",
+  "photo-002": "object-[38%_55%]",
+  "photo-005": "object-[45%_60%]",
+  "photo-004": "object-[50%_62%]",
+};
+const todas = GALLERY_ITEMS.filter((item) => item.type === "photo");
+const photos = [
+  ...Object.keys(PRIMERAS).flatMap((id) => todas.filter((p) => p.id === id)),
+  ...todas.filter((p) => !(p.id in PRIMERAS)),
 ];
+const hojasDeFotos: Hoja[] = photos.map((p) => ({
+  id: p.id,
+  src: p.src,
+  alt: p.alt,
+  // "Arcos de flores — Encuentro 2026" → "Arcos de flores"
+  etiqueta: p.caption.split(" — ")[0],
+  encuadre: PRIMERAS[p.id],
+}));
 
+// En el orden de gallery-data: el primero arranca arriba de la pila
+const videos = GALLERY_ITEMS.filter((item) => item.type === "video" && item.videoUrl);
+const youtubeId = (v: GalleryItem) => v.videoUrl?.split("/embed/")[1];
+const hojasDeVideos: Hoja[] = videos.map((v) => ({
+  id: v.id,
+  src: `https://i.ytimg.com/vi/${youtubeId(v)}/maxresdefault.jpg`,
+  alt: "",
+  etiqueta: v.caption,
+}));
 
-// Color de la capa de duotono de cada foto, en orden
-const DUO = ["bg-bordo", "bg-turquesa", "bg-amarillo"];
+const PESTANAS = [
+  { id: "fotos", label: "Fotos", cantidad: photos.length },
+  { id: "videos", label: "Videos", cantidad: videos.length },
+] as const;
+type Pestana = (typeof PESTANAS)[number]["id"];
 
-const sinCambios = () => () => {};
-
+/**
+ * Galería en una sola mesa de altura fija: pestañas Fotos y Videos, cada una una pila de hojas que se pasan
+ * (Pila). Tocar una foto la abre en el visor; tocar un video lo reproduce en la misma hoja.
+ * Sumar fotos o videos no alarga la página.
+ */
 export default function GallerySection() {
+  const [pestana, setPestana] = useState<Pestana>("fotos");
   const [index, setIndex] = useState(-1);
+  const [videoArriba, setVideoArriba] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [zoom, setZoom] = useState<{ id: string; index: number } | null>(null);
-  const reduce = useReducedMotion();
-  // El portal se monta recién en el navegador, después de hidratar
-  const enCliente = useSyncExternalStore(
-    sinCambios,
-    () => true,
-    () => false
-  );
+  const video = videos[videoArriba];
 
-  const abrir = (id: string, i: number) => {
-    // Con movimiento reducido se abre el visor directo, sin agrandar la foto
-    if (reduce) return setIndex(i);
-    setZoom({ id, index: i });
+  const elegirPestana = (p: Pestana) => {
+    setPestana(p);
+    // Al salir de Videos se corta lo que estuviera sonando
+    if (p !== "videos") setPlaying(false);
   };
-
-  // Cuando el visor ya está abierto, la foto agrandada se retira (queda detrás del visor).
-  // Si la animación no llega a avisar que terminó, el visor se abre igual.
-  useEffect(() => {
-    if (!zoom) return;
-    if (index >= 0) {
-      const t = setTimeout(() => setZoom(null), 350);
-      return () => clearTimeout(t);
-    }
-    const respaldo = setTimeout(() => setIndex(zoom.index), 900);
-    return () => clearTimeout(respaldo);
-  }, [zoom, index]);
 
   return (
     <section id="galeria" className="grano px-4 pb-24 pt-12 text-crema sm:px-7 sm:pb-32 sm:pt-16">
@@ -79,115 +79,108 @@ export default function GallerySection() {
           <span className="mt-2 block text-turquesa">en el Encuentro</span>
         </h2>
         <p className="max-w-[34ch] text-[1.0625rem] text-crema/85" data-reveal>
-          Arcos de flores, bombos, chacareras y ballets de todas las edades. Fotos de las ediciones 2024 y 2026.
+          Arcos de flores, bombos, chacareras y ballets de todas las edades. Fotos y videos de las ediciones 2024 y
+          2026.
         </p>
       </div>
 
-      {/* Mosaico: una foto de apertura grande y cinco más chicas, con un solo tratamiento de borde */}
-      {/* Las fotos van en duotono con los colores del sitio y pasan a color al pasar el mouse (desktop)
-          o al entrar en pantalla (teléfono) */}
-      <ul className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-12 lg:auto-rows-[15.5rem]">
-        {DESTACADAS.map((d, i) => {
-          const index = photos.findIndex((p) => p.id === d.id);
-          const photo = photos[index];
-          if (!photo) return null;
-          return (
-            <li key={d.id} className={`${d.span} ${d.rot}`} data-reveal style={{ "--i": i % 3 } as React.CSSProperties}>
+      <div className="mt-10 sm:mt-12" data-reveal>
+        <div
+          role="tablist"
+          aria-label="Fotos o videos"
+          className="flex justify-center gap-2"
+          onKeyDown={(e) => {
+            if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+            const otra = pestana === "fotos" ? "videos" : "fotos";
+            elegirPestana(otra);
+            document.getElementById(`pestana-${otra}`)?.focus();
+          }}
+        >
+          {PESTANAS.map((p) => {
+            const activa = p.id === pestana;
+            return (
               <button
+                key={p.id}
+                id={`pestana-${p.id}`}
                 type="button"
-                onClick={() => abrir(d.id, index)}
-                className="group relative block h-full w-full overflow-hidden rounded-[18px] transition-[rotate] duration-200 hover:rotate-0"
-                aria-label={`Ampliar: ${photo.caption}`}
+                role="tab"
+                aria-selected={activa}
+                aria-controls={`panel-${p.id}`}
+                tabIndex={activa ? 0 : -1}
+                onClick={() => elegirPestana(p.id)}
+                className={`pill min-h-12 text-[1rem] ${activa ? "" : "pill-linea text-crema"}`}
               >
-                <m.div layoutId={`foto-${d.id}`} className="absolute inset-0">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes={i === 0 ? "(max-width: 1024px) 92vw, 56vw" : "(max-width: 1024px) 46vw, 40vw"}
-                    className={`object-cover ${d.pos} transition-transform duration-500 ease-out group-hover:scale-[1.04]`}
-                  />
-                </m.div>
-                <span aria-hidden className={`duo ${DUO[i % DUO.length]}`} />
-                <span className="absolute bottom-3 left-3 z-10 max-w-[calc(100%-1.5rem)] truncate rounded-full bg-crema px-3 py-1 text-left text-[0.8125rem] font-extrabold text-tinta sm:text-[0.875rem]">
-                  {d.label}
-                </span>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-
-      {/* La foto tocada se agranda desde su lugar hasta el centro y ahí se abre el visor */}
-      {enCliente &&
-        createPortal(
-          <AnimatePresence>
-            {zoom && (
-              <m.div
-                key="zoom"
-                className="fixed inset-0 z-[70] grid place-items-center bg-tinta/85 p-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              >
-                <m.div
-                  layoutId={`foto-${zoom.id}`}
-                  className="relative aspect-[3/2] w-[min(92vw,calc(82vh*1.5))] overflow-hidden rounded-[18px]"
-                  transition={{ type: "spring", stiffness: 260, damping: 30 }}
-                  onLayoutAnimationComplete={() => setIndex(zoom.index)}
+                {p.label}
+                <span
+                  className={`tabular rounded-full px-2 text-[0.8125rem] ${activa ? "bg-tinta text-amarillo" : "bg-crema/15"}`}
                 >
-                  <Image src={photos[zoom.index].src} alt="" fill sizes="92vw" className="object-cover" />
-                </m.div>
-              </m.div>
-            )}
-          </AnimatePresence>,
-          document.body
-        )}
-
-      <p className="mt-8 flex justify-center">
-        <button type="button" onClick={() => setIndex(0)} className="pill pill-linea text-crema">
-          Ver las {photos.length} fotos
-        </button>
-      </p>
-
-      {/* El video, enmarcado como un aftermovie */}
-      {video && videoId && (
-        <div className="mx-auto mt-24 max-w-5xl rounded-[28px] bg-rojo p-4 sm:p-8" data-reveal>
-          <h3 className="display mb-5 text-center text-[clamp(2.25rem,5vw,4rem)] text-crema">
-            Mirá el Encuentro
-          </h3>
-          <div className="relative aspect-video overflow-hidden rounded-[16px] bg-tinta">
-            {playing ? (
-              <iframe
-                src={`${video.videoUrl}?autoplay=1`}
-                title={video.caption}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 h-full w-full"
-              />
-            ) : (
-              <button
-                type="button"
-                onClick={() => setPlaying(true)}
-                className="group absolute inset-0"
-                aria-label={`Ver el video: ${video.caption}`}
-              >
-                <Image
-                  src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 92vw, 64rem"
-                  className="object-cover opacity-85 transition-opacity group-hover:opacity-100"
-                />
-                <span className="pill absolute left-1/2 top-1/2 min-h-16 -translate-x-1/2 -translate-y-1/2 text-[1.0625rem]">
-                  <FaPlay className="h-4 w-4" aria-hidden />
-                  Ver el video
+                  {p.cantidad}
                 </span>
               </button>
-            )}
-          </div>
+            );
+          })}
         </div>
-      )}
+
+        {/* Los dos paneles ocupan la misma celda: la mesa toma la altura del más alto y no salta al cambiar */}
+        <div className="mt-10 grid">
+          <div
+            id="panel-fotos"
+            role="tabpanel"
+            aria-labelledby="pestana-fotos"
+            inert={pestana !== "fotos"}
+            className={`[grid-area:1/1] transition-opacity duration-300 ${pestana === "fotos" ? "" : "invisible opacity-0"}`}
+          >
+            <Pila
+              hojas={hojasDeFotos}
+              nombre="Fotos del Encuentro"
+              aspecto="aspect-square sm:aspect-[3/2]"
+              accion="Ver en grande"
+              onTocar={setIndex}
+              ayuda="Deslizá la foto de arriba para pasarla, o tocala para verla en grande"
+            />
+          </div>
+
+          {video && (
+            <div
+              id="panel-videos"
+              role="tabpanel"
+              aria-labelledby="pestana-videos"
+              inert={pestana !== "videos"}
+              className={`[grid-area:1/1] self-start transition-opacity duration-300 ${pestana === "videos" ? "" : "invisible opacity-0"}`}
+            >
+              <Pila
+                hojas={hojasDeVideos}
+                nombre="Videos del Encuentro"
+                aspecto="aspect-video"
+                accion="Ver el video"
+                onTocar={() => setPlaying(true)}
+                onCambio={(i) => {
+                  setVideoArriba(i);
+                  setPlaying(false);
+                }}
+                sello={
+                  <span className="grid size-16 place-items-center rounded-full bg-amarillo text-tinta shadow-[0_5px_0_var(--color-tinta)] sm:size-20">
+                    <FaPlay className="size-6 translate-x-0.5 sm:size-7" aria-hidden />
+                  </span>
+                }
+                contenidoArriba={
+                  playing ? (
+                    <iframe
+                      key={video.id}
+                      src={`${video.videoUrl}?autoplay=1`}
+                      title={video.caption}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  ) : undefined
+                }
+                ayuda="Deslizá para pasar de video, o tocalo para verlo acá"
+              />
+            </div>
+          )}
+        </div>
+      </div>
 
       {index >= 0 && <Lightbox photos={photos} open index={index} onClose={() => setIndex(-1)} />}
     </section>

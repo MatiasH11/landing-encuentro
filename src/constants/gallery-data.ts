@@ -3,15 +3,37 @@ import type { GalleryItem } from "@/types";
 // Gallery items from past editions.
 // To add new photos/videos: add entries here and place files in public/images/gallery/
 // Las de 2026 van en public/images/gallery/2026/ como WebP de 2400 px de ancho (los originales no se suben).
+// Videos de YouTube, en orden: el primero es el principal de "Mirá el Encuentro"; los otros van en "Más videos".
+// La caption se muestra debajo de cada video.
 export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: "video-paso-2026",
+    type: "video",
+    // Canal oficial del Encuentro, subido el 17/10/2026
+    videoUrl: "https://www.youtube.com/embed/7EZ3W_m1jLY",
+    caption: "Paso de la Patria, Corrientes · 2026",
+    alt: "Video del Encuentro 2026 en Paso de la Patria",
+    year: 2026,
+    src: "", // Required by GalleryItem type based on src/types/index.ts
+  },
+  {
+    id: "video-vivo-viernes-2026",
+    type: "video",
+    // Transmisión de Puntomdq del viernes 9/10/2026, primera noche en Paso de la Patria
+    videoUrl: "https://www.youtube.com/embed/CvbfGALXtaY",
+    caption: "En vivo: la noche del viernes · 2026",
+    alt: "Transmisión en vivo de la noche del viernes del Encuentro 2026",
+    year: 2026,
+    src: "",
+  },
   {
     id: "video-001",
     type: "video",
     videoUrl: "https://www.youtube.com/embed/3Fgfw5Bnl_Y",
-    caption: "Video destacado del Encuentro Latinoamericano",
+    caption: "Así es el Encuentro",
     alt: "Video del festival folclórico",
     year: 2024,
-    src: "", // Required by GalleryItem type based on src/types/index.ts
+    src: "",
   },
   {
     id: "photo-2026-arcos",

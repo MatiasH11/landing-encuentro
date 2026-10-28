@@ -317,32 +317,8 @@ html {
   border-top-left-radius: 6px;
 }
 
-/* Galería en duotono: una capa de color con mix-blend color encima de la foto, que se va al pasar el mouse
- * (desktop) o al entrar en pantalla (teléfono). Solo cambia la opacidad de la capa. */
-.duo {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  mix-blend-mode: color;
-  transition: opacity 600ms var(--ease-out);
-}
-@media (hover: hover) and (pointer: fine) {
-  .group:hover .duo,
-  .group:focus-visible .duo {
-    opacity: 0;
-  }
-}
-@media (hover: none) {
-  .is-in .duo {
-    opacity: 0;
-    transition-delay: 700ms;
-    transition-duration: 1200ms;
-  }
-}
-
 /* Botones que repiten el del hero (barra fija del teléfono, botón del header): ocultos mientras el del hero está
- * en pantalla. useCtaHeroFuera les pone data-visible. Sin JS quedan siempre a la vista.
+ * en pantalla. Les pone data-visible el store de src/lib/cta-hero.ts. Sin JS quedan siempre a la vista.
  * visibility (con su demora) los saca también del foco y de los lectores mientras no se ven. */
 html.js [data-tras-hero]:not([data-visible]) {
   visibility: hidden;

@@ -22,7 +22,8 @@ Each section has a matching `id` attribute used for smooth-scroll navigation (`#
 
 **Data layer** (`src/constants/`):
 - `event-data.ts` — `EDITIONS_2026` (two upcoming events), `SCHEDULE_PASO_2026`, `SCHEDULE_MDP_2026`, `CONTACTS`, `NAV_LINKS`
-- `gallery-data.ts` — `GALLERY_ITEMS` (photos + YouTube video). Add new items here and drop files in `public/images/gallery/`
+- `gallery-data.ts` — `GALLERY_ITEMS` (photos + YouTube videos; the first video is the one in the player). Add new
+  items here and drop files in `public/images/gallery/`
 - `history-data.ts` — `EVENT_TAGLINE`, `STATS`, organizer/history content
 
 **Types** (`src/types/index.ts`): `EventEdition`, `ScheduleDay`, `GalleryItem`, `ContactPerson`, `NavLink`, etc. All data constants are typed here.
@@ -30,7 +31,9 @@ Each section has a matching `id` attribute used for smooth-scroll navigation (`#
 **Components**:
 - `src/components/sections/` — one file per page section
 - `src/components/layout/` — `Header.tsx`, `Footer.tsx`, `MobileActionBar.tsx`
-- `src/components/gallery/` — `Lightbox.tsx` (uses `yet-another-react-lightbox`, loaded on demand from `GallerySection`)
+- `src/components/gallery/` — `Pila.tsx` (draggable stack of prints, used by both the photos and the videos) and `Lightbox.tsx` (uses
+  `yet-another-react-lightbox`, loaded on demand from `GallerySection`). The gallery is one fixed-height table with
+  Fotos / Videos tabs: adding photos or videos must not make the page longer.
 - `src/components/ui/` — shadcn components (Button, Card, Badge, Dialog, Tabs, Accordion, Separator)
 
 ## Visual direction (decided by Matías, 2026-10-25) — keep it
@@ -70,7 +73,7 @@ Motion: entrances use `data-reveal` (observed by `RevealObserver`); hidden state
 **Worn poster paper** (in `globals.css`, always behind content): `.papel` (cream sections) and `.grano` (dark ones) are
 paper textures; `.tinta` is the static SVG serigraphy filter (`#tinta` in `PaperFilters`) — only on headlines that never
 animate; `.desregistro` is the misregistered color layer (`--registro`); `.cinta` (tape, needs a positioned element that
-doesn't clip) and `.doblez` (worn corner); `.duo` is the gallery duotone layer.
+doesn't clip) and `.doblez` (worn corner).
 
 **framer-motion** pieces live in `src/components/motion/`: `PosterPanel` (section sheet with `TornEdge`, slight rotation
 on enter), `Guarda` (woven with scroll), `HeroBackdrop` (parallax), `StatsBoard` (count-up + beat),
