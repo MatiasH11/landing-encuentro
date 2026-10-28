@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { HISTORY_TEXT, OBJECTIVES, OBJECTIVE_TITLES } from "@/constants/history-data";
+import { EVENT_NAME, HISTORY_TEXT, OBJECTIVES, OBJECTIVE_TITLES } from "@/constants/history-data";
 
 const TITLE_COLORS = ["text-amarillo", "text-turquesa", "text-magenta", "text-crema"];
 
 /**
- * Para qué existe el Encuentro: dos mitades sin espacio entre ellas.
+ * Por qué existe el Encuentro: dos mitades sin espacio entre ellas.
  * A la izquierda una foto 2026 con el título en etiquetas; a la derecha los objetivos sobre campo oscuro.
  */
 export default function PurposeSection() {
@@ -23,13 +23,24 @@ export default function PurposeSection() {
           className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0)_35%,rgb(23_13_17/0.85)_100%)]"
         />
         <h2 id="para-que" className="display flex flex-col items-start gap-2 text-[clamp(3rem,6.4vw,6.5rem)]" data-reveal>
-          <span className="tag bg-amarillo text-tinta">Para qué</span>
+          <span className="tag bg-amarillo text-tinta">Por qué</span>
           <span className="tag self-end -rotate-[1.5deg] bg-crema text-bordo">existe</span>
           <span className="tag bg-rojo text-crema">el Encuentro</span>
         </h2>
-        <p className="mt-6 max-w-[46ch] text-[1rem] font-semibold text-crema" data-reveal>
-          {HISTORY_TEXT.trust}
-        </p>
+        {/* Quiénes lo hacen posible, firmado con el logo: ficha crema (el logo tiene trazos oscuros) pegada con cinta */}
+        <div className="mt-7 flex flex-col items-start gap-6 sm:flex-row sm:items-center" data-reveal>
+          <span className="cinta relative shrink-0 -rotate-2 rounded-[14px] bg-crema px-3 py-2 shadow-[6px_6px_0_var(--color-amarillo)]">
+            <Image
+              src="/images/branding/logo.png"
+              alt={EVENT_NAME}
+              width={627}
+              height={320}
+              sizes="176px"
+              className="h-auto w-40 sm:w-44"
+            />
+          </span>
+          <p className="max-w-[46ch] text-[1rem] font-semibold text-crema">{HISTORY_TEXT.trust}</p>
+        </div>
       </div>
 
       <div className="grano flex flex-col justify-center bg-tinta px-4 py-16 text-crema sm:px-10 lg:px-14">
