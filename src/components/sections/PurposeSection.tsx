@@ -4,7 +4,7 @@ import { EVENT_NAME, HISTORY_TEXT, OBJECTIVES, OBJECTIVE_TITLES } from "@/consta
 const TITLE_COLORS = ["text-amarillo", "text-turquesa", "text-magenta", "text-crema"];
 
 /**
- * Para qué existe el Encuentro: dos mitades sin espacio entre ellas.
+ * Por qué existe el Encuentro: dos mitades sin espacio entre ellas.
  * A la izquierda una foto 2026 con el título en etiquetas; a la derecha los objetivos sobre campo oscuro.
  */
 export default function PurposeSection() {
@@ -23,7 +23,7 @@ export default function PurposeSection() {
           className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgb(23_13_17/0)_35%,rgb(23_13_17/0.85)_100%)]"
         />
         <h2 id="para-que" className="display flex flex-col items-start gap-2 text-[clamp(3rem,6.4vw,6.5rem)]" data-reveal>
-          <span className="tag bg-amarillo text-tinta">Para qué</span>
+          <span className="tag bg-amarillo text-tinta">Por qué</span>
           <span className="tag self-end -rotate-[1.5deg] bg-crema text-bordo">existe</span>
           <span className="tag bg-rojo text-crema">el Encuentro</span>
         </h2>
