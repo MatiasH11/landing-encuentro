@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 import { GALLERY_ITEMS } from "@/constants/gallery-data";
+import type { GalleryItem } from "@/types";
 
 // El visor se descarga recién cuando alguien abre una foto
 const Lightbox = dynamic(() => import("@/components/gallery/Lightbox"), { ssr: false });
 
 const photos = GALLERY_ITEMS.filter((item) => item.type === "photo");
-const video = GALLERY_ITEMS.find((item) => item.type === "video");
-const videoId = video?.videoUrl?.split("/embed/")[1];
+// En el orden de gallery-data: el primero arranca como principal
+const videos = GALLERY_ITEMS.filter((item) => item.type === "video" && item.videoUrl);
+const youtubeId = (v: GalleryItem) => v.videoUrl?.split("/embed/")[1];
 
 // Las seis que se muestran, en orden: una de apertura grande y cinco con tamaños distintos.
 // Se eligieron para que el telón con el logo del evento aparezca poco; el resto se ve en el visor.
@@ -41,6 +43,9 @@ const sinCambios = () => () => {};
 export default function GallerySection() {
   const [index, setIndex] = useState(-1);
   const [playing, setPlaying] = useState(false);
+  const [videoActivo, setVideoActivo] = useState(0);
+  const video = videos[videoActivo];
+  const reproductor = useRef<HTMLDivElement>(null);
   const [zoom, setZoom] = useState<{ id: string; index: number } | null>(null);
   const reduce = useReducedMotion();
   // El portal se monta recién en el navegador, después de hidratar
@@ -54,6 +59,14 @@ export default function GallerySection() {
     // Con movimiento reducido se abre el visor directo, sin agrandar la foto
     if (reduce) return setIndex(i);
     setZoom({ id, index: i });
+  };
+
+  // Un video de "Más videos" pasa al reproductor y arranca; en el teléfono el reproductor queda arriba, fuera de
+  // pantalla, así que se lo trae a la vista
+  const elegirVideo = (i: number) => {
+    setVideoActivo(i);
+    setPlaying(true);
+    reproductor.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
   };
 
   // Cuando el visor ya está abierto, la foto agrandada se retira (queda detrás del visor).
@@ -150,15 +163,16 @@ export default function GallerySection() {
         </button>
       </p>
 
-      {/* El video, enmarcado como un aftermovie */}
-      {video && videoId && (
+      {/* Los videos, enmarcados como un aftermovie: uno grande y abajo los demás para elegir */}
+      {video && (
         <div className="mx-auto mt-24 max-w-5xl rounded-[28px] bg-rojo p-4 sm:p-8" data-reveal>
           <h3 className="display mb-5 text-center text-[clamp(2.25rem,5vw,4rem)] text-crema">
             Mirá el Encuentro
           </h3>
-          <div className="relative aspect-video overflow-hidden rounded-[16px] bg-tinta">
+          <div ref={reproductor} className="relative aspect-video overflow-hidden rounded-[16px] bg-tinta">
             {playing ? (
               <iframe
+                key={video.id}
                 src={`${video.videoUrl}?autoplay=1`}
                 title={video.caption}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -173,7 +187,7 @@ export default function GallerySection() {
                 aria-label={`Ver el video: ${video.caption}`}
               >
                 <Image
-                  src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+                  src={`https://i.ytimg.com/vi/${youtubeId(video)}/maxresdefault.jpg`}
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 92vw, 64rem"
@@ -186,6 +200,46 @@ export default function GallerySection() {
               </button>
             )}
           </div>
+          <p className="mt-3 font-extrabold text-tinta">{video.caption}</p>
+
+          {videos.length > 1 && (
+            <>
+              <h4 className="display mt-8 text-[1.75rem] text-crema">Más videos</h4>
+              <ul className="mt-3 grid grid-cols-2 gap-3 sm:gap-5">
+                {videos.map((v, i) =>
+                  i === videoActivo ? null : (
+                    <li key={v.id}>
+                      <button
+                        type="button"
+                        onClick={() => elegirVideo(i)}
+                        className="group block w-full text-left"
+                        aria-label={`Ver el video: ${v.caption}`}
+                      >
+                        <span className="relative block aspect-video overflow-hidden rounded-[12px] bg-tinta">
+                          {/* mqdefault es 16:9 (la hqdefault trae franjas negras) */}
+                          <Image
+                            src={`https://i.ytimg.com/vi/${youtubeId(v)}/mqdefault.jpg`}
+                            alt=""
+                            fill
+                            sizes="(max-width: 1024px) 45vw, 30rem"
+                            className="object-cover opacity-85 transition-opacity group-hover:opacity-100"
+                          />
+                          <span className="absolute inset-0 grid place-items-center">
+                            <span className="grid size-11 place-items-center rounded-full bg-amarillo text-tinta shadow-[0_4px_0_var(--color-tinta)] sm:size-14">
+                              <FaPlay className="size-3.5 translate-x-px sm:size-4" aria-hidden />
+                            </span>
+                          </span>
+                        </span>
+                        <span className="mt-2 block text-[0.9375rem] font-extrabold leading-snug text-tinta">
+                          {v.caption}
+                        </span>
+                      </button>
+                    </li>
+                  )
+                )}
+              </ul>
+            </>
+          )}
         </div>
       )}
 
