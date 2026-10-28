@@ -53,8 +53,14 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        {/* Marca que hay JS: las animaciones de entrada solo ocultan contenido bajo html.js */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Marca que hay JS: las animaciones de entrada solo ocultan contenido bajo html.js.
+            Si a los 5 s RevealObserver no arrancó (el JS de la página no cargó), se saca .js y se ve todo */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(d){d.classList.add('js');setTimeout(function(){if(!d.classList.contains('reveal-listo'))d.classList.remove('js')},5000)})(document.documentElement)",
+          }}
+        />
       </head>
       <body className={`${anton.variable} ${bricolage.variable} font-sans antialiased`}>
         <PaperFilters />
