@@ -200,7 +200,7 @@ export const CONTACTS: ContactPerson[] = [
   },
 ];
 
-// Fechas 2027 confirmadas por Matías (27/10/2026). Solo fecha y localidad: sede, programa, cupos y costos
+// Fechas 2027 confirmadas por Matías (27/10/2026; Mar del Plata pasó al 26-28/11 el 26/11/2026). Solo fecha y localidad: sede, programa, cupos y costos
 // todavía no están confirmados, así que no se muestran.
 export const EDITIONS_2027: AnnouncedEdition[] = [
   {
@@ -221,8 +221,8 @@ export const EDITIONS_2027: AnnouncedEdition[] = [
     id: "mdp-2027",
     location: "Mar del Plata",
     province: "Buenos Aires",
-    startDate: "2027-11-19",
-    endDate: "2027-11-21",
+    startDate: "2027-11-26",
+    endDate: "2027-11-28",
   },
 ];
 
